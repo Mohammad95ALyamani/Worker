@@ -40,9 +40,10 @@
                     android:id="@+id/firstNameTextInputLayoutSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
+                    app:startIconDrawable="@drawable/ic_person_full_colo"
+                    android:layout_marginRight="@dimen/_16sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -58,22 +59,16 @@
                         android:paddingStart="@dimen/_35sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="@dimen/_27sdp"
-                    android:layout_height="@dimen/_27sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/firstNameTextInputLayoutSignUp"
-                    app:layout_constraintStart_toStartOf="@+id/firstNameTextInputLayoutSignUp"
-                    app:layout_constraintTop_toTopOf="@+id/firstNameTextInputLayoutSignUp"
-                    app:srcCompat="@drawable/ic_person_full_colo" />
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/lastNameTextInputLayoutSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    app:startIconDrawable="@drawable/ic_person_full_colo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/firstNameTextInputLayoutSignUp">
@@ -89,22 +84,15 @@
                         android:paddingStart="@dimen/_35sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="@dimen/_27sdp"
-                    android:layout_height="@dimen/_27sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/lastNameTextInputLayoutSignUp"
-                    app:layout_constraintStart_toStartOf="@+id/lastNameTextInputLayoutSignUp"
-                    app:layout_constraintTop_toTopOf="@+id/lastNameTextInputLayoutSignUp"
-                    app:srcCompat="@drawable/ic_person_full_colo" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/phoneTextInputLayoutSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    app:startIconDrawable="@drawable/ic_phone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lastNameTextInputLayoutSignUp">
@@ -120,24 +108,18 @@
                         android:paddingStart="@dimen/_35sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="@dimen/_27sdp"
-                    android:layout_height="@dimen/_27sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/phoneTextInputLayoutSignUp"
-                    app:layout_constraintStart_toStartOf="@+id/phoneTextInputLayoutSignUp"
-                    app:layout_constraintTop_toTopOf="@+id/phoneTextInputLayoutSignUp"
-                    app:srcCompat="@drawable/ic_phone" />
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordTextInputLayoutSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_lock"
                     app:layout_constraintTop_toBottomOf="@+id/phoneTextInputLayoutSignUp"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="#F7C035">
@@ -153,24 +135,18 @@
                         android:paddingStart="@dimen/_35sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="@dimen/_27sdp"
-                    android:layout_height="@dimen/_27sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/passwordTextInputLayoutSignUp"
-                    app:layout_constraintStart_toStartOf="@+id/passwordTextInputLayoutSignUp"
-                    app:layout_constraintTop_toTopOf="@+id/passwordTextInputLayoutSignUp"
-                    app:srcCompat="@drawable/ic_lock" />
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/confirmPasswordTextInputLayoutSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:startIconDrawable="@drawable/ic_lock"
                     app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayoutSignUp"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="#F7C035">
@@ -186,14 +162,7 @@
                         android:paddingStart="@dimen/_35sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="@dimen/_27sdp"
-                    android:layout_height="@dimen/_27sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/confirmPasswordTextInputLayoutSignUp"
-                    app:layout_constraintStart_toStartOf="@+id/confirmPasswordTextInputLayoutSignUp"
-                    app:layout_constraintTop_toTopOf="@+id/confirmPasswordTextInputLayoutSignUp"
-                    app:srcCompat="@drawable/ic_lock" />
+
 
                 <Button
                     android:id="@+id/SignUpButtonSginUp"

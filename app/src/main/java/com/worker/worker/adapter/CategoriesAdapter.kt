@@ -27,7 +27,7 @@ class CategoriesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.categoryName!!.text = categoriesArrayList!![position].name
-        Glide.with(context).asBitmap().load(categoriesArrayList!![position].image).into(holder.categoryImage)
+      //  Glide.with(context).asBitmap().load(categoriesArrayList!![position].image).into(holder.categoryImage)
 
         holder.itemView.setOnClickListener(View.OnClickListener {
             selectedPosition = position
