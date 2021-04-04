@@ -12,9 +12,6 @@ import com.worker.worker.R
 
 class SettingsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SettingsFragment()
-    }
 
     private lateinit var viewModel: SettingsViewModel
 
@@ -24,12 +21,12 @@ class SettingsFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
 
-        val privacyPolicyCardView: CardView = root.findViewById<CardView>(R.id.privacyPolicyCardView)
+        val privacyPolicyCardView: CardView = root.findViewById(R.id.privacyPolicyCardView)
         privacyPolicyCardView.setOnClickListener{
             openDialog(root,R.layout.dialog_privacy_policy,R.id.privacyPolicyCardView,"Privacy Policy")
         }
 
-        val languageCardView: CardView = root.findViewById<CardView>(R.id.languageCardView)
+        val languageCardView: CardView = root.findViewById(R.id.languageCardView)
         languageCardView.setOnClickListener{
             openDialog(root,R.layout.dialog_language,R.id.languageCardView,"Change Language")
         }
@@ -43,7 +40,7 @@ class SettingsFragment : Fragment() {
     }
 
     fun openDialog(view: View,layout:Int ,id: Int,title:String) {
-        var cardView: CardView = view.findViewById<CardView>(id)
+        var cardView: CardView = view.findViewById(id)
         val mDialogView = LayoutInflater.from(activity).inflate(
             layout,
             null

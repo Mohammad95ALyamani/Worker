@@ -15,7 +15,7 @@ import com.worker.worker.model.Categories
 import kotlin.collections.ArrayList
 
 class CategoriesAdapter(
-    private val categoriesArrayList: ArrayList<Categories>?, private val context: Context?, private val onClickItem: OnClickRecyclerItem?
+    private var categoriesArrayList: ArrayList<Categories>?, private var context: Context?, private var onClickItem: OnClickRecyclerItem?
 ) :
     RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     var selectedPosition = 0
@@ -27,7 +27,7 @@ class CategoriesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.categoryName!!.text = categoriesArrayList!![position].name
-      //  Glide.with(context).asBitmap().load(categoriesArrayList!![position].image).into(holder.categoryImage)
+        Glide.with(context!!).asBitmap().load(categoriesArrayList!![position].image).into(holder.categoryImage!!)
 
         holder.itemView.setOnClickListener(View.OnClickListener {
             selectedPosition = position

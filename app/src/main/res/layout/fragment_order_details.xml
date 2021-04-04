@@ -21,45 +21,22 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_5sdp">
+          >
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="Delete"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@drawable/ic_delete"
+                android:layout_margin="@dimen/_4sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="@dimen/_27sdp"
-                android:layout_height="@dimen/_27sdp"
-                android:src="@drawable/ic_delete"
-                app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                app:layout_constraintEnd_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="Edit"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15ssp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView21"
-                app:layout_constraintStart_toEndOf="@+id/imageView21"
-                app:layout_constraintTop_toTopOf="@+id/imageView21" />
-
-            <ImageView
                 android:id="@+id/imageView21"
-                android:layout_width="@dimen/_27sdp"
-                android:layout_height="@dimen/_27sdp"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_margin="@dimen/_4sdp"
                 android:src="@drawable/ic_edit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -156,10 +133,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_marginVertical="@dimen/_20sdp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:id="@+id/categoryOrderDetails"
@@ -168,19 +146,19 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/_5sdp"
             android:fontFamily="casual"
-            android:textSize="@dimen/_13ssp"
             android:text="Category:"
-            android:textColor="#0E0D0D" />
+            android:textColor="#0E0D0D"
+            android:textSize="@dimen/_13ssp" />
 
         <TextView
             android:id="@+id/orderCategoryTextViewOrderDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="@dimen/_13ssp"
             android:layout_weight="1"
             android:fontFamily="casual"
-            android:text="Category" />
+            android:text="Category"
+            android:textSize="@dimen/_13ssp" />
 
     </LinearLayout>
 
@@ -253,6 +231,42 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginVertical="@dimen/_20sdp"
+
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/categoryLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionLayout">
+
+        <TextView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:fontFamily="casual"
+
+            android:text="offered Price"
+            android:textColor="#0E0D0D"
+            android:textSize="@dimen/_13ssp" />
+
+        <TextView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:fontFamily="casual"
+            android:text="25 JOD"
+
+            android:textSize="@dimen/_13ssp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/completeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -269,20 +283,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/_5sdp"
-            android:text="complete By:"
-            android:textSize="@dimen/_13ssp"
             android:fontFamily="casual"
-            android:textColor="#0E0D0D" />
+            android:text="complete By:"
+            android:textColor="#0E0D0D"
+            android:textSize="@dimen/_13ssp" />
 
         <TextView
             android:id="@+id/ordercompleteTextViewOrderDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="casual"
             android:layout_weight="1"
-            android:text="complete By" />
+            android:fontFamily="casual"
+            android:text="complete By"
+            android:textSize="@dimen/_13ssp" />
 
     </LinearLayout>
 

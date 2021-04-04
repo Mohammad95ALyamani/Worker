@@ -30,18 +30,17 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <TextView
             android:id="@+id/profileNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mohammad Alyamani"
-            android:textSize="@dimen/_17ssp"
-            android:fontFamily="casual"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/card"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_10sdp"/>
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/card"
+            android:fontFamily="casual"
+            android:text="Ahmad Nofal"
+            android:textSize="@dimen/_17ssp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profileCategoryTextView"
@@ -187,11 +186,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Full Name"
-                    android:editable="false"
                     android:background="@color/white"
+                    android:editable="false"
+                    android:hint="Full Name"
                     android:paddingStart="@dimen/_35sdp"
-                    android:text="Mohammad Alyamani" />
+                    android:text="Ahmad Nofal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
@@ -219,7 +218,7 @@
                     android:editable="false"
                     android:hint="Email"
                     android:paddingStart="@dimen/_35sdp"
-                    android:text="Mohammad.Alyamani95@gmail.com" />
+                    android:text="ahmadnofai95@gmail.com" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView

@@ -25,7 +25,7 @@
         android:id="@+id/navigation_history"
         android:name="com.worker.worker.ui.History.HistoryFragment"
         android:label="@string/title_history"
-        tools:layout="@layout/fragment_History" >
+        tools:layout="@layout/fragment_history" >
         <action
             android:id="@+id/action_navigation_history_to_orderDetailsFragment"
             app:destination="@id/orderDetailsFragment" />
@@ -71,7 +71,11 @@
         android:id="@+id/submitOrderFragment"
         android:name="com.worker.worker.ui.SubmitOrder.SubmitOrderFragment"
         android:label="fragment_submit_order"
-        tools:layout="@layout/fragment_submit_order" />
+        tools:layout="@layout/fragment_submit_order" >
+        <argument
+            android:name="order"
+            app:argType="com.worker.worker.model.Order" />
+    </fragment>
     <fragment
         android:id="@+id/viewProfileFragment"
         android:name="com.worker.worker.ui.ViewProfile.ViewProfileFragment"

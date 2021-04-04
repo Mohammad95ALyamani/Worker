@@ -28,14 +28,14 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/card"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_7sdp"
+                    android:layout_toRightOf="@+id/card"
                     android:fontFamily="casual"
-                    android:textStyle="bold"
-                    android:text="Mohammad Alyamani"
+                    android:text="Ahmad Nofal"
                     android:textColor="#fff"
-                    android:textSize="@dimen/_17ssp" />
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card"
