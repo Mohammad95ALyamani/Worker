@@ -1,25 +1,22 @@
 package com.worker.worker.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivitySignUpBinding
 import com.worker.worker.model.User
 import com.worker.worker.model.UserJob
-import java.util.concurrent.TimeUnit
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignUpBinding
-    lateinit var auth: FirebaseAuth
-    lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
     var job: UserJob? = null
     lateinit var signUpViewModel: SignUpViewModel
     private val TAG = "SignUpActivity"
@@ -28,9 +25,39 @@ class SignUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(
             this, R.layout.activity_sign_up
         )
-        auth = FirebaseAuth.getInstance()
-        auth.useAppLanguage()
+
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val jobsArrayList = ArrayList<UserJob>()
+        val job1 = UserJob()
+        job1.id = 1
+        job1.name = "7dad"
+        jobsArrayList.add(job1)
+        val job2 = UserJob()
+        job2.id = 2
+        job2.name = "Najar"
+        jobsArrayList.add(job2)
+        val job3 = UserJob()
+        job3.id = 3
+        job3.name = "Engineer"
+        jobsArrayList.add(job3)
+        val job4 = UserJob()
+        job4.id = 4
+        job4.name = "Doctor"
+        jobsArrayList.add(job4)
+        val adapter =
+            ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, jobsArrayList)
+        binding.userJobMenu.setAdapter(adapter)
+
+
+        binding.userJobMenu.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
+            Toast.makeText(this, "selected" + jobsArrayList[position].name, Toast.LENGTH_LONG)
+                .show()
+            job = jobsArrayList[position]
+        })
     }
 
     fun signUpUser(v: View) {
@@ -65,34 +92,19 @@ class SignUpActivity : AppCompatActivity() {
         if (job == null) {
             binding.userJobTextLayout.error = "Job is Require! "
         }
-        val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(binding.phoneTietSignUp.text.toString())       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
 
-
+        user.firstName = binding.firstNameTietSginUp.text.toString()
+        user.lastName = binding.lastNameTietSginUp.text.toString()
+        user.phoneNumber = "+962"+binding.phoneTietSignUp.text.toString()
+        user.password = binding.passwordTietSginUp.text.toString()
+        user.job = job
+        val i = Intent(this@SignUpActivity, OTPActivity::class.java)
+        i.putExtra("user", user)
+        startActivity(i)
 
 
         //Todo
     }
 
-    fun setUpCallBacks(){
-        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-            override fun onVerificationCompleted(p0: PhoneAuthCredential) {
 
-            }
-
-            override fun onVerificationFailed(p0: FirebaseException) {
-
-            }
-
-            override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
-                super.onCodeSent(p0, p1)
-            }
-
-        }
-    }
 }

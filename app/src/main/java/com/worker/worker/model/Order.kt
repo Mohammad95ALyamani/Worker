@@ -11,4 +11,7 @@ class Order : Serializable {
     var lng: String = ""
     var lat: String = ""
     var categories: Categories? = null
+    var completedBy: User? = null
+    var publisher:User? = null
+    var orderStatus: OrderStatus? = null
 }

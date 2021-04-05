@@ -1,6 +1,8 @@
 package com.worker.worker.model
 
-class User {
+import java.io.Serializable
+
+class User: Serializable {
     var id : Int = 0
     var firstName: String = ""
     var lastName: String = ""
@@ -9,4 +11,6 @@ class User {
     var token : String = ""
     var image: String = ""
     var job: UserJob? = null
+
+
 }

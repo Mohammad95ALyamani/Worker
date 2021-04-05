@@ -15,9 +15,19 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            val i = Intent(this@SplashActivity, LoginActivity::class.java)
-            startActivity(i)
-            finish()
+
+            val sharedPreference = getSharedPreferences("general", MODE_PRIVATE)
+            val token = sharedPreference.getString("token", null)
+            if (token != null) {
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+                finish()
+            } else {
+                val i = Intent(this@SplashActivity, LoginActivity::class.java)
+                startActivity(i)
+                finish()
+            }
+
         }, Time_To_Wait.toLong())
     }
 }
