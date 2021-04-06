@@ -1,7 +1,10 @@
 package com.worker.worker.ui.AddOrder
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +12,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.worker.worker.Activity.MapsActivity
 import com.worker.worker.databinding.FragmentAddOrderBinding
 import com.worker.worker.model.Categories
 import com.worker.worker.model.Order
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.ln
 
 class AddOrderFragment : Fragment() {
 
@@ -44,6 +49,13 @@ class AddOrderFragment : Fragment() {
         addOrderBinding.addOrderDateLayOut.setOnClickListener(View.OnClickListener {
             openCalender()
         })
+
+        addOrderBinding.addLocationButton.setOnClickListener(
+            View.OnClickListener {
+                val intent = Intent(activity,MapsActivity::class.java)
+                startActivityForResult(intent,101)
+            }
+        )
     }
 
     fun openMaps(){
@@ -114,4 +126,12 @@ class AddOrderFragment : Fragment() {
         Navigation.findNavController(addOrderBinding.root).navigate(destination)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == 101){
+            lat = data!!.getDoubleExtra("lat",0.0)
+            lng = data.getDoubleExtra("lng",0.0)
+           Toast.makeText(activity,"Location Selected", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

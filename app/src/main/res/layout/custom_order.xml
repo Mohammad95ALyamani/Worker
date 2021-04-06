@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="order"
+            type="com.worker.worker.model.Order" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/_5sdp"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/categoryImageView"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
+                imageUrl="@{order.categories.image}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/orderTitleHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="@{order.title}"
+                app:layout_constraintStart_toEndOf="@+id/categoryImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/orderDescriptionHome"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:text="@{order.description}"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/categoryImageView"
+                app:layout_constraintTop_toBottomOf="@+id/orderTitleHome" />
+
+            <TextView
+                android:id="@+id/orderPriceHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf((Double)order.price)}"
+                android:textColor="#4CAF50"
+                android:textSize="@dimen/_14ssp"
+                android:layout_margin="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/orderPublisherNameHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{order.publisher.firstName + order.publisher.lastName}"
+                android:textSize="@dimen/_12ssp"
+                android:layout_margin="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/orderDescriptionHome" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

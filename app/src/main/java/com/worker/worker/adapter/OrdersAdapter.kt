@@ -1,9 +1,12 @@
 package com.worker.worker.adapter
 
 import android.content.Context
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.worker.worker.R
+import com.worker.worker.databinding.CustomOrderBinding
 import com.worker.worker.model.Order
 
 class OrdersAdapter(
@@ -11,14 +14,20 @@ class OrdersAdapter(
 ) : RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>() {
 
 
-
-
+    lateinit var layoutInflater: LayoutInflater
+    lateinit var listItemBinding: CustomOrderBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrdersViewHolder {
-        TODO("Not yet implemented")
+
+        layoutInflater = LayoutInflater.from(parent.context)
+
+        listItemBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.custom_order, parent, false)
+
+        return OrdersViewHolder(listItemBinding)
     }
 
     override fun onBindViewHolder(holder: OrdersViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bindViews(orders.get(position))
     }
 
     override fun getItemCount(): Int {
@@ -26,7 +35,12 @@ class OrdersAdapter(
     }
 
 
-     class OrdersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    class OrdersViewHolder(customOrderBinding: CustomOrderBinding) :
+        RecyclerView.ViewHolder(customOrderBinding.root) {
+        val binding = customOrderBinding
+        fun bindViews(order: Order) {
+            binding.order = order
+            binding.executePendingBindings()
+        }
     }
 }

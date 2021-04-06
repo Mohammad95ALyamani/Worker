@@ -17,7 +17,7 @@ class AddOrderViewModel : ViewModel() {
     private  val TAG = "AddOrderViewModel"
     fun createOrder(order: Order,token:String): MutableLiveData<CreateOrderResponse>{
         orderMutable = MutableLiveData()
-        var call = Builder.service.createOrder(order,token)
+        val call = Builder.service.createOrder(order,token)
         call.enqueue(object : Callback<CreateOrderResponse> {
             override fun onResponse(
                 call: Call<CreateOrderResponse>,
