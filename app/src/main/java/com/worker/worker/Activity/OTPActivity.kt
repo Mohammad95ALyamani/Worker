@@ -28,7 +28,7 @@ class OTPActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         otpBinding = DataBindingUtil.setContentView(
-            this, R.layout.activity_sign_up
+            this, R.layout.activity_o_t_p
         )
         auth = FirebaseAuth.getInstance()
         auth.useAppLanguage()

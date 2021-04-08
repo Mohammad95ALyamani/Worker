@@ -1,6 +1,8 @@
 package com.worker.worker.model
 
-class UserJob {
+import java.io.Serializable
+
+class UserJob: Serializable {
     var id: Int = 0
     var name: String = ""
     var description: String = ""
