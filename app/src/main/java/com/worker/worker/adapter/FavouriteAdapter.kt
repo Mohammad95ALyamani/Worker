@@ -8,11 +8,14 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.worker.worker.R
 import com.worker.worker.lis.OnClickRecyclerItem
 import com.worker.worker.model.User
+import com.worker.worker.ui.Favourite.FavouriteFragmentDirections
 
 class FavouriteAdapter(
     private var favourits: ArrayList<User>, private var context: Context, private var onClickRecyclerItem: OnClickRecyclerItem
@@ -36,7 +39,18 @@ class FavouriteAdapter(
         Glide.with(context).asBitmap().load(favourits[position].image).into(holder.userImage)
         holder.username.text = favourits[position].firstName + favourits[position].lastName
         holder.userJob.text = favourits[position].job?.name
+        holder.favouriteToggle.isChecked = true
+        holder.username.setOnClickListener(View.OnClickListener { v->
+            val dir = FavouriteFragmentDirections.actionNavigationFavouriteToViewProfileFragment(favourits[position].id)
 
+            Navigation.findNavController(v).navigate(dir)
+        })
+        holder.favouriteToggle.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (!isChecked){
+                favourits.removeAt(position)
+                notifyDataSetChanged()
+            }
+        }
     }
 
     override fun getItemCount(): Int {

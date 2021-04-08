@@ -19,7 +19,11 @@
         android:id="@+id/navigation_favourite"
         android:name="com.worker.worker.ui.Favourite.FavouriteFragment"
         android:label="@string/title_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite" >
+        <action
+            android:id="@+id/action_navigation_favourite_to_viewProfileFragment"
+            app:destination="@id/viewProfileFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_history"
@@ -80,5 +84,9 @@
         android:id="@+id/viewProfileFragment"
         android:name="com.worker.worker.ui.ViewProfile.ViewProfileFragment"
         android:label="fragment_view_profile"
-        tools:layout="@layout/fragment_view_profile" />
+        tools:layout="@layout/fragment_view_profile" >
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
