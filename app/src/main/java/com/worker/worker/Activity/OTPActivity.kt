@@ -47,6 +47,7 @@ class OTPActivity : AppCompatActivity() {
         otpBinding.otpView.setOtpCompletionListener {
             object : OnOtpCompletionListener {
                 override fun onOtpCompleted(otp: String?) {
+                    Log.d(TAG, "onOtpCompleted: "+otp)
                     val credential = PhoneAuthProvider.getCredential(storedVerificationId, otp!!)
                     signInWithPhoneAuthCredential(credential)
                 }
@@ -73,6 +74,7 @@ class OTPActivity : AppCompatActivity() {
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 super.onCodeSent(verificationId, token)
+                Log.d(TAG, "onCodeSent: "+ "code sent")
             }
 
         }
