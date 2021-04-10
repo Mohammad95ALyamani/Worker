@@ -1,305 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.OrderDetails.OrderDetailsFragment" >
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="order"
+            type="com.worker.worker.model.Order" />
+    </data>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.OrderDetails.OrderDetailsFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-          >
-
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                android:src="@drawable/ic_delete"
-                android:layout_margin="@dimen/_4sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView21"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                android:layout_margin="@dimen/_4sdp"
-                android:src="@drawable/ic_edit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/orderDetailsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:fontFamily="casual"
-        android:text="Order Details"
-        android:textColor="@color/purple_500"
-        android:textSize="@dimen/_24ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-    <LinearLayout
-        android:id="@+id/titleLayoutOrderDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderDetailsTitle">
-
-        <TextView
-            android:id="@+id/titleOrderDetails"
-            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:fontFamily="casual"
-            android:textSize="@dimen/_13ssp"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:text="Title:"
-            android:textColor="#0E0D0D" />
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:src="@drawable/ic_delete"
+                    android:layout_margin="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageView21"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <TextView
-            android:id="@+id/orderTitleTextViewOrderDetails"
+            android:id="@+id/orderDetailsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/_13ssp"
+            android:layout_marginVertical="@dimen/_20sdp"
             android:fontFamily="casual"
-            android:layout_weight="1"
-            android:text="Title" />
+            android:text="Order Details"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_24ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/descriptionLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLayoutOrderDetails">
-
-        <TextView
-            android:id="@+id/descriptionOrderDetails"
-            android:layout_width="@dimen/_100sdp"
+        <LinearLayout
+            android:id="@+id/titleLayoutOrderDetails"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:textSize="@dimen/_13ssp"
-            android:text="Description:"
-            android:textColor="#0E0D0D" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orderDetailsTitle">
 
-        <TextView
-            android:id="@+id/orderDescriptionTextViewOrderDetails"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/titleOrderDetails"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:textSize="@dimen/_13ssp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="Title:"
+                android:textColor="#0E0D0D" />
+
+            <TextView
+                android:id="@+id/orderTitleTextViewOrderDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="casual"
+                android:layout_weight="1"
+                android:text="@{order.title}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/descriptionLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/_13ssp"
-            android:layout_weight="1"
-            android:fontFamily="casual"
-            android:text="Description" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleLayoutOrderDetails">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/descriptionOrderDetails"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:textSize="@dimen/_13ssp"
+                android:text="Description:"
+                android:textColor="#0E0D0D" />
 
-    <LinearLayout
-        android:id="@+id/categoryLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            <TextView
+                android:id="@+id/orderDescriptionTextViewOrderDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_13ssp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.description}" />
 
-        <TextView
-            android:id="@+id/categoryOrderDetails"
-            android:layout_width="@dimen/_100sdp"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/categoryLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="Category:"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TextView
-            android:id="@+id/orderCategoryTextViewOrderDetails"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/categoryOrderDetails"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="Category:"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/orderCategoryTextViewOrderDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.categories.name}"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dateLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="casual"
-            android:text="Category"
-            android:textSize="@dimen/_13ssp" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/dateOrderDetails"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="Date:"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="casual"
+                android:textColor="#0E0D0D" />
 
-    <LinearLayout
-        android:id="@+id/dateLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
+            <TextView
+                android:id="@+id/orderDateTextViewOrderDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="casual"
+                android:layout_weight="1"
+                android:text="@{order.date}" />
 
-        <TextView
-            android:id="@+id/dateOrderDetails"
-            android:layout_width="@dimen/_100sdp"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statusLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:text="Date:"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="casual"
-            android:textColor="#0E0D0D" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateLayout">
 
-        <TextView
-            android:id="@+id/orderDateTextViewOrderDetails"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/statusOrderDetails"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="Status:"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="casual"
+                android:textColor="#0E0D0D" />
+
+            <TextView
+                android:id="@+id/orderStatusTextViewOrderDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="casual"
+                android:layout_weight="1"
+                android:text="@{order.orderStatus.name}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="casual"
-            android:layout_weight="1"
-            android:text="Date" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/statusLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateLayout">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/categoryLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionLayout">
 
-        <TextView
-            android:id="@+id/statusOrderDetails"
-            android:layout_width="@dimen/_100sdp"
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+
+                android:text="offered Price"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="@{String.valueOf(order.price) }"
+
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/completeLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:text="Status:"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="casual"
-            android:textColor="#0E0D0D" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statusLayout">
 
-        <TextView
-            android:id="@+id/orderStatusTextViewOrderDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="casual"
-            android:layout_weight="1"
-            android:text="Status" />
+            <TextView
+                android:id="@+id/completeOrderDetails"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="complete By:"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/ordercompleteTextViewOrderDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.completedBy.firstName + ` `+order.completedBy.lastName}"
+                android:textSize="@dimen/_13ssp" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-
-
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/categoryLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionLayout">
-
-        <TextView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-
-            android:text="offered Price"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="25 JOD"
-
-            android:textSize="@dimen/_13ssp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/completeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusLayout">
-
-        <TextView
-            android:id="@+id/completeOrderDetails"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="complete By:"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:id="@+id/ordercompleteTextViewOrderDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="casual"
-            android:text="complete By"
-            android:textSize="@dimen/_13ssp" />
-
-    </LinearLayout>
+        </LinearLayout>
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

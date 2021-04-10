@@ -51,7 +51,7 @@ class HistoryFragment : Fragment() {
 
 
     fun setUpHistoryRecyclerView(orders: ArrayList<Order>) {
-        adapter = activity?.let { OrdersAdapter(orders, it) }!!
+        adapter = activity?.let { OrdersAdapter(orders, it,1) }!!
         historyBinding.historyRecyclerView.adapter = adapter
     }
 }

@@ -1,274 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    android:layout_height="match_parent">
+    <data>
+        <variable
+            name="user"
+            type="com.worker.worker.model.User" />
+    </data>
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_25sdp"
-        android:orientation="vertical"
-        tools:context=".ui.ViewProfile.ViewProfileFragment">
 
-        <RelativeLayout
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
-            android:background="@color/purple_500"
-            android:padding="@dimen/_14sdp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:orientation="vertical"
+            tools:context=".ui.ViewProfile.ViewProfileFragment">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@color/purple_500"
+                android:padding="@dimen/_14sdp">
 
-                <CheckBox
-                    android:id="@+id/favouriteToggle"
-                    android:layout_width="@dimen/_20sdp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/favorite_checkbox"
-                    android:text=""
-                    android:drawableTint="#ff0000"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_alignParentEnd="true">
+
+                    <CheckBox
+                        android:id="@+id/favouriteToggle"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/favorite_checkbox"
+                        android:text=""
+                        android:drawableTint="#ff0000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="Add To Favorite"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/favouriteToggle"
+                        app:layout_constraintEnd_toStartOf="@+id/favouriteToggle"
+                        app:layout_constraintTop_toTopOf="@+id/favouriteToggle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/viewProfileProfileImageView"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/profile" />
+
+                </androidx.cardview.widget.CardView>
 
 
                 <TextView
-                    android:id="@+id/textView19"
+                    android:id="@+id/viewProfileProfileNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:text="Add To Favorite"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_13ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/favouriteToggle"
-                    app:layout_constraintEnd_toStartOf="@+id/favouriteToggle"
-                    app:layout_constraintTop_toTopOf="@+id/favouriteToggle" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/card"
+                    android:fontFamily="casual"
+                    android:text="@{user.firstName + user.lastName}"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                app:cardCornerRadius="@dimen/_10sdp">
+                <TextView
+                    android:id="@+id/viewProfileProfileCategoryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewProfileProfileNameTextView"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_toRightOf="@+id/card"
+                    android:fontFamily="casual"
+                    android:text="@{user.job.name}"
+                    android:textColor="#757575"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/viewProfileProfileImageView"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:src="@drawable/profile" />
-
-            </androidx.cardview.widget.CardView>
-
-
-            <TextView
-                android:id="@+id/viewProfileProfileNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toRightOf="@+id/card"
-                android:fontFamily="casual"
-                android:text="Mohammad Alyamani"
-                android:textSize="@dimen/_17ssp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/viewProfileProfileCategoryTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/viewProfileProfileNameTextView"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toRightOf="@+id/card"
-                android:fontFamily="casual"
-                android:text="Najar"
-                android:textColor="#757575"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-70dp"
-            android:padding="@dimen/_15sdp">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_margin="@dimen/_7sdp"
-                android:layout_weight="1"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/_5sdp">
-
-                    <ImageView
-                        android:id="@+id/orderIcon"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:src="@drawable/ic_order" />
-
-                    <TextView
-                        android:id="@+id/viewProfileOrderCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/orderIcon"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="serif-monospace"
-                        android:text="178"
-                        android:textSize="@dimen/_15ssp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/viewProfileOrderCount"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="serif-monospace"
-                        android:text="Done Order"
-                        android:textSize="@dimen/_15ssp" />
-
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_margin="@dimen/_7sdp"
-                android:layout_weight="1"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/_5sdp">
-
-                    <ImageView
-                        android:id="@+id/orderIcon2"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:src="@drawable/ic_favorite_full_color" />
-
-                    <TextView
-                        android:id="@+id/viewProfileFavorite"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/orderIcon2"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="serif-monospace"
-                        android:text="25"
-                        android:textSize="@dimen/_15ssp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/viewProfileFavorite"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="serif-monospace"
-                        android:text="Favourite"
-                        android:textSize="@dimen/_15ssp" />
-
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_15sdp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-70dp"
+                android:padding="@dimen/_15sdp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/profileFNLayout"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_110sdp"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_10sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/orderIcon"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:src="@drawable/ic_order" />
+
+                        <TextView
+                            android:id="@+id/viewProfileOrderCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/orderIcon"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="serif-monospace"
+                            android:text="178"
+                            android:textSize="@dimen/_15ssp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/viewProfileOrderCount"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="serif-monospace"
+                            android:text="Done Order"
+                            android:textSize="@dimen/_15ssp" />
+
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_110sdp"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_10sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/orderIcon2"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:src="@drawable/ic_favorite_full_color" />
+
+                        <TextView
+                            android:id="@+id/viewProfileFavorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/orderIcon2"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="serif-monospace"
+                            android:text="25"
+                            android:textSize="@dimen/_15ssp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/viewProfileFavorite"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="serif-monospace"
+                            android:text="Favourite"
+                            android:textSize="@dimen/_15ssp" />
+
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_15sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_person_full_colo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/profileFNLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:editable="false"
-                        android:hint="Full Name"
+                        app:startIconDrawable="@drawable/ic_person_full_colo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        android:text="Amad Nofal" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/viewProfileFullName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:editable="false"
+                            android:hint="Full Name"
+
+                            android:text="@{user.firstName + user.lastName}" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:startIconDrawable="@drawable/ic_email"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profileFNLayout">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:editable="false"
-                        android:hint="Email"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:startIconDrawable="@drawable/ic_email"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profileFNLayout">
 
-                        android:text="Mohammad.Alyamani95@gmail.com" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/viewProfileEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:editable="false"
+                            android:hint="Email"
+
+                            android:text="@{user.firstName}" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_phone"
-
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:editable="false"
-                        android:hint="Phone Number"
+                        app:startIconDrawable="@drawable/ic_phone"
 
-                        android:text="0795641254" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/viewProfilePhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:editable="false"
+                            android:hint="Phone Number"
+
+                            android:text="@{user.phoneNumber}" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</layout>

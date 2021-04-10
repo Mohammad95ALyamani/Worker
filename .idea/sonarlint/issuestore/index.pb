@@ -7,8 +7,6 @@ n
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 u
 Eapp/src/main/java/com/worker/worker/ui/Favourite/FavouriteFragment.kt,3\4\34879da984a3e73bd643a3a632aae17d83e4c467
-m
-=app/src/main/java/com/worker/worker/adapter/HistoryAdapter.kt,d\2\d226efc4f5aa999cb45b88ce87003b5ccdf2ec82
 q
 Aapp/src/main/java/com/worker/worker/ui/History/HistoryFragment.kt,3\3\33926574ae8fb001de1b3d59c7cec4a0725f6447
 p

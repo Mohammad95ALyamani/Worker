@@ -41,7 +41,7 @@ class FavouriteAdapter(
         holder.userJob.text = favourits[position].job?.name
         holder.favouriteToggle.isChecked = true
         holder.username.setOnClickListener(View.OnClickListener { v->
-            val dir = FavouriteFragmentDirections.actionNavigationFavouriteToViewProfileFragment(favourits[position].id)
+            val dir = FavouriteFragmentDirections.actionNavigationFavouriteToViewProfileFragment(favourits[position])
 
             Navigation.findNavController(v).navigate(dir)
         })

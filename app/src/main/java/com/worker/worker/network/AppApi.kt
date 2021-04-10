@@ -1,11 +1,11 @@
 package com.worker.worker.network
 
 import com.worker.worker.helpers.Constants
-import com.worker.worker.model.Categories
-import com.worker.worker.model.Order
-import com.worker.worker.model.CustomResponse
-import com.worker.worker.model.User
+import com.worker.worker.model.*
+import com.worker.worker.responses.CategoriesResponse
 import com.worker.worker.responses.CreateOrderResponse
+import com.worker.worker.responses.FollowersResponse
+import com.worker.worker.responses.ReportResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -24,7 +24,7 @@ interface AppApi {
     fun createOrder(@Body order: Order,@Header("AccessToken")token:String): Call<CreateOrderResponse>
 
     @GET(Constants.getJobCategory)
-    fun getCategories(): Call<ArrayList<Categories>>
+    fun getCategories(): Call<CategoriesResponse>
 
     @POST()
     fun getUserInfo(@Header("AccessToken")token: String):Call<User>
@@ -38,13 +38,23 @@ interface AppApi {
     fun followUser(@Header("AccessToken") token: String,@Body user: User): Call<CustomResponse>
 
     @GET()
-    fun getFollowers(@Header("AccessToken") token: String,@Query("userId")id:Int)
+    fun getFollowers(@Header("AccessToken") token: String,@Query("userId")id:Int):Call<FollowersResponse>
 
     @GET()
     fun getHistory(@Header("AccessToken") token: String):Call<ArrayList<Order>>
 
     @PUT()
-    fun updateOrderInfo(@Header("AccessToken") token: String):Call<CustomResponse>
+    fun updateOrderInfo(@Header("AccessToken") token: String,order: Order):Call<CustomResponse>
 
 
+    @GET()
+    fun getReports(@Header("AccessToken") token: String):Call<ReportResponse>
+
+    @POST()
+    fun reportUser(@Header("AccessToken") token: String,reportRequest: ReportRequest):Call<CustomResponse>
+    @DELETE()
+    fun deleteOrder(@Header("AccessToken") token: String,@Query("orderId") orderId:Int):Call<CustomResponse>
+
+    @POST()
+    fun takeOrder(@Header("AccessToken") token: String,@Body order: Order): Call<CustomResponse>
 }

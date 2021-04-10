@@ -1,8 +1,9 @@
 package com.worker.worker.Activity
 
-import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.mukesh.OnOtpCompletionListener
+import com.worker.worker.MainActivity
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivityOTPBinding
 import com.worker.worker.model.User
@@ -21,7 +22,7 @@ class OTPActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private val TAG = "OTPActivity"
-     lateinit var signUpViewModel: SignUpViewModel
+    lateinit var signUpViewModel: SignUpViewModel
     private var storedVerificationId: String = ""
     lateinit var user: User
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
@@ -34,33 +35,38 @@ class OTPActivity : AppCompatActivity() {
         auth.useAppLanguage()
         setUpCallBacks()
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
-         user = intent.getSerializableExtra("user") as User
+        user = intent.getSerializableExtra("user") as User
 
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(user.phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+            .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(this)                 // Activity (for callback binding)
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
 
-        otpBinding.otpView.setOtpCompletionListener {
-            object : OnOtpCompletionListener {
-                override fun onOtpCompleted(otp: String?) {
-                    Log.d(TAG, "onOtpCompleted: "+otp)
-                    val credential = PhoneAuthProvider.getCredential(storedVerificationId, otp!!)
-                    signInWithPhoneAuthCredential(credential)
-                }
 
+
+        otpBinding.verifyOTPButton.setOnClickListener(View.OnClickListener {
+            val otp = otpBinding.otpView.text.toString()
+            Log.d(TAG, "onCreate: $otp")
+            if (storedVerificationId != "") {
+                val credential = PhoneAuthProvider.getCredential(
+                    storedVerificationId,
+                    otpBinding.otpView.text.toString()
+                )
+                signInWithPhoneAuthCredential(credential)
             }
-        }
+
+        })
+
     }
 
 
-    fun setUpCallBacks() {
+    private fun setUpCallBacks() {
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                otpBinding.otpView.isActivated = false
+
                 signInWithPhoneAuthCredential(phoneAuthCredential)
 
             }
@@ -74,11 +80,14 @@ class OTPActivity : AppCompatActivity() {
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 super.onCodeSent(verificationId, token)
-                Log.d(TAG, "onCodeSent: "+ "code sent")
+                Log.d(TAG, "onCodeSent: " + "code sent")
+                storedVerificationId = verificationId
+                resendToken = token
             }
 
         }
     }
+
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
@@ -86,7 +95,7 @@ class OTPActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
-                        signUpUserData()
+                    signUpUserData()
 
                 } else {
                     // Sign in failed, display a message and update the UI
@@ -94,7 +103,7 @@ class OTPActivity : AppCompatActivity() {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
                         otpBinding.otpView.error = "The verification code entered was invalid"
-                        otpBinding.otpView.isActivated = true
+
                     }
                     // Update UI
                 }
@@ -102,18 +111,21 @@ class OTPActivity : AppCompatActivity() {
     }
 
 
-    fun signUpUserData(){
+    private fun signUpUserData() {
         signUpViewModel.signUpUser(user).observe(this, Observer { userResponse ->
-            if (userResponse != null){
+            if (userResponse != null) {
                 saveUserToken(userResponse.token)
-                Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show()
-            }else {
-                 Toast.makeText(this,"failed",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    fun saveUserToken(token:String){
+    private fun saveUserToken(token: String) {
         val sharedPreference = getSharedPreferences("general", MODE_PRIVATE)
         val editor = sharedPreference.edit()
         editor.putString("token", token)

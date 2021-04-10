@@ -93,6 +93,10 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         order.description =
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         order.price = 30.0
+        val lat = 31.9565783
+        val lng = 35.945695099999966
+        order.lat = lat.toString()
+        order.lng =  lng.toString()
         user.firstName = "Ahmad"
         user.lastName = "Nofal"
         val cate = Categories(
@@ -133,7 +137,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
     }
 
     private fun setUpOrderRecyclerView() {
-        orderAdapter = activity?.let { OrdersAdapter(ordersArrayList, it) }
+        orderAdapter = activity?.let { OrdersAdapter(ordersArrayList, it,0) }
         orderRecyclerView.layoutManager = LinearLayoutManager(activity,RecyclerView.VERTICAL,false)
         orderRecyclerView.adapter = orderAdapter
     }

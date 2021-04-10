@@ -1,209 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.SubmitOrder.SubmitOrderFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_10sdp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="casual"
-        android:text="Submit Order"
-        android:textColor="@color/purple_500"
-        android:textSize="@dimen/_24ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="order"
+            type="com.worker.worker.model.Order" />
+    </data>
 
-    <LinearLayout
-        android:id="@+id/submitTitleLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
+        android:layout_height="match_parent"
+        tools:context=".ui.SubmitOrder.SubmitOrderFragment">
 
         <TextView
-            android:id="@+id/submitTitle"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="Title:"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:id="@+id/orderTitleTextViewSubmitOrder"
+            android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginTop="16dp"
             android:fontFamily="casual"
-            android:text="Title"
-            android:textSize="@dimen/_13ssp" />
+            android:text="Submit Order"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_24ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/submitDescriptionLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitTitleLayout">
-
-        <TextView
-            android:id="@+id/submitDescription"
-            android:layout_width="@dimen/_100sdp"
+        <LinearLayout
+            android:id="@+id/submitTitleLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="Description:"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
 
-        <TextView
-            android:id="@+id/orderDescriptionTextViewSubmitOrder"
+            <TextView
+                android:id="@+id/submitTitle"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="Title:"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/orderTitleTextViewSubmitOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.title}"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/submitDescriptionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitTitleLayout">
+
+            <TextView
+                android:id="@+id/submitDescription"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="Description:"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/orderDescriptionTextViewSubmitOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.description}"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/submitCategoryLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitDescriptionLayout">
+
+            <TextView
+                android:id="@+id/submitCategory"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="Category:"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/orderCategoryTextViewSubmitOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.categories.name}"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/submitDateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitCategoryLayout">
+
+            <TextView
+                android:id="@+id/submitDate"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="Date:"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/orderDateTextViewSubmitOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@{order.date}"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitDateLayout">
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="casual"
+                android:text="Offered Price"
+                android:textColor="#0E0D0D"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+
+                android:text="@{order.price + ` JOD`}"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitOrderButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/button_background"
             android:fontFamily="casual"
-            android:text="Description"
-            android:textSize="@dimen/_13ssp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/submitCategoryLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitDescriptionLayout">
-
-        <TextView
-            android:id="@+id/submitCategory"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="Category:"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:id="@+id/orderCategoryTextViewSubmitOrder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="casual"
-            android:text="Category"
-            android:textSize="@dimen/_13ssp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/submitDateLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitCategoryLayout">
-
-        <TextView
-            android:id="@+id/submitDate"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="Date:"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:id="@+id/orderDateTextViewSubmitOrder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="casual"
-            android:text="Date"
-            android:textSize="@dimen/_13ssp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_20sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitDateLayout">
-
-        <TextView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="casual"
-            android:text="Offered Price"
-            android:textColor="#0E0D0D"
-            android:textSize="@dimen/_13ssp" />
-
-        <TextView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:fontFamily="casual"
-
-            android:text="25 JOD"
-            android:textSize="@dimen/_13ssp" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/submitOrderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        android:background="@drawable/button_background"
-        android:fontFamily="casual"
-        android:text="Submit"
-        android:textAllCaps="false"
-        android:textColor="#FFF"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

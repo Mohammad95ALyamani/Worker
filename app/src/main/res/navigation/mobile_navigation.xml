@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_addOrderFragment"
             app:destination="@id/addOrderFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 
     <fragment
@@ -56,7 +59,11 @@
         android:id="@+id/editOrderFragment"
         android:name="com.worker.worker.ui.EditOrder.EditOrderFragment"
         android:label="fragment_edit_order"
-        tools:layout="@layout/fragment_edit_order" />
+        tools:layout="@layout/fragment_edit_order" >
+        <argument
+            android:name="order"
+            app:argType="com.worker.worker.model.Order" />
+    </fragment>
     <fragment
         android:id="@+id/orderDetailsFragment"
         android:name="com.worker.worker.ui.OrderDetails.OrderDetailsFragment"
@@ -65,12 +72,22 @@
         <action
             android:id="@+id/action_orderDetailsFragment_to_editOrderFragment"
             app:destination="@id/editOrderFragment" />
+        <argument
+            android:name="order"
+            app:argType="com.worker.worker.model.Order" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_viewProfileFragment"
+            app:destination="@id/viewProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.worker.worker.ui.Profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.worker.worker.model.User" />
+    </fragment>
     <fragment
         android:id="@+id/submitOrderFragment"
         android:name="com.worker.worker.ui.SubmitOrder.SubmitOrderFragment"
@@ -86,7 +103,15 @@
         android:label="fragment_view_profile"
         tools:layout="@layout/fragment_view_profile" >
         <argument
-            android:name="userId"
-            app:argType="integer" />
+            android:name="user"
+            app:argType="com.worker.worker.model.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.worker.worker.ui.details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="order"
+            app:argType="com.worker.worker.model.Order" />
     </fragment>
 </navigation>

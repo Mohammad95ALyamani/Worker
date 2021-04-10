@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
+            android:focusableInTouchMode="true"
             android:gravity="center"
             android:inputType="number"
             android:itemBackground="#f0f0f0"
@@ -39,9 +40,22 @@
             app:OtpItemSpacing="@dimen/_10sdp"
             app:OtpLineColor="@color/purple_500"
             app:OtpViewType="rectangle"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <Button
+            android:id="@+id/verifyOTPButton"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+
+            android:text="Verify"
+            android:textColor="@color/white"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otpView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
