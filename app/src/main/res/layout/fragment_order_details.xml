@@ -7,6 +7,12 @@
         <variable
             name="order"
             type="com.worker.worker.model.Order" />
+        <variable
+            name="isCompleted"
+            type="Boolean" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,21 +37,23 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView16"
+                    android:id="@+id/deleteImageView"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:src="@drawable/ic_delete"
+                    android:visibility="@{isCompleted? view.GONE: view.VISIBLE, default = gone}"
                     android:layout_margin="@dimen/_4sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                      />
 
                 <ImageView
-                    android:id="@+id/imageView21"
+                    android:id="@+id/editImageView"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_margin="@dimen/_4sdp"
                     android:src="@drawable/ic_edit"
+                    android:visibility="@{isCompleted? view.GONE: view.VISIBLE, default = gone}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

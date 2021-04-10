@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="isEditing"
             type="Boolean" />
+
         <variable
             name="view"
             type="android.view.View" />
+
+        <variable
+            name="notNull"
+            type="Boolean" />
+
         <variable
             name="user"
             type="com.worker.worker.model.User" />
@@ -25,19 +32,24 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
-            android:padding="@dimen/_14sdp"
-            android:background="@color/purple_500">
+            android:background="@color/purple_500"
+            android:padding="@dimen/_14sdp">
+
+            <Button
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:text="Done" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_10sdp"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                app:cardCornerRadius="@dimen/_10sdp">
 
                 <ImageView
                     android:id="@+id/profileImageView"
-                    imageUrl="@{user.image}"
+                    imageUrl="@{notNull?user.image:``}"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp" />
 
@@ -60,38 +72,40 @@
                 android:id="@+id/profileCategoryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user.job.name}"
-                android:textSize="@dimen/_14ssp"
-                android:fontFamily="casual"
-                android:textStyle="bold"
-                android:textColor="#757575"
-                android:layout_toEndOf="@+id/card"
                 android:layout_below="@+id/profileNameTextView"
-                android:layout_marginStart="@dimen/_10sdp" />
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/card"
+                android:fontFamily="casual"
+                android:text="@{user.job.name}"
+                android:textColor="#757575"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
 
             <ImageView
                 android:id="@+id/profileEditImageView"
                 android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="@dimen/_2sdp"
-                android:layout_height="@dimen/_27sdp"
                 android:src="@drawable/ic_edit" />
+
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_15sdp"
-            android:layout_marginTop="-70dp">
+            android:layout_marginTop="-70dp"
+            android:padding="@dimen/_15sdp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/userOrdersDone"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_110sdp"
-                app:cardElevation="@dimen/_10sdp"
+                android:layout_margin="@dimen/_7sdp"
                 android:layout_weight="1"
                 app:cardCornerRadius="@dimen/_10sdp"
-                android:layout_margin="@dimen/_7sdp">
+                app:cardElevation="@dimen/_10sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -102,29 +116,29 @@
                         android:id="@+id/orderIcon"
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:src="@drawable/ic_order"
-                        android:layout_centerHorizontal="true" />
+                        android:src="@drawable/ic_order" />
 
                     <TextView
                         android:id="@+id/orderCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/orderIcon"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="serif-monospace"
                         android:text="178"
                         android:textSize="@dimen/_15ssp"
-                        android:fontFamily="serif-monospace"
-                        android:textStyle="bold"
-                        android:layout_below="@+id/orderIcon"
-                        android:layout_centerHorizontal="true" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Done Order"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="serif-monospace"
                         android:layout_below="@+id/orderCount"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="serif-monospace"
+                        android:text="Done Order"
+                        android:textSize="@dimen/_15ssp" />
 
 
                 </RelativeLayout>
@@ -135,10 +149,10 @@
                 android:id="@+id/userFollowers"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_110sdp"
-                app:cardElevation="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
+                android:layout_margin="@dimen/_7sdp"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/_7sdp">
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_10sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -149,29 +163,29 @@
                         android:id="@+id/orderIcon2"
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:src="@drawable/ic_favorite_full_color"
-                        android:layout_centerHorizontal="true" />
+                        android:src="@drawable/ic_favorite_full_color" />
 
                     <TextView
                         android:id="@+id/orderCount2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/orderIcon2"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="serif-monospace"
                         android:text="25"
                         android:textSize="@dimen/_15ssp"
-                        android:fontFamily="serif-monospace"
-                        android:textStyle="bold"
-                        android:layout_below="@+id/orderIcon2"
-                        android:layout_centerHorizontal="true" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Favourite"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="serif-monospace"
                         android:layout_below="@+id/orderCount2"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="serif-monospace"
+                        android:text="Favourite"
+                        android:textSize="@dimen/_15ssp" />
 
 
                 </RelativeLayout>
@@ -193,17 +207,17 @@
                     android:id="@+id/profileFNLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_person_full_colo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@drawable/ic_person_full_colo">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/userPersonalName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:editable="false"
+
                         android:hint="Full Name"
 
                         android:text="@{user.firstName + user.lastName}" />
@@ -215,17 +229,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    app:startIconDrawable="@drawable/ic_email"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profileFNLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/profileFNLayout"
+                    app:startIconDrawable="@drawable/ic_email">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/userPersonalEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:editable="false"
+
                         android:hint="Email"
                         android:text="@{user.lastName}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -236,18 +250,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    app:startIconDrawable="@drawable/ic_phone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                    app:startIconDrawable="@drawable/ic_phone">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/userPersonalPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+
                         android:hint="Phone Number"
-                        android:editable="false"
                         android:text="@{user.phoneNumber}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -262,9 +276,9 @@
                     android:text="Save"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:visibility="@{isEditing? view.VISIBLE : view.GONE , default = gone }"
                     android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
+                    android:visibility="@{isEditing? view.VISIBLE : view.GONE , default = gone }"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

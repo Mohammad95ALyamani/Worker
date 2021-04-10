@@ -21,9 +21,9 @@ class LoginActivity : AppCompatActivity() {
     lateinit var loginViewModel: LoginActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         binding = DataBindingUtil.setContentView(
-             this, R.layout.activity_login
-         )
+        binding = DataBindingUtil.setContentView(
+            this, R.layout.activity_login
+        )
 
         loginViewModel = ViewModelProvider(this).get(LoginActivityViewModel::class.java)
 
@@ -34,17 +34,15 @@ class LoginActivity : AppCompatActivity() {
         })
 
 
-
-
     }
 
-    fun loginUser(v: View){
-       //TODO prepare user and API call
-        if (binding.phoneTietLogin.text!!.length > 10 || binding.phoneTietLogin.text!!.length < 10){
+    fun loginUser(v: View) {
+
+        if (binding.phoneTietLogin.text!!.length > 10 || binding.phoneTietLogin.text!!.length < 10) {
             binding.phoneLayoutLogin.error = "Phone Number is incorrect"
             return
         }
-        if (binding.passwordTietLogin.text!!.length <8){
+        if (binding.passwordTietLogin.text!!.length < 8) {
             binding.passwordLayoutLogin.error = "password is too short"
             return
         }
@@ -52,24 +50,34 @@ class LoginActivity : AppCompatActivity() {
         user.phoneNumber = binding.phoneTietLogin.text.toString()
         user.password = binding.passwordTietLogin.text.toString()
         Log.d(TAG, "loginUser: " + user.phoneNumber + user.password)
-        loginViewModel.loginUser(user).observe(this, Observer {   userInfo ->
-            if(userInfo != null){
-                Toast.makeText(this,"success",Toast.LENGTH_LONG).show()
-            }else {
-                 Toast.makeText(this,"failed",Toast.LENGTH_LONG).show()
+        loginViewModel.loginUser(user).observe(this, Observer { userInfo ->
+            if (userInfo != null) {
+                saveUserToken(userInfo.token)
+                val i = Intent(this@LoginActivity, MainActivity::class.java)
+                startActivity(i)
+                finish()
+                Toast.makeText(this, "success", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "failed", Toast.LENGTH_LONG).show()
             }
 
         })
     }
 
-    fun forgetPasswordActivity(v: View){
-        //TODO open forget password activity
+    fun forgetPasswordActivity(v: View) {
+
     }
 
-    fun signUpUserActivity(v: View){
+    fun signUpUserActivity(v: View) {
         val i = Intent(this@LoginActivity, SignUpActivity::class.java)
-            startActivity(i)
+        startActivity(i)
 
+    }
+     private fun saveUserToken(token: String) {
+        val sharedPreference = getSharedPreferences("general", MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.putString("token", token)
+        editor.apply()
     }
 
 }

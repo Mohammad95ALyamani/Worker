@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="isLoggedIn"
+            type="Boolean" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,9 +31,35 @@
             android:id="@+id/historyRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="@{isLoggedIn? view.VISIBLE: view.GONE, default = visible}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login To View History"
+            android:textSize="@dimen/_22ssp"
+            android:visibility="@{isLoggedIn? view.GONE : view.VISIBLE , default = gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+
+        <Button
+            android:id="@+id/goToLogin"
+            android:layout_width="@dimen/_175sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:text="Go To login"
+            android:textColor="@color/white"
+            android:visibility="@{isLoggedIn? view.GONE:view.VISIBLE, default = gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

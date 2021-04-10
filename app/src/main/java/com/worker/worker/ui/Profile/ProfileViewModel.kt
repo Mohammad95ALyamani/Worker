@@ -1,7 +1,14 @@
 package com.worker.worker.ui.Profile
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.worker.worker.model.CustomResponse
+import com.worker.worker.model.User
+import com.worker.worker.repo.UsersRepo
 
 class ProfileViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val repo = UsersRepo()
+    fun updateUserInfo(token:String , user:User):MutableLiveData<CustomResponse>{
+        return repo.updateUserInfo(token, user)
+    }
 }

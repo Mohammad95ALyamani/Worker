@@ -13,15 +13,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class UsersRepo {
-    private  val TAG = "UsersRepo"
-    lateinit var followersMutable:MutableLiveData<FollowersResponse>
+    private val TAG = "UsersRepo"
+    lateinit var followersMutable: MutableLiveData<FollowersResponse>
     lateinit var followUserMutable: MutableLiveData<CustomResponse>
     lateinit var reportResponseMutable: MutableLiveData<ReportResponse>
     lateinit var reportUserMutable: MutableLiveData<CustomResponse>
-    fun getFollowers(token:String,id:Int):MutableLiveData<FollowersResponse>{
+    fun getFollowers(token: String, id: Int): MutableLiveData<FollowersResponse> {
         followersMutable = MutableLiveData()
 
-        val call: Call<FollowersResponse> = Builder.service.getFollowers(token,id)
+        val call: Call<FollowersResponse> = Builder.service.getFollowers(token, id)
         call.enqueue(object : Callback<FollowersResponse> {
             override fun onResponse(
                 call: Call<FollowersResponse>,
@@ -45,9 +45,9 @@ class UsersRepo {
     }
 
 
-    fun followUser(token: String,user:User):MutableLiveData<CustomResponse>{
+    fun followUser(token: String, user: User): MutableLiveData<CustomResponse> {
         followUserMutable = MutableLiveData()
-        val call = Builder.service.followUser(token,user)
+        val call = Builder.service.followUser(token, user)
         call.enqueue(object : Callback<CustomResponse> {
             override fun onResponse(
                 call: Call<CustomResponse>,
@@ -70,8 +70,33 @@ class UsersRepo {
         return followUserMutable
     }
 
-    fun getReports(token: String):MutableLiveData<ReportResponse>{
-            reportResponseMutable = MutableLiveData()
+    fun unFollowUser(token: String, user: User): MutableLiveData<CustomResponse> {
+        followUserMutable = MutableLiveData()
+        val call = Builder.service.unFollowUser(token, user)
+        call.enqueue(object : Callback<CustomResponse> {
+            override fun onResponse(
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
+            ) {
+                if (response.isSuccessful) {
+                    followUserMutable.value = response.body()
+                } else {
+                    followUserMutable.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+                followUserMutable.value = null
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+
+        return followUserMutable
+    }
+
+    fun getReports(token: String): MutableLiveData<ReportResponse> {
+        reportResponseMutable = MutableLiveData()
         val call = Builder.service.getReports(token)
         call.enqueue(object : Callback<ReportResponse> {
             override fun onResponse(
@@ -95,7 +120,7 @@ class UsersRepo {
         return reportResponseMutable
     }
 
-    fun reportUser(token: String,reportRequest: ReportRequest):MutableLiveData<CustomResponse>{
+    fun reportUser(token: String, reportRequest: ReportRequest): MutableLiveData<CustomResponse> {
         reportUserMutable = MutableLiveData()
         val call = Builder.service.reportUser(token, reportRequest)
         call.enqueue(object : Callback<CustomResponse> {
@@ -120,9 +145,10 @@ class UsersRepo {
 
         return reportUserMutable
     }
-    lateinit var userMutable:MutableLiveData<User>
 
-    fun getUserInfo(token:String):MutableLiveData<User>{
+    lateinit var userMutable: MutableLiveData<User>
+
+    fun getUserInfo(token: String): MutableLiveData<User> {
         userMutable = MutableLiveData()
         val call = Builder.service.getUserInfo(token)
 
@@ -142,5 +168,31 @@ class UsersRepo {
 
         })
         return userMutable
+    }
+
+    lateinit var updateUserInfo: MutableLiveData<CustomResponse>
+    fun updateUserInfo(token: String, user: User): MutableLiveData<CustomResponse> {
+        updateUserInfo = MutableLiveData()
+
+        val call = Builder.service.updateUserInfo(token, user)
+        call.enqueue(object : Callback<CustomResponse> {
+            override fun onResponse(
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
+            ) {
+                if (response.isSuccessful) {
+                    updateUserInfo.value = response.body()
+                } else {
+                    updateUserInfo.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+                updateUserInfo.value = null
+            }
+
+        })
+        return updateUserInfo
     }
 }

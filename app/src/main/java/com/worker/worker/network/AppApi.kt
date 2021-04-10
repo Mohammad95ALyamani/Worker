@@ -36,6 +36,8 @@ interface AppApi {
 
     @POST()
     fun followUser(@Header("AccessToken") token: String,@Body user: User): Call<CustomResponse>
+    @PUT()
+    fun unFollowUser(@Header("AccessToken") token: String,@Body user: User): Call<CustomResponse>
 
     @GET()
     fun getFollowers(@Header("AccessToken") token: String,@Query("userId")id:Int):Call<FollowersResponse>
