@@ -1,6 +1,7 @@
 package com.worker.worker.ui.Settings
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.worker.worker.Activity.LoginActivity
 import com.worker.worker.R
 import com.worker.worker.databinding.FragmentSettingsBinding
 import com.worker.worker.model.User
@@ -41,8 +44,15 @@ class SettingsFragment : Fragment() {
         settingsBinding.languageCardView.setOnClickListener{
             openDialog(settingsBinding.root,R.layout.dialog_language,R.id.languageCardView,"Change Language")
         }
-       settingsBinding.profileCardView.setOnClickListener(View.OnClickListener {
-          val des = SettingsFragmentDirections.actionNavigationSettingsToProfileFragment(user)
+       settingsBinding.profileCardView.setOnClickListener(View.OnClickListener { v->
+           if (token.isNotEmpty()){
+               val des = SettingsFragmentDirections.actionNavigationSettingsToProfileFragment(user)
+               Navigation.findNavController(v).navigate(des)
+           }else{
+                val i = Intent(activity,LoginActivity::class.java)
+               startActivity(i)
+           }
+
        })
         return settingsBinding.root
     }

@@ -62,7 +62,7 @@
                             android:layout_width="@dimen/_75sdp"
                             android:layout_height="@dimen/_75sdp"
                             android:visibility="@{isLoggedIn? view.VISIBLE : view.GONE, default = gone}"
-                            imageUrl="@{user.image}"
+                            imageUrl="@{isLoggedIn? user.image : ``}"
                             android:src="@drawable/profile" />
                     </androidx.cardview.widget.CardView>
 
