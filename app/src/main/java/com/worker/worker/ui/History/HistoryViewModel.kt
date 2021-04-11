@@ -3,11 +3,12 @@ package com.worker.worker.ui.History
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.worker.worker.model.Order
+import com.worker.worker.repo.OrderRepo
 
 class HistoryViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    val repo = OrderRepo()
+    fun getHistory(token:String):MutableLiveData<ArrayList<Order>>{
+        return repo.getUserHistory(token)
     }
-    val text: LiveData<String> = _text
 }

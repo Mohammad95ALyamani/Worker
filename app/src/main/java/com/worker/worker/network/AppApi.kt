@@ -2,10 +2,7 @@ package com.worker.worker.network
 
 import com.worker.worker.helpers.Constants
 import com.worker.worker.model.*
-import com.worker.worker.responses.CategoriesResponse
-import com.worker.worker.responses.CreateOrderResponse
-import com.worker.worker.responses.FollowersResponse
-import com.worker.worker.responses.ReportResponse
+import com.worker.worker.responses.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -40,7 +37,7 @@ interface AppApi {
     fun unFollowUser(@Header("AccessToken") token: String,@Body user: User): Call<CustomResponse>
 
     @GET()
-    fun getFollowers(@Header("AccessToken") token: String,@Query("userId")id:Int):Call<FollowersResponse>
+    fun getFollowers(@Header("AccessToken") token: String):Call<FollowersResponse>
 
     @GET()
     fun getHistory(@Header("AccessToken") token: String):Call<ArrayList<Order>>
@@ -59,4 +56,6 @@ interface AppApi {
 
     @POST()
     fun takeOrder(@Header("AccessToken") token: String,@Body order: Order): Call<CustomResponse>
+    @GET()
+    fun getUserJobs():Call<UserJobResponse>
 }

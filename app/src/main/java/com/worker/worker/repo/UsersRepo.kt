@@ -18,10 +18,10 @@ class UsersRepo {
     lateinit var followUserMutable: MutableLiveData<CustomResponse>
     lateinit var reportResponseMutable: MutableLiveData<ReportResponse>
     lateinit var reportUserMutable: MutableLiveData<CustomResponse>
-    fun getFollowers(token: String, id: Int): MutableLiveData<FollowersResponse> {
+    fun getFollowers(token: String): MutableLiveData<FollowersResponse> {
         followersMutable = MutableLiveData()
 
-        val call: Call<FollowersResponse> = Builder.service.getFollowers(token, id)
+        val call: Call<FollowersResponse> = Builder.service.getFollowers(token)
         call.enqueue(object : Callback<FollowersResponse> {
             override fun onResponse(
                 call: Call<FollowersResponse>,

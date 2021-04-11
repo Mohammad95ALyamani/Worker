@@ -149,6 +149,34 @@ class OrderRepo {
         
         return updateOrder
     }
+    lateinit var historyMutable: MutableLiveData<ArrayList<Order>>
+    
+    fun getUserHistory(token:String):MutableLiveData<ArrayList<Order>>{
+        historyMutable = MutableLiveData()
+        
+        val call = Builder.service.getHistory(token)
+        call.enqueue(object : Callback<ArrayList<Order>> {
+            override fun onResponse(
+                call: Call<ArrayList<Order>>,
+                response: Response<ArrayList<Order>>
+            ) {
+                if (response.isSuccessful) {
+                    historyMutable.value = response.body()
+                } else {
+                    historyMutable.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<Order>>, t: Throwable) {
+                historyMutable.value = null
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+        
+        
+        return historyMutable
+    }
 
 
 }

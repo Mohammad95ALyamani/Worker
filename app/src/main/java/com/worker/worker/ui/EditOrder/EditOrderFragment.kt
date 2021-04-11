@@ -34,6 +34,7 @@ class EditOrderFragment : Fragment(), View.OnClickListener {
      var token = ""
     lateinit var order: Order
     lateinit var categories: ArrayList<Categories>
+    var category:Categories? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +43,8 @@ class EditOrderFragment : Fragment(), View.OnClickListener {
         order = arguments?.let { EditOrderFragmentArgs.fromBundle(it).order }!!
 
         editOrderBinding.order = order
+        category = order.categories
+
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
@@ -61,12 +64,18 @@ class EditOrderFragment : Fragment(), View.OnClickListener {
 
         viewModel.getCategories().observe(viewLifecycleOwner, Observer { response ->
             if (response != null){
-                val adapter = activity?.let { ArrayAdapter(it,R.layout.support_simple_spinner_dropdown_item,response.categories!!.toArray()) }
+                categories = response.categories!!
+                val adapter = activity?.let { ArrayAdapter(it,R.layout.support_simple_spinner_dropdown_item,
+                    categories.toArray()) }
                 editOrderBinding.editOrderCategoriesSpinner.adapter = adapter
             }else{
                 Toast.makeText(activity,"failed to get Categories", Toast.LENGTH_SHORT).show()
             }
         })
+
+        editOrderBinding.editOrderCategoriesSpinner.setOnItemClickListener { parent, view, position, id ->
+            category = categories[position]
+        }
 
         editOrderBinding.editOrderButton.setOnClickListener(this)
         editOrderBinding.editDateLayout.setOnClickListener(View.OnClickListener {

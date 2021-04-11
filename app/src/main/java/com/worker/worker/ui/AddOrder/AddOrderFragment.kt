@@ -8,16 +8,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.worker.worker.Activity.MapsActivity
+import com.worker.worker.R
 import com.worker.worker.databinding.FragmentAddOrderBinding
 import com.worker.worker.model.Categories
 import com.worker.worker.model.Order
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.ln
 
 class AddOrderFragment : Fragment() {
@@ -29,12 +32,13 @@ class AddOrderFragment : Fragment() {
     var lng: Double = 0.0
     var date: String = ""
     var category: Categories? = null
+    lateinit var categories: ArrayList<Categories>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         addOrderBinding = FragmentAddOrderBinding.inflate(layoutInflater, container, false)
-
+        categories = ArrayList()
 
         return addOrderBinding.root
     }
@@ -42,6 +46,21 @@ class AddOrderFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AddOrderViewModel::class.java)
+
+        viewModel.getCategories().observe(viewLifecycleOwner, androidx.lifecycle.Observer { response ->
+            if (response != null){
+                categories = response.categories!!
+                 val adapter = activity?.let { ArrayAdapter(it,
+                     R.layout.support_simple_spinner_dropdown_item, categories.toArray()) }
+                addOrderBinding.categoriesSpinner.adapter = adapter
+            }else {
+                 Toast.makeText(activity, "failed to get categories", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+        addOrderBinding.categoriesSpinner.setOnItemClickListener { parent, view, position, id ->
+            category = categories[position]
+        }
         addOrderBinding.addOrderButton.setOnClickListener(View.OnClickListener {
             continueToCreateOrder()
         })
@@ -58,10 +77,8 @@ class AddOrderFragment : Fragment() {
         )
     }
 
-    fun openMaps(){
-        //TODO
-    }
-    fun openCalender(){
+
+    private fun openCalender(){
          val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
@@ -86,7 +103,7 @@ class AddOrderFragment : Fragment() {
         dpd.show()
     }
 
-    fun continueToCreateOrder(){
+    private fun continueToCreateOrder(){
         if (addOrderBinding.orderTitleTextInputEditText.text!!.length < 5){
             addOrderBinding.orderTitleTextInputEditText.error = "This Field is required"
             return

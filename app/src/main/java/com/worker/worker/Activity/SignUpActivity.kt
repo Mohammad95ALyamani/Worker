@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivitySignUpBinding
@@ -16,7 +17,7 @@ import com.worker.worker.model.UserJob
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignUpBinding
-
+   lateinit var jobsArrayList:ArrayList<UserJob>
     var job: UserJob? = null
     lateinit var signUpViewModel: SignUpViewModel
     private val TAG = "SignUpActivity"
@@ -25,13 +26,23 @@ class SignUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(
             this, R.layout.activity_sign_up
         )
-
+        jobsArrayList = ArrayList()
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        signUpViewModel.getUserJobs().observe(this, Observer { response ->
+            if (response != null) {
+                val adapter =
+                    ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, jobsArrayList)
+                binding.userJobMenu.setAdapter(adapter)
+            } else {
+                Toast.makeText(this, "failed to get user jobs", Toast.LENGTH_LONG)
+                    .show()
+            }
+        })
     }
 
     override fun onResume() {
         super.onResume()
-        val jobsArrayList = ArrayList<UserJob>()
+
         val job1 = UserJob()
         job1.id = 1
         job1.name = "7dad"
@@ -95,7 +106,7 @@ class SignUpActivity : AppCompatActivity() {
 
         user.firstName = binding.firstNameTietSginUp.text.toString()
         user.lastName = binding.lastNameTietSginUp.text.toString()
-        user.phoneNumber = "+962"+binding.phoneTietSignUp.text.toString()
+        user.phoneNumber = "+962" + binding.phoneTietSignUp.text.toString()
         user.password = binding.passwordTietSginUp.text.toString()
         user.job = job
         val i = Intent(this@SignUpActivity, OTPActivity::class.java)
