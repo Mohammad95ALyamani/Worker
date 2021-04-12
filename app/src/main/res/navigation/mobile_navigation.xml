@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_navigation_settings_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrderFragment"
@@ -116,5 +119,14 @@
         <argument
             android:name="order"
             app:argType="com.worker.worker.model.Order" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.worker.worker.ui.change.ChangePasswordFragment"
+        android:label="change_password_fragment"
+        tools:layout="@layout/change_password_fragment" >
+        <argument
+            android:name="change"
+            app:argType="com.worker.worker.model.ChangePassword" />
     </fragment>
 </navigation>

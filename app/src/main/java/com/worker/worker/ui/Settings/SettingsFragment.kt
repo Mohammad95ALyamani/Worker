@@ -23,6 +23,7 @@ import com.worker.worker.SplashActivity
 import com.worker.worker.databinding.FragmentSettingsBinding
 import com.worker.worker.helpers.Constants
 import com.worker.worker.helpers.LocalHelper
+import com.worker.worker.model.ChangePassword
 import com.worker.worker.model.User
 
 
@@ -48,13 +49,17 @@ class SettingsFragment : Fragment() {
         )
 
 
-        settingsBinding.privacyPolicyCardView.setOnClickListener {
-            openDialog(
-                settingsBinding.root,
-                R.layout.dialog_privacy_policy,
-                R.id.privacyPolicyCardView,
-                "Privacy Policy"
-            )
+        settingsBinding.securityCard.setOnClickListener { v ->
+            if (token.isNotEmpty()) {
+                val change = ChangePassword()
+                change.phoneNumber = user.phoneNumber
+                val des =
+                    SettingsFragmentDirections.actionNavigationSettingsToChangePasswordFragment(
+                        change
+                    )
+                Navigation.findNavController(v).navigate(des)
+            }
+
         }
 
 
@@ -78,12 +83,12 @@ class SettingsFragment : Fragment() {
                     "lang",
                     Constants.ENGLISH_LANG
                 )
-                startActivity(Intent(activity,SplashActivity::class.java))
+                startActivity(Intent(activity, SplashActivity::class.java))
                 activity?.finish()
 
             }
 
-            alertDialog.setNegativeButton("عربي") { dialogInterface, which ->
+            alertDialog.setNegativeButton("عربي") { _, _ ->
                 updateViews("ar")
 
                 addToSharedPreference(
@@ -91,7 +96,7 @@ class SettingsFragment : Fragment() {
                     "lang",
                     Constants.ARABIC_LANG
                 )
-                startActivity(Intent(activity,SplashActivity::class.java))
+                startActivity(Intent(activity, SplashActivity::class.java))
                 activity?.finish()
 
             }

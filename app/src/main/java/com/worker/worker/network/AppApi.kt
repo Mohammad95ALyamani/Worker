@@ -1,10 +1,7 @@
 package com.worker.worker.network
 
 import com.worker.worker.helpers.Constants
-import com.worker.worker.model.CustomResponse
-import com.worker.worker.model.Order
-import com.worker.worker.model.ReportRequest
-import com.worker.worker.model.User
+import com.worker.worker.model.*
 import com.worker.worker.responses.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -16,6 +13,8 @@ interface AppApi {
         @Query("title") orderTitle: String
     ): Call<OrderResponse>
 
+    @POST()
+    fun checkUser(@Query("phone") phone: String):Call<CustomResponse>
 
     @POST(Constants.Login)
     fun loginUser(@Body user: User): Call<User>
@@ -41,9 +40,12 @@ interface AppApi {
     @PUT(Constants.USER)
     fun changeUserPassword(
         @Header("AccessToken") token: String,
-        @Body user: User
+        @Body change: ChangePassword
     ): Call<CustomResponse>
-
+@PUT(Constants.USER)
+    fun changeUserPassword(
+        @Body change: ChangePassword
+    ): Call<CustomResponse>
     @POST(Constants.FOLLOWER)
     fun followUser(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>
 
@@ -80,4 +82,7 @@ interface AppApi {
 
     @GET(Constants.JOB_CATEGORY)
     fun getUserJobs(): Call<UserJobResponse>
+
+    @PUT(Constants.USER)
+    fun updateUserImage(@Header("AccessToken") token: String,uimg:UserImage):Call<CustomResponse>
 }

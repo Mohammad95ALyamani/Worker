@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.worker.worker.model.CustomResponse
 import com.worker.worker.model.ReportRequest
 import com.worker.worker.model.User
+import com.worker.worker.model.UserImage
 import com.worker.worker.network.Builder
 import com.worker.worker.responses.FollowersResponse
 import com.worker.worker.responses.ReportResponse
@@ -194,5 +195,34 @@ class UsersRepo {
 
         })
         return updateUserInfo
+    }
+
+    lateinit var updateUserImageMutable: MutableLiveData<CustomResponse>
+
+    fun updateImage(token: String, image: UserImage): MutableLiveData<CustomResponse> {
+        updateUserImageMutable = MutableLiveData()
+
+        val call = Builder.service.updateUserImage(token, image)
+        call.enqueue(object : Callback<CustomResponse> {
+            override fun onResponse(
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
+            ) {
+                if (response.isSuccessful) {
+                    updateUserImageMutable.value = response.body()
+                } else {
+                    updateUserImageMutable.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+                updateUserImageMutable.value = null
+            }
+        })
+
+
+        return updateUserImageMutable
+
     }
 }

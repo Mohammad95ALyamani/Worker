@@ -115,11 +115,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/privacyPolicyCardView"
+                    android:id="@+id/securityCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
+
                     app:elevation="@dimen/_8sdp"
                     app:cardCornerRadius="@dimen/_8sdp"
                     android:layout_margin="@dimen/_8sdp">
