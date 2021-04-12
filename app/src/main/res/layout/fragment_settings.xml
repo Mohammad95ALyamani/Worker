@@ -44,9 +44,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_7sdp"
-                        android:layout_toRightOf="@+id/card"
+                        android:layout_toEndOf="@+id/card"
                         android:fontFamily="casual"
-                        android:text="@{isLoggedIn? user.firstName + user.lastName : `login to view Profile` ,default = `login to view profile` }"
+                        android:text="@{isLoggedIn? user.firstName + user.lastName : @string/login_to_view ,default = @string/login_to_view }"
                         android:textColor="#fff"
                         android:textSize="@dimen/_17ssp"
                         android:textStyle="bold" />
@@ -109,7 +109,7 @@
                             android:textSize="@dimen/_13ssp"
                             android:gravity="center"
                             android:layout_height="wrap_content"
-                            android:text="My Account" />
+                            android:text="@string/my_account" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -136,7 +136,7 @@
                             android:layout_width="@dimen/_50sdp"
                             android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:src="@drawable/ic_privacy" />
+                            android:src="@drawable/ic_lock" />
 
                         <TextView
                             android:id="@+id/textView11"
@@ -145,7 +145,7 @@
                             android:fontFamily="casual"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Privacy Policy" />
+                            android:text="@string/security" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -181,7 +181,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
                             android:textSize="@dimen/_13ssp"
-                            android:text="Language" />
+                            android:text="@string/language" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -251,7 +251,7 @@
                             android:fontFamily="casual"
                             android:textSize="@dimen/_13ssp"
                             android:layout_height="wrap_content"
-                            android:text="About Us" />
+                            android:text="@string/about_us" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -287,7 +287,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
                             android:textSize="@dimen/_13ssp"
-                            android:text="LogOut" />
+                            android:text="@string/logout" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

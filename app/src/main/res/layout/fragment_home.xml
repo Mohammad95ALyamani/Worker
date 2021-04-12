@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:title="Home"
+
         android:fontFamily="casual"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -22,7 +22,7 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchOrderSearchView"
-            app:queryHint="Enter your search here"
+            app:queryHint="@string/search_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

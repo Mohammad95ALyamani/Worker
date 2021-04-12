@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_10sdp"
             android:textColor="@color/purple_500"
-            android:text="Edit Order"
+            android:text="@string/edit_order"
             android:fontFamily="casual"
             android:textSize="@dimen/_24ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
 
                 android:text="@{order.title}"
                 android:inputType="text"
-                android:hint="Title" />
+                android:hint="@string/title" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -69,7 +69,7 @@
                 android:fontFamily="casual"
                 android:inputType="text"
                 android:text="@{order.description}"
-                android:hint="Description" />
+                android:hint="@string/description" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -91,7 +91,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Category:"
+                android:text="@string/category"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Offered Price"
+                android:text="@string/offered_price"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -154,7 +154,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
                 android:textSize="@dimen/_13ssp"
-                android:text="Date:"
+                android:text="@string/date"
                 android:textColor="#0E0D0D" />
 
             <TextView
@@ -185,7 +185,7 @@
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="Address:"
+                android:text="@string/address"
                 android:fontFamily="casual"
                 android:textSize="@dimen/_13ssp"
                 android:layout_gravity="center"

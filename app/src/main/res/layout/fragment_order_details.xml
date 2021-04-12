@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_20sdp"
             android:fontFamily="casual"
-            android:text="Order Details"
+            android:text="@string/order_details"
             android:textColor="@color/purple_500"
             android:textSize="@dimen/_24ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
                 android:textSize="@dimen/_13ssp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="Title:"
+                android:text="@string/title"
                 android:textColor="#0E0D0D" />
 
             <TextView
@@ -128,7 +128,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
                 android:textSize="@dimen/_13ssp"
-                android:text="Description:"
+                android:text="@string/description"
                 android:textColor="#0E0D0D" />
 
             <TextView
@@ -162,7 +162,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Category:"
+                android:text="@string/category"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -195,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="Date:"
+                android:text="@string/date"
                 android:textSize="@dimen/_13ssp"
                 android:fontFamily="casual"
                 android:textColor="#0E0D0D" />
@@ -229,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="Status:"
+                android:text="@string/status"
                 android:textSize="@dimen/_13ssp"
                 android:fontFamily="casual"
                 android:textColor="#0E0D0D" />
@@ -267,7 +267,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
 
-                android:text="offered Price"
+                android:text="@string/offered_price"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -300,7 +300,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="complete By:"
+                android:text="@string/complete_by"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 

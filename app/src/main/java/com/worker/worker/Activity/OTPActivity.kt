@@ -1,5 +1,6 @@
 package com.worker.worker.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,8 +15,10 @@ import com.google.firebase.auth.*
 import com.worker.worker.MainActivity
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivityOTPBinding
+import com.worker.worker.helpers.LocalHelper
 import com.worker.worker.model.User
 import java.util.concurrent.TimeUnit
+
 
 class OTPActivity : AppCompatActivity() {
     lateinit var otpBinding: ActivityOTPBinding
@@ -116,7 +119,7 @@ class OTPActivity : AppCompatActivity() {
             if (userResponse != null) {
                 saveUserToken(userResponse.token)
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this,MainActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
@@ -130,6 +133,9 @@ class OTPActivity : AppCompatActivity() {
         val editor = sharedPreference.edit()
         editor.putString("token", token)
         editor.apply()
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocalHelper.onAttach(newBase!!))
     }
 
 }

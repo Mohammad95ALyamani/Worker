@@ -1,5 +1,7 @@
 package com.worker.worker.helpers
 
+import retrofit2.http.DELETE
+
 class Constants {
 
 
@@ -12,5 +14,12 @@ class Constants {
         const val Login = "Login"
         const val SignUp = "Signup"
         const val createOrder = "CreateOrder"
+        const val ENGLISH_LANG = 2
+        const val ARABIC_LANG = 1
+        const val ORDER = "Order"
+        const val JOB_CATEGORY = "JobCategory"
+        const val USER = "User"
+        const val FOLLOWER = "Follower"
+        const val REPORT = "Report"
     }
 }

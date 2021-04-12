@@ -4,6 +4,7 @@ package com.worker.worker.ui.AddOrder
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.worker.worker.model.CustomResponse
 import com.worker.worker.model.Order
 import com.worker.worker.network.Builder
 import com.worker.worker.repo.OrderRepo
@@ -15,16 +16,16 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddOrderViewModel : ViewModel() {
-    lateinit var orderMutable:MutableLiveData<CreateOrderResponse>
+    lateinit var orderMutable:MutableLiveData<CustomResponse>
     val repo = OrderRepo()
     private  val TAG = "AddOrderViewModel"
-    fun createOrder(order: Order,token:String): MutableLiveData<CreateOrderResponse>{
+    fun createOrder(order: Order,token:String): MutableLiveData<CustomResponse>{
         orderMutable = MutableLiveData()
         val call = Builder.service.createOrder(order,token)
-        call.enqueue(object : Callback<CreateOrderResponse> {
+        call.enqueue(object : Callback<CustomResponse> {
             override fun onResponse(
-                call: Call<CreateOrderResponse>,
-                response: Response<CreateOrderResponse>
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
             ) {
                 if (response.isSuccessful){
                     orderMutable.value = response.body()
@@ -33,7 +34,7 @@ class AddOrderViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<CreateOrderResponse>, t: Throwable) {
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
                 orderMutable.value = null
                 Log.d(TAG, "onFailure: "+ t.message)
 

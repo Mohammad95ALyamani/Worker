@@ -1,5 +1,6 @@
 package com.worker.worker.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -12,8 +13,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivitySignUpBinding
+import com.worker.worker.helpers.LocalHelper
 import com.worker.worker.model.User
 import com.worker.worker.model.UserJob
+
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignUpBinding
@@ -115,6 +118,10 @@ class SignUpActivity : AppCompatActivity() {
 
 
         //Todo
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocalHelper.onAttach(newBase!!))
     }
 
 

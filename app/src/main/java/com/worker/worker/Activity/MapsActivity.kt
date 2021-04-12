@@ -1,9 +1,9 @@
 package com.worker.worker.Activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -14,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.worker.worker.R
+import com.worker.worker.helpers.LocalHelper
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -46,7 +47,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(31.9565783, 35.945695099999966)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15f))
 
         mMap.setOnMapClickListener(OnMapClickListener { point ->
             mMap.clear()
@@ -62,5 +63,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         intent.putExtra("lng", lng)
         setResult(Activity.RESULT_OK, intent)
         finish()
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocalHelper.onAttach(newBase!!))
     }
 }

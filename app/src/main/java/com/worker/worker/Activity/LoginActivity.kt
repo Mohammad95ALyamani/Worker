@@ -1,5 +1,6 @@
 package com.worker.worker.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.worker.worker.MainActivity
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivityLoginBinding
+import com.worker.worker.helpers.LocalHelper
 import com.worker.worker.model.User
+
 
 class LoginActivity : AppCompatActivity() {
     lateinit var user: User
@@ -78,6 +81,9 @@ class LoginActivity : AppCompatActivity() {
         val editor = sharedPreference.edit()
         editor.putString("token", token)
         editor.apply()
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocalHelper.onAttach(newBase!!))
     }
 
 }

@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.worker.worker.R
+import com.worker.worker.helpers.LocalHelper
 import com.worker.worker.lis.OnClickRecyclerItem
 import com.worker.worker.model.Categories
 import kotlin.collections.ArrayList
@@ -26,7 +27,12 @@ class CategoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.categoryName!!.text = categoriesArrayList!![position].name
+        if (LocalHelper.getLanguage(context!!).equals("en")){
+            holder.categoryName!!.text = categoriesArrayList!![position].name
+        }else{
+            holder.categoryName!!.text = categoriesArrayList!![position].arName
+        }
+
         Glide.with(context!!).asBitmap().load(categoriesArrayList!![position].image).into(holder.categoryImage!!)
 
         holder.itemView.setOnClickListener(View.OnClickListener {

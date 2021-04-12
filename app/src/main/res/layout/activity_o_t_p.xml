@@ -19,7 +19,7 @@
             android:layout_marginTop="@dimen/_120sdp"
             android:fontFamily="@font/averia_serif_libre_bold"
             android:gravity="center"
-            android:text="Enter the code you \n received on your phone"
+            android:text="@string/enter_the_code_you_n_received_on_your_phone"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

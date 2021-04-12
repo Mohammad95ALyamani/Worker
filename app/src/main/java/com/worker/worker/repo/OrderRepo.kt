@@ -7,13 +7,14 @@ import com.worker.worker.model.CustomResponse
 import com.worker.worker.model.Order
 import com.worker.worker.network.Builder
 import com.worker.worker.responses.CategoriesResponse
+import com.worker.worker.responses.OrderResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class OrderRepo {
     private lateinit var categories: MutableLiveData<CategoriesResponse>
-    lateinit var orders: MutableLiveData<ArrayList<Order>>
+    lateinit var orders: MutableLiveData<OrderResponse>
     private val TAG = "OrderRepo"
 
     fun getCategories(): MutableLiveData<CategoriesResponse> {
@@ -41,15 +42,15 @@ class OrderRepo {
         return categories
     }
 
-    fun getOrders(categoryId: Int, searchQuery: String): MutableLiveData<ArrayList<Order>> {
+    fun getOrders(categoryId: Int, searchQuery: String): MutableLiveData<OrderResponse> {
         orders = MutableLiveData()
 
         val call = Builder.service.getOrders(categoryId, searchQuery)
         call.enqueue(object
-            : Callback<ArrayList<Order>> {
+            : Callback<OrderResponse> {
             override fun onResponse(
-                call: Call<ArrayList<Order>>,
-                response: Response<ArrayList<Order>>
+                call: Call<OrderResponse>,
+                response: Response<OrderResponse>
             ) {
                 if (response.isSuccessful) {
                     orders.value = response.body()
@@ -59,7 +60,7 @@ class OrderRepo {
 
             }
 
-            override fun onFailure(call: Call<ArrayList<Order>>, t: Throwable) {
+            override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
                 orders.value = null
                 Log.d(TAG, "onFailure: " + t.message)
             }

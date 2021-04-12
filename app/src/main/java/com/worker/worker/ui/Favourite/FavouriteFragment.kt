@@ -1,5 +1,6 @@
 package com.worker.worker.ui.Favourite
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.worker.worker.Activity.LoginActivity
 import com.worker.worker.R
 import com.worker.worker.adapter.FavouriteAdapter
 import com.worker.worker.databinding.FragmentFavouriteBinding
@@ -22,18 +24,19 @@ class FavouriteFragment : Fragment(), OnClickRecyclerItem {
     private lateinit var favouriteViewModel: FavouriteViewModel
     private lateinit var favouriteBinding: FragmentFavouriteBinding
     lateinit var adapter: FavouriteAdapter
-    var users =  ArrayList<User>()
+    var users = ArrayList<User>()
     var token = ""
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         favouriteViewModel =
-                ViewModelProvider(this).get(FavouriteViewModel::class.java)
-       favouriteBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_favourite,container,false)
+            ViewModelProvider(this).get(FavouriteViewModel::class.java)
+        favouriteBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_favourite, container, false)
 
-         val sharedPreference =
+        val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
         favouriteBinding.isLoggedIn = token.isNotEmpty()
@@ -41,12 +44,13 @@ class FavouriteFragment : Fragment(), OnClickRecyclerItem {
         user.firstName = "Ahmad"
         user.lastName = "Nofal"
         user.phoneNumber = "0786878242"
-        user.image = "https://www.washingtonpost.com/pbox.php?url=http://www.washingtonpost.com/news/speaking-of-science/wp-content/uploads/sites/36/2014/09/fortyfaces250.gif&w=1484&op=resize&opt=1&filter=antialias&t=20170517"
+        user.image =
+            "https://www.washingtonpost.com/pbox.php?url=http://www.washingtonpost.com/news/speaking-of-science/wp-content/uploads/sites/36/2014/09/fortyfaces250.gif&w=1484&op=resize&opt=1&filter=antialias&t=20170517"
         val job = UserJob()
         job.name = "ENG"
         user.job = job
 
-        users.add(0,user)
+        users.add(0, user)
 
         setUpFavouriteRecyclerView(users)
         return favouriteBinding.root
@@ -54,20 +58,26 @@ class FavouriteFragment : Fragment(), OnClickRecyclerItem {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (token.isNotEmpty()){
-            favouriteViewModel.getFollowers(token).observe(viewLifecycleOwner, Observer {  respones ->
-                if (respones != null){
-                    users = respones.followers!!
-                    adapter.notifyDataSetChanged()
-                }else {
-                    Toast.makeText(activity,"failed To get Orders", Toast.LENGTH_SHORT).show()
-                }
-            })
+        if (token.isNotEmpty()) {
+            favouriteViewModel.getFollowers(token)
+                .observe(viewLifecycleOwner, Observer { respones ->
+                    if (respones != null) {
+                        users = respones.followers!!
+                        adapter.notifyDataSetChanged()
+                    } else {
+                        Toast.makeText(activity, "failed To get Orders", Toast.LENGTH_SHORT).show()
+                    }
+                })
         }
+
+        favouriteBinding.goToLogin.setOnClickListener(View.OnClickListener {
+            val i = Intent(activity, LoginActivity::class.java)
+            startActivity(i)
+        })
     }
 
-    private fun setUpFavouriteRecyclerView(users:ArrayList<User>){
-        adapter = activity?.let { FavouriteAdapter(users, it,this) }!!
+    private fun setUpFavouriteRecyclerView(users: ArrayList<User>) {
+        adapter = activity?.let { FavouriteAdapter(users, it, this) }!!
         favouriteBinding.favouriteRecyclerView.adapter = adapter
     }
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,7 +28,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
     private var ordersArrayList: ArrayList<Order> = ArrayList()
     private var categoriesAdapter: CategoriesAdapter? = null
     lateinit var floatingActionButton2: FloatingActionButton
-    lateinit var searchOrderSearchView: SearchView
+    lateinit var searchOrderSearchView: androidx.appcompat.widget.SearchView
     var orderAdapter: OrdersAdapter? = null
     var selectedCategory = 0
     var searchQuery = ""
@@ -47,7 +46,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Categories(
                 1,
                 "7dad",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","حداد"
             )
         )
         categoryArrayList.add(
@@ -55,7 +54,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Categories(
                 2,
                 "Najar",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","نجار"
             )
         )
         categoryArrayList.add(
@@ -63,7 +62,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Categories(
                 3,
                 "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
             )
         )
         categoryArrayList.add(
@@ -71,7 +70,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Categories(
                 4,
                 "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
             )
         )
         categoryArrayList.add(
@@ -79,7 +78,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Categories(
                 5,
                 "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
             )
         )
         categoryArrayList.add(
@@ -87,7 +86,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Categories(
                 6,
                 "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
             )
         )
         val order = Order()
@@ -105,7 +104,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         val cate = Categories(
             1,
             "7dad",
-            "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+            "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
         )
         order.categories = cate
         order.publisher = user
@@ -127,8 +126,9 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Observer {
 
             })
+
         searchOrderSearchView.setOnQueryTextListener(object :
-            SearchView.OnQueryTextListener {
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
@@ -139,7 +139,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
                     viewLifecycleOwner,
                     Observer { response ->
                         if (response != null) {
-                            ordersArrayList = response
+                            ordersArrayList = response.orders!!
                             orderAdapter!!.notifyDataSetChanged()
                         } else {
                             Toast.makeText(activity, "failed to get Orders", Toast.LENGTH_SHORT)
@@ -147,7 +147,6 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
                         }
 
                     })
-
                 return true
             }
 
@@ -190,7 +189,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             viewLifecycleOwner,
             Observer { response ->
                 if (response != null) {
-                    ordersArrayList = response
+                    ordersArrayList = response.orders!!
                     orderAdapter!!.notifyDataSetChanged()
 
                 } else {

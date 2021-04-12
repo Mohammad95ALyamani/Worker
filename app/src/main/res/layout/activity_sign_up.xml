@@ -16,7 +16,7 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="casual"
             android:padding="@dimen/_5sdp"
-            android:text="SignUp"
+            android:text="@string/signup"
             android:textColor="@color/purple_500"
             android:textSize="@dimen/_18ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,9 +60,9 @@
                             android:layout_height="wrap_content"
 
                             android:fontFamily="casual"
-                            android:hint="First Name"
+                            android:hint="@string/first_name"
                             android:inputType="text"
-                            android:paddingStart="@dimen/_35sdp" />
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -85,9 +85,9 @@
                             android:layout_height="wrap_content"
 
                             android:fontFamily="casual"
-                            android:hint="Last Name"
+                            android:hint="@string/last_name"
                             android:inputType="text"
-                            android:paddingStart="@dimen/_35sdp" />
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
 
                             android:fontFamily="casual"
-                            android:hint="Phone Number"
+                            android:hint="@string/phone_number"
                             android:inputType="phone"
                             android:paddingStart="@dimen/_35sdp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -137,7 +137,7 @@
                             android:layout_height="wrap_content"
 
                             android:fontFamily="casual"
-                            android:hint="Password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:paddingStart="@dimen/_35sdp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -163,7 +163,7 @@
                             android:layout_height="wrap_content"
 
                             android:fontFamily="casual"
-                            android:hint="Re-Enter Password"
+                            android:hint="@string/re_enter_password"
                             android:inputType="textPassword"
                             android:paddingStart="@dimen/_35sdp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -175,7 +175,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_16sdp"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:hint="JOB"
+                        android:hint="@string/job"
 
                         app:startIconDrawable="@drawable/ic_build_ring"
                         android:layout_marginRight="@dimen/_16sdp"
@@ -197,7 +197,7 @@
                         android:layout_margin="@dimen/_35sdp"
                         android:background="@drawable/button_background"
                         android:fontFamily="casual"
-                        android:text="SignUp"
+                        android:text="@string/signup"
                         android:onClick="signUpUser"
                         android:layout_marginBottom="@dimen/_45sdp"
                         android:textAllCaps="false"

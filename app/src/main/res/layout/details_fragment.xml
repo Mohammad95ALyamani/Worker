@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Title"
+            android:text="@string/title"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/maps" />
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_18sdp"
-            android:text="Description"
+            android:text="@string/description"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:text="Price"
+            android:text="@string/offered_price"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailsCategoryImage" />

@@ -27,12 +27,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Favorite" />
+            app:title="@string/title_favourite" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favouriteRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="@{isLoggedIn? view.VISIBLE : view.GONE , default = visible}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
@@ -41,7 +42,7 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login To View History"
+            android:text="@string/login_to_view_favourite"
             android:textSize="@dimen/_22ssp"
             android:visibility="@{isLoggedIn? view.GONE : view.VISIBLE , default = gone}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +55,7 @@
             android:layout_width="@dimen/_175sdp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
-            android:text="Go To login"
+            android:text="@string/go_to_login"
             android:textColor="@color/white"
             android:visibility="@{isLoggedIn? view.GONE:view.VISIBLE, default = gone}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,8 +1,18 @@
 package com.worker.worker.model
 
-class OrderStatus {
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
-    var id:Int = 0
+class OrderStatus {
+    @Expose
+     @SerializedName("Id")
+    var id: Int = 0
+
+    @Expose
+     @SerializedName("Name")
     var name: String = ""
+
+    @Expose
+     @SerializedName("Value")
     var value: String = ""
 }

@@ -1,10 +1,13 @@
 package com.worker.worker
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.worker.worker.Activity.LoginActivity
+import com.worker.worker.helpers.LocalHelper
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -29,5 +32,9 @@ class SplashActivity : AppCompatActivity() {
             }
 
         }, Time_To_Wait.toLong())
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocalHelper.onAttach(newBase!!))
     }
 }

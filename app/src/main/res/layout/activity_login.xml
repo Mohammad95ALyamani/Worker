@@ -21,7 +21,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/purple_500"
         android:fontFamily="casual"
         android:textSize="@dimen/_30ssp"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:fontFamily="casual"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
-            android:hint="Password"
+            android:hint="@string/password"
 
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -87,7 +87,7 @@
         android:id="@+id/loginButton"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login"
         android:textSize="@dimen/_15ssp"
         android:fontFamily="casual"
         android:textAllCaps="false"
@@ -103,7 +103,7 @@
         android:id="@+id/forgotPasswordTextViewLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password?"
+        android:text="@string/forgot_password"
         android:textSize="@dimen/_12ssp"
         android:layout_marginTop="@dimen/_10sdp"
         android:onClick="forgetPasswordActivity"
@@ -116,7 +116,7 @@
         android:id="@+id/signupTextViewLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don`t have an account? SignUp."
+        android:text="@string/don_t_have_an_account_signup"
         android:onClick="signUpUserActivity"
         android:textStyle="bold"
         android:textColor="@color/purple_500"

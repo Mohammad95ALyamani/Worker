@@ -8,8 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -23,7 +26,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.ln
 
-class AddOrderFragment : Fragment() {
+class AddOrderFragment : Fragment(), AdapterViewBindingAdapter.OnItemSelected,
+    AdapterView.OnItemSelectedListener {
 
 
     lateinit var addOrderBinding:FragmentAddOrderBinding
@@ -37,7 +41,7 @@ class AddOrderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        addOrderBinding = FragmentAddOrderBinding.inflate(layoutInflater, container, false)
+        addOrderBinding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_add_order, container, false)
         categories = ArrayList()
 
         return addOrderBinding.root
@@ -58,9 +62,7 @@ class AddOrderFragment : Fragment() {
             }
 
         })
-        addOrderBinding.categoriesSpinner.setOnItemClickListener { parent, view, position, id ->
-            category = categories[position]
-        }
+        addOrderBinding.categoriesSpinner.setOnItemSelectedListener(this)
         addOrderBinding.addOrderButton.setOnClickListener(View.OnClickListener {
             continueToCreateOrder()
         })
@@ -150,5 +152,13 @@ class AddOrderFragment : Fragment() {
             lng = data.getDoubleExtra("lng",0.0)
            Toast.makeText(activity,"Location Selected", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        category = categories[position]
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        //TODO
     }
 }

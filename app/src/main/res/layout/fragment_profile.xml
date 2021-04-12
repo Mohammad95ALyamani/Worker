@@ -38,7 +38,9 @@
             <Button
                 android:layout_width="@dimen/_55sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:text="Done" />
+                android:textColor="@color/white"
+
+                android:text="@string/done" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
@@ -137,7 +139,7 @@
                         android:layout_below="@+id/orderCount"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="serif-monospace"
-                        android:text="Done Order"
+                        android:text="@string/done_order"
                         android:textSize="@dimen/_15ssp" />
 
 
@@ -184,7 +186,7 @@
                         android:layout_below="@+id/orderCount2"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="serif-monospace"
-                        android:text="Favourite"
+                        android:text="@string/title_favourite"
                         android:textSize="@dimen/_15ssp" />
 
 
@@ -218,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
 
-                        android:hint="Full Name"
+                        android:hint="@string/full_name"
 
                         android:text="@{user.firstName + user.lastName}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -240,7 +242,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
 
-                        android:hint="Email"
+                        android:hint="@string/email"
                         android:text="@{user.lastName}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -261,7 +263,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
 
-                        android:hint="Phone Number"
+                        android:hint="@string/phone_number"
                         android:text="@{user.phoneNumber}" />
                 </com.google.android.material.textfield.TextInputLayout>
 

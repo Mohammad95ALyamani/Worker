@@ -57,7 +57,7 @@ class HistoryFragment : Fragment() {
         val cate = Categories(
             1,
             "7dad",
-            "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png"
+            "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
         )
         order.categories = cate
         order.publisher = user
@@ -68,6 +68,7 @@ class HistoryFragment : Fragment() {
         historyBinding.goToLogin.setOnClickListener(View.OnClickListener {
             val i = Intent(activity,LoginActivity::class.java)
             startActivity(i)
+
         })
         return historyBinding.root
     }
