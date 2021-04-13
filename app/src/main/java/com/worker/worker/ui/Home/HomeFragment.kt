@@ -46,7 +46,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
 
         findItem(root)
 
-        setUpOrderRecyclerView()
+
         homeViewModel.getCategories().observe(viewLifecycleOwner, Observer { categoriesArray ->
             if (categoriesArray != null) {
                setUpRecyclerViewCategories(categoriesArray.categories!!)
@@ -59,12 +59,12 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         homeViewModel.getOrders(selectedCategory, searchQuery).observe(
             viewLifecycleOwner,
             Observer { response ->
-                if (response != null){
-                    ordersArrayList = response.orders!!
-                    orderAdapter!!.notifyDataSetChanged()
+                if (response != null) {
+                    setUpOrderRecyclerView(response.orders!!)
+                    Log.d(TAG, "onCreateView: ${response.orders!![0].title}")
 
-                }else{
-                      Toast.makeText(activity, "failed to get Categories", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity, "failed to get Categories", Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -81,8 +81,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
                     viewLifecycleOwner,
                     Observer { response ->
                         if (response != null) {
-                            ordersArrayList = response.orders!!
-                            orderAdapter!!.notifyDataSetChanged()
+                            setUpOrderRecyclerView(response.orders!!)
                         } else {
                             Toast.makeText(activity, "failed to get Orders", Toast.LENGTH_SHORT)
                                 .show()
@@ -115,8 +114,8 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         categoryRecyclerView?.adapter = categoriesAdapter
     }
 
-    private fun setUpOrderRecyclerView() {
-        orderAdapter = activity?.let { OrdersAdapter(ordersArrayList, it, 0) }
+    private fun setUpOrderRecyclerView(orders: ArrayList<Order>) {
+        orderAdapter = activity?.let { OrdersAdapter(orders, it, 0) }
         orderRecyclerView.layoutManager = LinearLayoutManager(
             activity,
             RecyclerView.VERTICAL,
@@ -131,8 +130,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             viewLifecycleOwner,
             Observer { response ->
                 if (response != null) {
-                    ordersArrayList = response.orders!!
-                    orderAdapter!!.notifyDataSetChanged()
+                    setUpOrderRecyclerView(response.orders!!)
 
                 } else {
                     Toast.makeText(activity, "failed to get Orders", Toast.LENGTH_SHORT).show()
