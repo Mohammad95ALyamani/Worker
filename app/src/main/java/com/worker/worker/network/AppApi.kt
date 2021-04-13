@@ -14,7 +14,7 @@ interface AppApi {
     ): Call<OrderResponse>
 
     @POST()
-    fun checkUser(@Query("phone") phone: String):Call<CustomResponse>
+    fun checkUser(@Query("phone") phone: String): Call<CustomResponse>
 
     @POST(Constants.Login)
     fun loginUser(@Body user: User): Call<UserResponse>
@@ -42,10 +42,12 @@ interface AppApi {
         @Header("AccessToken") token: String,
         @Body change: ChangePassword
     ): Call<CustomResponse>
-@PUT(Constants.USER)
+
+    @PUT(Constants.USER)
     fun changeUserPassword(
         @Body change: ChangePassword
     ): Call<CustomResponse>
+
     @POST(Constants.FOLLOWER)
     fun followUser(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>
 
@@ -84,5 +86,5 @@ interface AppApi {
     fun getUserJobs(): Call<UserJobResponse>
 
     @PUT(Constants.USER)
-    fun updateUserImage(@Header("AccessToken") token: String,uimg:UserImage):Call<CustomResponse>
+    fun updateUserImage(@Header("AccessToken") token: String, uimg: UserImage): Call<CustomResponse>
 }

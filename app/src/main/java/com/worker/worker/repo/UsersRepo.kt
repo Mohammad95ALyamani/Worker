@@ -29,7 +29,7 @@ class UsersRepo {
                 call: Call<FollowersResponse>,
                 response: Response<FollowersResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     followersMutable.value = response.body()
                 } else {
                     followersMutable.value = null
@@ -55,7 +55,7 @@ class UsersRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     followUserMutable.value = response.body()
                 } else {
                     followUserMutable.value = null
@@ -80,7 +80,7 @@ class UsersRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     followUserMutable.value = response.body()
                 } else {
                     followUserMutable.value = null
@@ -105,7 +105,7 @@ class UsersRepo {
                 call: Call<ReportResponse>,
                 response: Response<ReportResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     reportResponseMutable.value = response.body()
                 } else {
                     reportResponseMutable.value = null
@@ -130,7 +130,7 @@ class UsersRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     reportUserMutable.value = response.body()
                 } else {
                     reportUserMutable.value = null
@@ -156,7 +156,7 @@ class UsersRepo {
 
         call.enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     userMutable.value = response.body()
                 } else {
                     userMutable.value = null
@@ -182,7 +182,7 @@ class UsersRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     updateUserInfo.value = response.body()
                 } else {
                     updateUserInfo.value = null
@@ -209,7 +209,7 @@ class UsersRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     updateUserImageMutable.value = response.body()
                 } else {
                     updateUserImageMutable.value = null

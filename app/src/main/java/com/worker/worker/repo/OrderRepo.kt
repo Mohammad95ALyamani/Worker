@@ -25,7 +25,7 @@ class OrderRepo {
                 call: Call<CategoriesResponse>,
                 response: Response<CategoriesResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     categories.value = response.body()
                 } else {
                     categories.value = null
@@ -52,7 +52,7 @@ class OrderRepo {
                 call: Call<OrderResponse>,
                 response: Response<OrderResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     orders.value = response.body()
                 } else {
                     orders.value = null
@@ -83,7 +83,7 @@ class OrderRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     takeOrderMutable.value = response.body()
                 } else {
                     takeOrderMutable.value = null
@@ -107,7 +107,7 @@ class OrderRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     deleteOrderMutable.value = response.body()
                 } else {
                     deleteOrderMutable.value = null
@@ -134,7 +134,7 @@ class OrderRepo {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     updateOrder.value = response.body()
                 } else {
                     updateOrder.value = null
@@ -161,7 +161,7 @@ class OrderRepo {
                 call: Call<OrderResponse>,
                 response: Response<OrderResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     historyMutable.value = response.body()
                 } else {
                     historyMutable.value = null
