@@ -36,7 +36,7 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
@@ -46,7 +46,6 @@ class SettingsFragment : Fragment() {
             container,
             false
         )
-
 
         settingsBinding.securityCard.setOnClickListener { v ->
             if (token.isNotEmpty()) {
@@ -74,7 +73,7 @@ class SettingsFragment : Fragment() {
             alertDialog.setIcon(R.drawable.ic_change_language)
 
             //performing positive action
-            alertDialog.setPositiveButton("English") { dialogInterface, which ->
+            alertDialog.setPositiveButton("English") { _, _ ->
                 updateViews("en")
 
                 addToSharedPreference(
@@ -163,7 +162,8 @@ class SettingsFragment : Fragment() {
             settingsBinding.isLoggedIn = true
             viewModel.getUserInfo(token).observe(viewLifecycleOwner, Observer { response ->
                 if (response != null) {
-                    user = response
+                    user = response.result!![0]
+                    settingsBinding.user = user
                 } else {
                     Toast.makeText(activity, "failed to get User", Toast.LENGTH_SHORT).show()
                 }

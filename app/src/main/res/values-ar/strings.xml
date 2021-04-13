@@ -47,4 +47,14 @@
     <string name="change_lang">تغير اللغة</string>
     <string name="are_you_sure">هل انت متاكد من تغير لغة التطبيق</string>
     <string name="security">الامان</string>
+    <string name="check">تاكد</string>
+    <string name="enter_your_phone_number_reset_your_password">ادخل رقم الهاتق لاعادة ضبظ كلمة المرور</string>
+    <string name="phone_Incorrect">رقم الهاتف غير صحيح</string>
+    <string name="verify">تاكيد</string>
+    <string name="enter_your_new_password">ادخل كلمة المرور الجديدة</string>
+    <string name="verification_code">رمز التاكيد</string>
+    <string name="enter_old_password">ادخل كلمة المرور القديمة</string>
+    <string name="enter_new_password">ادخل كلمة المرور الجديدة</string>
+    <string name="reenter_new_password">اعد ادخال كلمة المرور</string>
+    <string name="submit">تنفيذ</string>
 </resources>

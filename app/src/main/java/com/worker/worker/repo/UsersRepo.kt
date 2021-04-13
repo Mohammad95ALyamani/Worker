@@ -9,6 +9,7 @@ import com.worker.worker.model.UserImage
 import com.worker.worker.network.Builder
 import com.worker.worker.responses.FollowersResponse
 import com.worker.worker.responses.ReportResponse
+import com.worker.worker.responses.UserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -147,14 +148,14 @@ class UsersRepo {
         return reportUserMutable
     }
 
-    lateinit var userMutable: MutableLiveData<User>
+    lateinit var userMutable: MutableLiveData<UserResponse>
 
-    fun getUserInfo(token: String): MutableLiveData<User> {
+    fun getUserInfo(token: String): MutableLiveData<UserResponse> {
         userMutable = MutableLiveData()
         val call = Builder.service.getUserInfo(token)
 
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
+        call.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 if (response.isSuccessful) {
                     userMutable.value = response.body()
                 } else {
@@ -162,7 +163,7 @@ class UsersRepo {
                 }
             }
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 userMutable.value = null
                 Log.d(TAG, "onFailure: ${t.message}")
             }

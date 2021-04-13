@@ -20,8 +20,8 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
 
             val sharedPreference = getSharedPreferences("general", MODE_PRIVATE)
-            val token = sharedPreference.getString("token", null)
-            if (token != null) {
+            val token = sharedPreference.getString("token", "")
+            if (token != "") {
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
                 finish()

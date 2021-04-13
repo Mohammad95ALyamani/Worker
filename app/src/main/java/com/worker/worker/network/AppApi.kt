@@ -32,7 +32,7 @@ interface AppApi {
     fun getCategories(): Call<CategoriesResponse>
 
     @GET(Constants.USER)
-    fun getUserInfo(@Header("AccessToken") token: String): Call<User>
+    fun getUserInfo(@Header("AccessToken") token: String): Call<UserResponse>
 
     @PUT(Constants.USER)
     fun updateUserInfo(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>

@@ -46,7 +46,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Title:"
+                android:text="@string/title"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -80,7 +80,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Description:"
+                android:text="@string/description"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -114,7 +114,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Category:"
+                android:text="@string/category"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -148,7 +148,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Date:"
+                android:text="@string/date"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -180,7 +180,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="casual"
-                android:text="Offered Price"
+                android:text="@string/offered_price"
                 android:textColor="#0E0D0D"
                 android:textSize="@dimen/_13ssp" />
 
@@ -202,7 +202,7 @@
             android:layout_margin="@dimen/_20sdp"
             android:background="@drawable/button_background"
             android:fontFamily="casual"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textAllCaps="false"
             android:textColor="#FFF"
             android:textSize="@dimen/_15ssp"

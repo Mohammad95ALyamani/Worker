@@ -3,6 +3,7 @@ package com.worker.worker.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -20,7 +21,7 @@ import com.worker.worker.model.UserJob
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignUpBinding
-   lateinit var jobsArrayList:ArrayList<UserJob>
+    lateinit var jobsArrayList: ArrayList<UserJob>
     var job: UserJob? = null
     lateinit var signUpViewModel: SignUpViewModel
     private val TAG = "SignUpActivity"
@@ -31,8 +32,17 @@ class SignUpActivity : AppCompatActivity() {
         )
         jobsArrayList = ArrayList()
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+
         signUpViewModel.getUserJobs().observe(this, Observer { response ->
             if (response != null) {
+                Log.d(TAG, "onResume: ${response.jobs!![0].name}")
                 val adapter =
                     ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, jobsArrayList)
                 binding.userJobMenu.setAdapter(adapter)
@@ -41,32 +51,6 @@ class SignUpActivity : AppCompatActivity() {
                     .show()
             }
         })
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        val job1 = UserJob()
-        job1.id = 1
-        job1.name = "7dad"
-        jobsArrayList.add(job1)
-        val job2 = UserJob()
-        job2.id = 2
-        job2.name = "Najar"
-        jobsArrayList.add(job2)
-        val job3 = UserJob()
-        job3.id = 3
-        job3.name = "Engineer"
-        jobsArrayList.add(job3)
-        val job4 = UserJob()
-        job4.id = 4
-        job4.name = "Doctor"
-        jobsArrayList.add(job4)
-        val adapter =
-            ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, jobsArrayList)
-        binding.userJobMenu.setAdapter(adapter)
-
-
         binding.userJobMenu.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
             Toast.makeText(this, "selected" + jobsArrayList[position].name, Toast.LENGTH_LONG)
                 .show()
