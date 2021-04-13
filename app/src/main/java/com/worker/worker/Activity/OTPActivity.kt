@@ -117,7 +117,7 @@ class OTPActivity : AppCompatActivity() {
     private fun signUpUserData() {
         signUpViewModel.signUpUser(user).observe(this, Observer { userResponse ->
             if (userResponse != null) {
-                saveUserToken(userResponse.token)
+                saveUserToken(userResponse.result!![0].token)
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

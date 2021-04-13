@@ -42,27 +42,8 @@ class HistoryFragment : Fragment() {
         token = sharedPreference.getString("token", "")!!
         historyBinding.isLoggedIn = token.isNotEmpty()
 
-        val order = Order()
-        val user = User()
-        order.title = "We need Smith"
-        order.description =
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        order.price = 30.0
-        user.firstName = "Ahmad"
-        user.lastName = "Nofal"
-        val orderStatus = OrderStatus()
-        orderStatus.id =1
-        orderStatus.name = "Active"
-        order.orderStatus = orderStatus
-        val cate = Categories(
-            1,
-            "7dad",
-            "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
-        )
-        order.categories = cate
-        order.publisher = user
-        ordersArrayList.add(0, order)
-        setUpHistoryRecyclerView(ordersArrayList)
+
+
 
 
         historyBinding.goToLogin.setOnClickListener(View.OnClickListener {
@@ -80,8 +61,7 @@ class HistoryFragment : Fragment() {
         if (token.isNotEmpty()){
             viewModel.getHistory(token).observe(viewLifecycleOwner, Observer { response ->
                 if (response != null){
-                    ordersArrayList = response
-                    adapter.notifyDataSetChanged()
+                    setUpHistoryRecyclerView(response.orders!!)
                 }else {
                     Toast.makeText(activity,"failed To get Orders",Toast.LENGTH_SHORT).show()
                 }

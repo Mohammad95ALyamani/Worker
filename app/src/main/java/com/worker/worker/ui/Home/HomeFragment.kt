@@ -1,6 +1,7 @@
 package com.worker.worker.ui.Home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
     private var categoriesAdapter: CategoriesAdapter? = null
     lateinit var floatingActionButton2: FloatingActionButton
     lateinit var searchOrderSearchView: androidx.appcompat.widget.SearchView
+    private  val TAG = "HomeFragment"
     var orderAdapter: OrdersAdapter? = null
     var selectedCategory = 0
     var searchQuery = ""
@@ -41,81 +43,14 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        categoryArrayList.add(
-            0,
-            Categories(
-                1,
-                "7dad",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","حداد"
-            )
-        )
-        categoryArrayList.add(
-            1,
-            Categories(
-                2,
-                "Najar",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","نجار"
-            )
-        )
-        categoryArrayList.add(
-            2,
-            Categories(
-                3,
-                "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
-            )
-        )
-        categoryArrayList.add(
-            2,
-            Categories(
-                4,
-                "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
-            )
-        )
-        categoryArrayList.add(
-            2,
-            Categories(
-                5,
-                "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
-            )
-        )
-        categoryArrayList.add(
-            2,
-            Categories(
-                6,
-                "Mosarji",
-                "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
-            )
-        )
-        val order = Order()
-        val user = User()
-        order.title = "We need Smith"
-        order.description =
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        order.price = 30.0
-        val lat = 31.9565783
-        val lng = 35.945695099999966
-        order.lat = lat.toString()
-        order.lng = lng.toString()
-        user.firstName = "Ahmad"
-        user.lastName = "Nofal"
-        val cate = Categories(
-            1,
-            "7dad",
-            "https://cdn.icon-icons.com/icons2/2119/PNG/512/google_icon_131222.png","مواسرجي"
-        )
-        order.categories = cate
-        order.publisher = user
-        ordersArrayList.add(0, order)
+
         findItem(root)
-        setUpRecyclerViewCategories()
+
         setUpOrderRecyclerView()
         homeViewModel.getCategories().observe(viewLifecycleOwner, Observer { categoriesArray ->
             if (categoriesArray != null) {
-                categoryArrayList = categoriesArray.categories!!
-                categoriesAdapter!!.notifyDataSetChanged()
+               setUpRecyclerViewCategories(categoriesArray.categories!!)
+                Log.d(TAG, "onCreateView: ${categoriesArray.categories!!.size}")
             } else {
                 Toast.makeText(activity, "failed to get Categories", Toast.LENGTH_SHORT).show()
             }
@@ -123,7 +58,14 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         })
         homeViewModel.getOrders(selectedCategory, searchQuery).observe(
             viewLifecycleOwner,
-            Observer {
+            Observer { response ->
+                if (response != null){
+                    ordersArrayList = response.orders!!
+                    orderAdapter!!.notifyDataSetChanged()
+
+                }else{
+                      Toast.makeText(activity, "failed to get Categories", Toast.LENGTH_SHORT).show()
+                }
 
             })
 
@@ -164,8 +106,8 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         floatingActionButton2.setOnClickListener(this)
     }
 
-    private fun setUpRecyclerViewCategories() {
-        categoriesAdapter = CategoriesAdapter(categoryArrayList, activity, this)
+    private fun setUpRecyclerViewCategories(categories:ArrayList<Categories>) {
+        categoriesAdapter = CategoriesAdapter(categories, activity, this)
         categoryRecyclerView?.layoutManager =
             LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
 

@@ -7,20 +7,21 @@ import com.worker.worker.model.User
 import com.worker.worker.network.Builder
 import com.worker.worker.repo.OrderRepo
 import com.worker.worker.responses.UserJobResponse
+import com.worker.worker.responses.UserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SignUpViewModel: ViewModel() {
-    lateinit var userLiveData: MutableLiveData<User>
+    lateinit var userLiveData: MutableLiveData<UserResponse>
     private  val TAG = "SignUpViewModel"
     
-    fun signUpUser(user: User): MutableLiveData<User>{
+    fun signUpUser(user: User): MutableLiveData<UserResponse>{
         userLiveData = MutableLiveData()
 
         val call = Builder.service.signUpUser(user)
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
+        call.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 if (response.isSuccessful) {
                     userLiveData.value = response.body()
                 } else {
@@ -28,7 +29,7 @@ class SignUpViewModel: ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 Log.d(TAG, "onFailure: "+ t.message)
                 userLiveData.value = null
             }

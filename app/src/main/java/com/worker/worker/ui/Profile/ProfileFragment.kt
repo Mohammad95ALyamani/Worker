@@ -44,9 +44,9 @@ class ProfileFragment : Fragment() {
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
-        // val user = arguments?.let { ProfileFragmentArgs.fromBundle(it).user }
+         val user = arguments?.let { ProfileFragmentArgs.fromBundle(it).user }
 
-        //profileBinding.user = user
+        profileBinding.user = user
 
         profileBinding.profileImageView.setOnClickListener(View.OnClickListener {
             intentToFileManger()

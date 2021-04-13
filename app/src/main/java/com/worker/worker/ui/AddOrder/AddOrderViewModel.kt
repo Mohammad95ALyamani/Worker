@@ -16,16 +16,16 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddOrderViewModel : ViewModel() {
-    lateinit var orderMutable:MutableLiveData<CustomResponse>
+    lateinit var orderMutable:MutableLiveData<OrderResponse>
     val repo = OrderRepo()
     private  val TAG = "AddOrderViewModel"
-    fun createOrder(order: Order,token:String): MutableLiveData<CustomResponse>{
+    fun createOrder(order: Order,token:String): MutableLiveData<OrderResponse>{
         orderMutable = MutableLiveData()
         val call = Builder.service.createOrder(order,token)
-        call.enqueue(object : Callback<CustomResponse> {
+        call.enqueue(object : Callback<OrderResponse> {
             override fun onResponse(
-                call: Call<CustomResponse>,
-                response: Response<CustomResponse>
+                call: Call<OrderResponse>,
+                response: Response<OrderResponse>
             ) {
                 if (response.isSuccessful){
                     orderMutable.value = response.body()
@@ -34,7 +34,7 @@ class AddOrderViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+            override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
                 orderMutable.value = null
                 Log.d(TAG, "onFailure: "+ t.message)
 

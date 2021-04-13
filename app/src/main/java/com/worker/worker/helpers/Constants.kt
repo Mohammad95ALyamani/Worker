@@ -6,9 +6,9 @@ class Constants {
 
 
     companion object {
-        const val baseUrl = "https://192.168.15.59:44312/api/"
+        const val baseUrl = "http://generals.azurewebsites.net/api/"
         const val searchEndPoint = ""
-        const val getJobCategory = "Category"
+        const val getJobCategory = "JobCategory"
         const val getOrders = "Order"
         const val addOrder = ""
         const val Login = "Login"

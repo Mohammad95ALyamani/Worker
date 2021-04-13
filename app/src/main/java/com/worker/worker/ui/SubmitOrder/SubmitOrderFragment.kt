@@ -26,7 +26,7 @@ class SubmitOrderFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         submitBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_submit_order,container,false)
         return submitBinding.root
     }
@@ -34,6 +34,7 @@ class SubmitOrderFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val order = arguments?.let { SubmitOrderFragmentArgs.fromBundle(it).order }
+        submitBinding.order = order
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
        val token = sharedPreference.getString("token", "")!!

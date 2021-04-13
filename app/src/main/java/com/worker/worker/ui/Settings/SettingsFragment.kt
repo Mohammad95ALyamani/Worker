@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -121,8 +120,17 @@ class SettingsFragment : Fragment() {
             }
 
         })
+
+
+        settingsBinding.logoutCard.setOnClickListener(View.OnClickListener {
+
+            saveUserToken("")
+            startActivity(activity?.intent)
+
+        })
         return settingsBinding.root
     }
+
 
     private fun updateViews(languageCode: String) {
         val context: Context = LocalHelper.setLocale(
@@ -140,6 +148,13 @@ class SettingsFragment : Fragment() {
         editor.apply()
     }
 
+    private fun saveUserToken(token: String) {
+        val sharedPreference =
+            activity?.getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreference?.edit()
+        editor?.putString("token", token)
+        editor?.apply()
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -162,17 +177,5 @@ class SettingsFragment : Fragment() {
 
     }
 
-    private fun openDialog(view: View, layout: Int, id: Int, title: String) {
-        var cardView: CardView = view.findViewById(id)
-        val mDialogView = LayoutInflater.from(activity).inflate(
-            layout,
-            null
-        )
 
-        val mBuilder = AlertDialog.Builder(activity)
-            .setView(mDialogView)
-            .setTitle(title)
-
-        val mAlertDialog = mBuilder.show()
-    }
 }

@@ -150,16 +150,16 @@ class OrderRepo {
         
         return updateOrder
     }
-    lateinit var historyMutable: MutableLiveData<ArrayList<Order>>
+    lateinit var historyMutable: MutableLiveData<OrderResponse>
     
-    fun getUserHistory(token:String):MutableLiveData<ArrayList<Order>>{
+    fun getUserHistory(token:String):MutableLiveData<OrderResponse>{
         historyMutable = MutableLiveData()
         
         val call = Builder.service.getHistory(token)
-        call.enqueue(object : Callback<ArrayList<Order>> {
+        call.enqueue(object : Callback<OrderResponse> {
             override fun onResponse(
-                call: Call<ArrayList<Order>>,
-                response: Response<ArrayList<Order>>
+                call: Call<OrderResponse>,
+                response: Response<OrderResponse>
             ) {
                 if (response.isSuccessful) {
                     historyMutable.value = response.body()
@@ -168,7 +168,7 @@ class OrderRepo {
                 }
             }
 
-            override fun onFailure(call: Call<ArrayList<Order>>, t: Throwable) {
+            override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
                 historyMutable.value = null
                 Log.d(TAG, "onFailure: ${t.message}")
             }

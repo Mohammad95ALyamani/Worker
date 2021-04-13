@@ -40,19 +40,9 @@ class FavouriteFragment : Fragment(), OnClickRecyclerItem {
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
         favouriteBinding.isLoggedIn = token.isNotEmpty()
-        val user = User()
-        user.firstName = "Ahmad"
-        user.lastName = "Nofal"
-        user.phoneNumber = "0786878242"
-        user.image =
-            "https://www.washingtonpost.com/pbox.php?url=http://www.washingtonpost.com/news/speaking-of-science/wp-content/uploads/sites/36/2014/09/fortyfaces250.gif&w=1484&op=resize&opt=1&filter=antialias&t=20170517"
-        val job = UserJob()
-        job.name = "ENG"
-        user.job = job
 
-        users.add(0, user)
 
-        setUpFavouriteRecyclerView(users)
+
         return favouriteBinding.root
     }
 
@@ -62,8 +52,7 @@ class FavouriteFragment : Fragment(), OnClickRecyclerItem {
             favouriteViewModel.getFollowers(token)
                 .observe(viewLifecycleOwner, Observer { respones ->
                     if (respones != null) {
-                        users = respones.followers!!
-                        adapter.notifyDataSetChanged()
+                        setUpFavouriteRecyclerView(respones.followers!!)
                     } else {
                         Toast.makeText(activity, "failed To get Orders", Toast.LENGTH_SHORT).show()
                     }

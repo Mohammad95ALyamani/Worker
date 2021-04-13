@@ -17,16 +17,16 @@ interface AppApi {
     fun checkUser(@Query("phone") phone: String):Call<CustomResponse>
 
     @POST(Constants.Login)
-    fun loginUser(@Body user: User): Call<User>
+    fun loginUser(@Body user: User): Call<UserResponse>
 
     @POST(Constants.SignUp)
-    fun signUpUser(@Body user: User): Call<User>
+    fun signUpUser(@Body user: User): Call<UserResponse>
 
-    @POST(Constants.createOrder)
+    @POST(Constants.ORDER)
     fun createOrder(
         @Body order: Order,
         @Header("AccessToken") token: String
-    ): Call<CustomResponse>
+    ): Call<OrderResponse>
 
     @GET(Constants.getJobCategory)
     fun getCategories(): Call<CategoriesResponse>
@@ -56,7 +56,7 @@ interface AppApi {
     fun getFollowers(@Header("AccessToken") token: String): Call<FollowersResponse>
 
     @GET(Constants.ORDER)
-    fun getHistory(@Header("AccessToken") token: String): Call<ArrayList<Order>>
+    fun getHistory(@Header("AccessToken") token: String): Call<OrderResponse>
 
     @PUT(Constants.ORDER)
     fun updateOrderInfo(@Header("AccessToken") token: String, order: Order): Call<CustomResponse>

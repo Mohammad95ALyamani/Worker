@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginUser(v: View) {
 
-        if (binding.phoneTietLogin.text!!.length > 10 || binding.phoneTietLogin.text!!.length < 10) {
+        if (binding.phoneTietLogin.text!!.length < 10) {
             binding.phoneLayoutLogin.error = "Phone Number is incorrect"
             return
         }
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
         Log.d(TAG, "loginUser: " + user.phoneNumber + user.password)
         loginViewModel.loginUser(user).observe(this, Observer { userInfo ->
             if (userInfo != null) {
-                saveUserToken(userInfo.token)
+                saveUserToken(userInfo.result!![0].token)
                 val i = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(i)
                 finish()

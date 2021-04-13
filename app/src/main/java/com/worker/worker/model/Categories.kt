@@ -13,6 +13,10 @@ class Categories(id: Int, name: String, image: String, arName: String) {
     var name: String? = null
 
     @Expose
+    @SerializedName("Shortcut")
+    var shortcut: String? = null
+
+    @Expose
     @SerializedName("ArName")
     var arName: String? = null
 
@@ -25,6 +29,11 @@ class Categories(id: Int, name: String, image: String, arName: String) {
         this.name = name
         this.image = image
         this.arName = arName
+    }
+
+
+    override fun toString(): String {
+        return name.toString()
     }
 
 
