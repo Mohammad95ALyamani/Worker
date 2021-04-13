@@ -22,7 +22,7 @@ class SignUpViewModel: ViewModel() {
         val call = Builder.service.signUpUser(user)
         call.enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     userLiveData.value = response.body()
                 } else {
                     userLiveData.value = null
@@ -49,7 +49,7 @@ class SignUpViewModel: ViewModel() {
                 call: Call<UserJobResponse>,
                 response: Response<UserJobResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     userJobMutable.value = response.body()
                 } else {
                     userJobMutable.value = null

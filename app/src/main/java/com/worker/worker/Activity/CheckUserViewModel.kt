@@ -21,7 +21,7 @@ class CheckUserViewModel : ViewModel() {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     checkUserMutable.value = response.body()
                 } else {
                     checkUserMutable.value = null

@@ -18,7 +18,7 @@ class LoginActivityViewModel : ViewModel() {
        val call:Call<UserResponse> =  Builder.service.loginUser(user)
         call.enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     userLiveData.value = response.body()
                 } else {
                     userLiveData.value = null

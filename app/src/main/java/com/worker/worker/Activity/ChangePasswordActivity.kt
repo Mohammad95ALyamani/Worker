@@ -51,7 +51,7 @@ class ChangePasswordActivity : AppCompatActivity() {
                 call: Call<CustomResponse>,
                 response: Response<CustomResponse>
             ) {
-                if (response.isSuccessful) {
+                if (response.body()!!.status==200) {
                     Toast.makeText(
                         this@ChangePasswordActivity,
                         "Password changed Successfully",
