@@ -115,8 +115,6 @@ Y
 )app/src/main/res/layout/activity_maps.xml,7\7\773a0511f0fbef0bddfce437cffca83a066ef58c
 \
 ,app/src/main/res/layout/activity_sign_up.xml,b\3\b32acfa5b25626d9cecbf5439a9ef6b8a5e6aa51
-\
-,app/src/main/res/layout/details_fragment.xml,e\3\e30ce02838a3558c5b63eb90c7c16ef8e6cf9dfa
 ^
 .app/src/main/res/layout/fragment_add_order.xml,0\a\0a455e265c12117d49abd346335a34ea7f741884
 _
@@ -129,8 +127,6 @@ Y
 )app/src/main/res/layout/fragment_home.xml,3\1\31c5880846ef63ff1963efbe141ddfd56680bb19
 b
 2app/src/main/res/layout/fragment_order_details.xml,4\0\407528d080da1f0bd9a3e0c2f35f1ff4e87734af
-\
-,app/src/main/res/layout/fragment_profile.xml,b\4\b4466735edf81a3353097aecb75b46205cdee6b6
 a
 1app/src/main/res/layout/fragment_view_profile.xml,8\3\83b8b0d058e04b4337e7de737655f749cd753ca5
 P

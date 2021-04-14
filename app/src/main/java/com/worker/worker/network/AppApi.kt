@@ -86,5 +86,5 @@ interface AppApi {
     fun getUserJobs(): Call<UserJobResponse>
 
     @PUT(Constants.USER)
-    fun updateUserImage(@Header("AccessToken") token: String, uimg: UserImage): Call<CustomResponse>
+    fun updateUserImage(@Header("AccessToken") token: String,@Body uimg: UserImage): Call<CustomResponse>
 }

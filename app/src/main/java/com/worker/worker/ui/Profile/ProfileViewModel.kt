@@ -6,6 +6,7 @@ import com.worker.worker.model.CustomResponse
 import com.worker.worker.model.User
 import com.worker.worker.model.UserImage
 import com.worker.worker.repo.UsersRepo
+import com.worker.worker.responses.FollowersResponse
 
 class ProfileViewModel : ViewModel() {
     val repo = UsersRepo()
@@ -15,5 +16,9 @@ class ProfileViewModel : ViewModel() {
 
     fun updateImage(token:String,userImage: UserImage):MutableLiveData<CustomResponse>{
         return repo.updateImage(token,userImage)
+    }
+
+    fun getFollowers(token: String):MutableLiveData<FollowersResponse>{
+        return repo.getFollowers(token)
     }
 }

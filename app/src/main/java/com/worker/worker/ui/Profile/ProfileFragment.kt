@@ -49,14 +49,32 @@ class ProfileFragment : Fragment() {
         profileBinding.user = user
 
         profileBinding.profileImageView.setOnClickListener(View.OnClickListener {
+
             intentToFileManger()
         })
+        profileBinding.profileEditImageView.setOnClickListener(View.OnClickListener {
+            profileBinding.isEditing = true
+        })
+        profileBinding.doeEdititng.setOnClickListener(View.OnClickListener {
+            profileBinding.isEditing = false
+            updateUserInfo(user!!)
+        })
+
         return profileBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+
+        viewModel.getFollowers(token).observe(viewLifecycleOwner, Observer { response ->
+            if (response != null){
+                profileBinding.orderCount2.text = response.followers!!.size.toString()
+            }else {
+                Toast.makeText(activity, "failed to get followers", Toast.LENGTH_SHORT).show()
+            }
+
+        })
         // TODO: Use the ViewModel
     }
 
@@ -64,11 +82,8 @@ class ProfileFragment : Fragment() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
         intent.addCategory(Intent.CATEGORY_OPENABLE)
         val mimeTypes = arrayOf(
-            "application/pdf",
-            "image/*",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "application/msword",
-            "application/vnd.ms-excel"
+
+            "image/*"
         )
         intent.type = "*/*"
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
@@ -107,7 +122,8 @@ class ProfileFragment : Fragment() {
         return Base64.encodeToString(bytes, Base64.DEFAULT)
     }
 
-    fun updateUserInfo(user: User) {
+    private fun updateUserInfo(user: User) {
+
         viewModel.updateUserInfo(token, user).observe(viewLifecycleOwner, Observer { response ->
             if (response != null) {
                 Toast.makeText(activity, "Success to update", Toast.LENGTH_SHORT).show()
@@ -131,6 +147,7 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 102) {
             if (resultCode == RESULT_OK && data != null) {
+                profileBinding.profileImageView.setImageURI(data.data!!)
                 val uri: Uri = data.data!!
                 val uimg = UserImage()
                 uimg.imagebase64 = convertToBase64(uri)!!
