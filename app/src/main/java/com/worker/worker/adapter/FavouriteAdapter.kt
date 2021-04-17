@@ -47,7 +47,9 @@ class FavouriteAdapter(
         })
         holder.favouriteToggle.setOnCheckedChangeListener { buttonView, isChecked ->
             if (!isChecked){
+                onClickRecyclerItem.onclick(favourits[position])
                 favourits.removeAt(position)
+
                 notifyDataSetChanged()
             }
         }

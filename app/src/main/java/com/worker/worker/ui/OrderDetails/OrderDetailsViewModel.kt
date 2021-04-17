@@ -9,6 +9,6 @@ import com.worker.worker.repo.OrderRepo
 class OrderDetailsViewModel : ViewModel() {
     val repo = OrderRepo()
     fun deleteOrder(token:String,order: Order):MutableLiveData<CustomResponse>{
-        return repo.deleteOrderMutable
+        return repo.deleteOrder(token,order)
     }
 }

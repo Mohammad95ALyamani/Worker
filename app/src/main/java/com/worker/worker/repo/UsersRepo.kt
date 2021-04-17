@@ -8,6 +8,7 @@ import com.worker.worker.model.User
 import com.worker.worker.model.UserImage
 import com.worker.worker.network.Builder
 import com.worker.worker.responses.FollowersResponse
+import com.worker.worker.responses.ImageResponse
 import com.worker.worker.responses.ReportResponse
 import com.worker.worker.responses.UserResponse
 import retrofit2.Call
@@ -20,10 +21,10 @@ class UsersRepo {
     lateinit var followUserMutable: MutableLiveData<CustomResponse>
     lateinit var reportResponseMutable: MutableLiveData<ReportResponse>
     lateinit var reportUserMutable: MutableLiveData<CustomResponse>
-    fun getFollowers(token: String): MutableLiveData<FollowersResponse> {
+    fun getFollowing(token: String): MutableLiveData<FollowersResponse> {
         followersMutable = MutableLiveData()
 
-        val call: Call<FollowersResponse> = Builder.service.getFollowers(token)
+        val call: Call<FollowersResponse> = Builder.service.getFollowing(token)
         call.enqueue(object : Callback<FollowersResponse> {
             override fun onResponse(
                 call: Call<FollowersResponse>,
@@ -46,8 +47,35 @@ class UsersRepo {
         return followersMutable
     }
 
+    fun getFollower(token: String): MutableLiveData<FollowersResponse> {
+        followersMutable = MutableLiveData()
 
-    fun followUser(token: String, user: User): MutableLiveData<CustomResponse> {
+        val call: Call<FollowersResponse> = Builder.service.getFollowing(token)
+        call.enqueue(object : Callback<FollowersResponse> {
+            override fun onResponse(
+                call: Call<FollowersResponse>,
+                response: Response<FollowersResponse>
+            ) {
+
+                if (response.body()!!.status==200) {
+                    followersMutable.value = response.body()
+                } else {
+                    followersMutable.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<FollowersResponse>, t: Throwable) {
+                followersMutable.value = null
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+
+        return followersMutable
+    }
+
+
+    fun followUser(token: String, user:User): MutableLiveData<CustomResponse> {
         followUserMutable = MutableLiveData()
         val call = Builder.service.followUser(token, user)
         call.enqueue(object : Callback<CustomResponse> {
@@ -72,9 +100,9 @@ class UsersRepo {
         return followUserMutable
     }
 
-    fun unFollowUser(token: String, user: User): MutableLiveData<CustomResponse> {
+    fun unFollowUser(token: String, user:User): MutableLiveData<CustomResponse> {
         followUserMutable = MutableLiveData()
-        val call = Builder.service.unFollowUser(token, user)
+        val call = Builder.service.unFollowUser(token, user.id)
         call.enqueue(object : Callback<CustomResponse> {
             override fun onResponse(
                 call: Call<CustomResponse>,
@@ -198,16 +226,16 @@ class UsersRepo {
         return updateUserInfo
     }
 
-    lateinit var updateUserImageMutable: MutableLiveData<CustomResponse>
+    lateinit var updateUserImageMutable: MutableLiveData<ImageResponse>
 
-    fun updateImage(token: String, image: UserImage): MutableLiveData<CustomResponse> {
+    fun updateImage(token: String, image: UserImage): MutableLiveData<ImageResponse> {
         updateUserImageMutable = MutableLiveData()
 
         val call = Builder.service.updateUserImage(token, image)
-        call.enqueue(object : Callback<CustomResponse> {
+        call.enqueue(object : Callback<ImageResponse> {
             override fun onResponse(
-                call: Call<CustomResponse>,
-                response: Response<CustomResponse>
+                call: Call<ImageResponse>,
+                response: Response<ImageResponse>
             ) {
                 if (response.body()!!.status==200) {
                     updateUserImageMutable.value = response.body()
@@ -216,7 +244,7 @@ class UsersRepo {
                 }
             }
 
-            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ImageResponse>, t: Throwable) {
                 Log.d(TAG, "onFailure: ${t.message}")
                 updateUserImageMutable.value = null
             }
@@ -225,5 +253,33 @@ class UsersRepo {
 
         return updateUserImageMutable
 
+    }
+    
+    lateinit var isFollowingMutable: MutableLiveData<CustomResponse>
+    
+    fun isFollowing(token: String , userId:Int):MutableLiveData<CustomResponse>{
+        isFollowingMutable = MutableLiveData()
+        
+        val call = Builder.service.isFollowing(token, userId)
+        call.enqueue(object : Callback<CustomResponse> {
+            override fun onResponse(
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
+            ) {
+                if (response.body()!!.status == 200) {
+                    isFollowingMutable.value = response.body()
+                } else {
+                    isFollowingMutable.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+                isFollowingMutable.value = null
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+        
+        return isFollowingMutable
     }
 }

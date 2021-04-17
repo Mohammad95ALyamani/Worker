@@ -20,6 +20,8 @@ class ViewProfileFragment : Fragment() {
         fun newInstance() = ViewProfileFragment()
     }
 
+    var isChecked = false
+
     lateinit var viewProfileBinding: FragmentViewProfileBinding
     private lateinit var viewModel: ViewProfileViewModel
     var token = ""
@@ -35,15 +37,8 @@ class ViewProfileFragment : Fragment() {
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
-        viewProfileBinding.favouriteToggle.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                if (user != null) {
-                    followUser(user)
-                }
-            } else {
-                user?.let { unFollowUser(it) }
-            }
-        }
+
+
         return viewProfileBinding.root
     }
 
@@ -51,16 +46,41 @@ class ViewProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ViewProfileViewModel::class.java)
         val user = arguments?.let { ViewProfileFragmentArgs.fromBundle(it).user }
+        if (token.isNotEmpty()) {
+            viewModel.isFollowing(token, user!!.id)
+                .observe(viewLifecycleOwner, Observer { respnse ->
+                    if (respnse != null) {
+                        if (respnse.result != null) {
+                            isChecked = respnse.result!![0]
+                            viewProfileBinding.favouriteToggle.isChecked = isChecked
+                        }
 
+                    } else {
+                        Toast.makeText(activity, "failed", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+        viewProfileBinding.favouriteToggle.setOnClickListener(View.OnClickListener {
+
+            if (viewProfileBinding.favouriteToggle.isChecked) {
+                if (user != null) {
+                    followUser(user)
+                }
+            } else {
+                user?.let { unFollowUser(it) }
+            }
+
+        })
         viewProfileBinding.user = user
     }
 
     private fun followUser(user: User) {
         viewModel.followUser(token, user).observe(viewLifecycleOwner, Observer { response ->
             if (response != null) {
+                isChecked = true
                 Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
             } else {
-                viewProfileBinding.favouriteToggle.isChecked = false
+                //viewProfileBinding.favouriteToggle.isChecked = false
             }
         })
     }
@@ -68,9 +88,10 @@ class ViewProfileFragment : Fragment() {
     private fun unFollowUser(user: User) {
         viewModel.unFollowUser(token, user).observe(viewLifecycleOwner, Observer { response ->
             if (response != null) {
+                isChecked =false
                 Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
             } else {
-                viewProfileBinding.favouriteToggle.isChecked = true
+                // viewProfileBinding.favouriteToggle.isChecked = true
             }
         })
     }

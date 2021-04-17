@@ -48,24 +48,30 @@ interface AppApi {
         @Body change: ChangePassword
     ): Call<CustomResponse>
 
-    @POST(Constants.FOLLOWER)
+    @POST(Constants.Follow)
     fun followUser(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>
 
-    @PUT(Constants.FOLLOWER)
-    fun unFollowUser(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>
+    @DELETE(Constants.UN_FOLLOW)
+    fun unFollowUser(@Header("AccessToken") token: String, @Query("id") user: Int): Call<CustomResponse>
 
-    @GET(Constants.FOLLOWER)
+    @GET(Constants.FOLLOWING)
+    fun getFollowing(@Header("AccessToken") token: String): Call<FollowersResponse>
+
+    @GET(Constants.FOLLOWING)
     fun getFollowers(@Header("AccessToken") token: String): Call<FollowersResponse>
 
-    @GET(Constants.ORDER)
+    @GET(Constants.HISTORY)
     fun getHistory(@Header("AccessToken") token: String): Call<OrderResponse>
 
     @PUT(Constants.ORDER)
-    fun updateOrderInfo(@Header("AccessToken") token: String, order: Order): Call<CustomResponse>
+    fun updateOrderInfo(@Header("AccessToken") token: String, @Body order: Order): Call<CustomResponse>
 
 
     @GET(Constants.REPORT)
     fun getReports(@Header("AccessToken") token: String): Call<ReportResponse>
+
+    @GET(Constants.COMPLETED)
+    fun getCompletedOrder(@Header("AccessToken") token: String, @Query("id")id:Int):Call<OrderResponse>
 
     @POST(Constants.REPORT)
     fun reportUser(
@@ -76,7 +82,7 @@ interface AppApi {
     @DELETE(Constants.ORDER)
     fun deleteOrder(
         @Header("AccessToken") token: String,
-        @Query("orderId") orderId: Int
+        @Query("id") orderId: Int
     ): Call<CustomResponse>
 
     @POST(Constants.ORDER)
@@ -85,6 +91,9 @@ interface AppApi {
     @GET(Constants.JOB_CATEGORY)
     fun getUserJobs(): Call<UserJobResponse>
 
-    @PUT(Constants.USER)
-    fun updateUserImage(@Header("AccessToken") token: String,@Body uimg: UserImage): Call<CustomResponse>
+    @POST(Constants.UPLOAD_IMG)
+    fun updateUserImage(@Header("AccessToken") token: String,@Body uimg: UserImage): Call<ImageResponse>
+
+    @GET(Constants.IS_FOLLOW)
+    fun isFollowing(@Header("AccessToken") token: String,@Query("id") userId:Int): Call<CustomResponse>
 }

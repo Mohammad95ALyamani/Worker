@@ -17,7 +17,6 @@ import com.worker.worker.adapter.FavouriteAdapter
 import com.worker.worker.databinding.FragmentFavouriteBinding
 import com.worker.worker.lis.OnClickRecyclerItem
 import com.worker.worker.model.User
-import com.worker.worker.model.UserJob
 
 class FavouriteFragment : Fragment(), OnClickRecyclerItem {
 
@@ -71,6 +70,14 @@ class FavouriteFragment : Fragment(), OnClickRecyclerItem {
     }
 
     override fun onclick(o: Any) {
-        TODO("Not yet implemented")
+        val user = o as User
+        favouriteViewModel.unFollow(token, o).observe(viewLifecycleOwner, Observer { respose ->
+            if (respose != null) {
+                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(activity, "failed", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 }

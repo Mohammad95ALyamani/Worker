@@ -49,23 +49,25 @@ class OrderDetailsFragment : Fragment() {
                 OrderDetailsFragmentDirections.actionOrderDetailsFragmentToEditOrderFragment(order)
             Navigation.findNavController(v).navigate(des)
         })
-         val builder = AlertDialog.Builder(requireContext())
+        val builder = AlertDialog.Builder(requireContext())
         val alertDialog: AlertDialog = builder.create()
         orderDetailsBinding.deleteImageView.setOnClickListener(View.OnClickListener {
+            val alertDialog = android.app.AlertDialog.Builder(requireContext())
 
             //set title for alert dialog
-            builder.setTitle("Delete")
+            alertDialog.setTitle("Delete")
             //set message for alert dialog
-            builder.setMessage("are you sure you want to delete this order")
-            builder.setIcon(android.R.drawable.ic_delete)
+            alertDialog.setMessage("are you sure you want to delete this order")
+            alertDialog.setIcon(R.drawable.ic_delete)
 
             //performing positive action
-            builder.setPositiveButton("Yes") { dialogInterface, which ->
+            alertDialog.setPositiveButton("yes") { _, _ ->
                 deleteOrder()
             }
-            //performing cancel action
-            builder.setNeutralButton("Cancel") { dialogInterface, which ->
-                alertDialog.dismiss()
+
+            alertDialog.setNegativeButton("no") { _, _ ->
+
+
             }
 
 
@@ -74,6 +76,7 @@ class OrderDetailsFragment : Fragment() {
             // Set other dialog properties
             alertDialog.setCancelable(true)
             alertDialog.show()
+
         })
         return orderDetailsBinding.root
     }
@@ -99,11 +102,13 @@ class OrderDetailsFragment : Fragment() {
     }
 
     fun deleteOrder() {
-        viewModel.deleteOrder(token,order).observe(viewLifecycleOwner, Observer { response->
-            if (response != null){
-                Toast.makeText(activity,"Success to delete Order",Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(activity,"Failed to delete Order Try Again",Toast.LENGTH_SHORT).show()
+        viewModel.deleteOrder(token, order).observe(viewLifecycleOwner, Observer { response ->
+            if (response != null) {
+                view?.let { Navigation.findNavController(it).navigate(R.id.action_orderDetailsFragment_to_navigation_home) }
+                Toast.makeText(activity, "Success to delete Order", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(activity, "Failed to delete Order Try Again", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }

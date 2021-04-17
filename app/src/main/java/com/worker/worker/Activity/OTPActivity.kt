@@ -39,9 +39,9 @@ class OTPActivity : AppCompatActivity() {
         setUpCallBacks()
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
         user = intent.getSerializableExtra("user") as User
-
+        val num = intent.getStringExtra("num")
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(user.phoneNumber)       // Phone number to verify
+            .setPhoneNumber(num)       // Phone number to verify
             .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(this)                 // Activity (for callback binding)
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
@@ -118,6 +118,7 @@ class OTPActivity : AppCompatActivity() {
         signUpViewModel.signUpUser(user).observe(this, Observer { userResponse ->
             if (userResponse != null) {
                 saveUserToken(userResponse.result!![0].token)
+                saveUserId(userResponse.result!![0].id)
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -132,6 +133,12 @@ class OTPActivity : AppCompatActivity() {
         val sharedPreference = getSharedPreferences("general", MODE_PRIVATE)
         val editor = sharedPreference.edit()
         editor.putString("token", token)
+        editor.apply()
+    }
+     private fun saveUserId(id: Int) {
+        val sharedPreference = getSharedPreferences("general", MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.putInt("id", id)
         editor.apply()
     }
     override fun attachBaseContext(newBase: Context?) {

@@ -46,7 +46,7 @@
                         android:layout_marginStart="@dimen/_7sdp"
                         android:layout_toEndOf="@+id/card"
                         android:fontFamily="casual"
-                        android:text="@{isLoggedIn? user.firstName + user.lastName : @string/login_to_view ,default = @string/login_to_view }"
+                        android:text="@{isLoggedIn? user.firstName + ` `+ user.lastName : @string/login_to_view ,default = @string/login_to_view }"
                         android:textColor="#fff"
                         android:textSize="@dimen/_17ssp"
                         android:textStyle="bold" />
@@ -62,7 +62,7 @@
                             android:layout_width="@dimen/_75sdp"
                             android:layout_height="@dimen/_75sdp"
                             android:visibility="@{isLoggedIn? view.VISIBLE : view.GONE, default = gone}"
-                            imageUrl="@{user.image != null ? user.image: ``}"
+                            profileUrl="@{user.image != null ? user.image: ``}"
                             android:src="@drawable/profile" />
                     </androidx.cardview.widget.CardView>
 

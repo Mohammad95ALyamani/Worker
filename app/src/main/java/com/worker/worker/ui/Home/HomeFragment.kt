@@ -25,7 +25,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
 
     private lateinit var homeViewModel: HomeViewModel
     private var categoryRecyclerView: RecyclerView? = null
-    private var categoryArrayList: ArrayList<Categories> = ArrayList()
+    private lateinit var categoryArrayList: ArrayList<Categories>
     private var ordersArrayList: ArrayList<Order> = ArrayList()
     private var categoriesAdapter: CategoriesAdapter? = null
     lateinit var floatingActionButton2: FloatingActionButton
@@ -45,11 +45,13 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         findItem(root)
-
-
+        categoryArrayList =  ArrayList()
+        categoryArrayList.add(Categories(0,"All","","الكل"))
         homeViewModel.getCategories().observe(viewLifecycleOwner, Observer { categoriesArray ->
             if (categoriesArray != null) {
-               setUpRecyclerViewCategories(categoriesArray.categories!!)
+
+                categoryArrayList.addAll(categoriesArray.categories!!)
+               setUpRecyclerViewCategories(categoryArrayList)
                 Log.d(TAG, "onCreateView: ${categoriesArray.categories!!.size}")
             } else {
                 Toast.makeText(activity, "failed to get Categories", Toast.LENGTH_SHORT).show()
@@ -61,7 +63,7 @@ class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
             Observer { response ->
                 if (response != null) {
                     setUpOrderRecyclerView(response.orders!!)
-                    Log.d(TAG, "onCreateView: ${response.orders!![0].title}")
+                    //Log.d(TAG, "onCreateView: ${response.orders!![0].title}")
 
                 } else {
                     Toast.makeText(activity, "failed to get Categories", Toast.LENGTH_SHORT).show()

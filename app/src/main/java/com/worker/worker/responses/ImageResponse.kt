@@ -1,17 +1,17 @@
-package com.worker.worker.model
+package com.worker.worker.responses
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.worker.worker.model.Categories
 
-class CustomResponse {
-    @Expose
+class ImageResponse {
+     @Expose
     @SerializedName("Status")
     var status: Int = 0
-
     @Expose
     @SerializedName("Message")
     var message: String = ""
     @Expose
     @SerializedName("Result")
-    var result: ArrayList<Boolean>? = null
+    var images: ArrayList<String>? = null
 }

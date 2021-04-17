@@ -40,12 +40,30 @@ class SettingsFragment : Fragment() {
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
+
         settingsBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_settings,
             container,
             false
         )
+        viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
+        if (token.isNotEmpty()) {
+            settingsBinding.isLoggedIn = true
+            viewModel.getUserInfo(token).observe(viewLifecycleOwner, Observer { response ->
+                if (response != null) {
+                    user = response.result!![0]
+                    settingsBinding.user = user
+                } else {
+                    Toast.makeText(activity, "failed to get User", Toast.LENGTH_SHORT).show()
+                }
+
+
+            })
+        } else {
+            settingsBinding.isLoggedIn = false
+        }
+
 
         settingsBinding.securityCard.setOnClickListener { v ->
             if (token.isNotEmpty()) {
@@ -124,6 +142,7 @@ class SettingsFragment : Fragment() {
         settingsBinding.logoutCard.setOnClickListener(View.OnClickListener {
 
             saveUserToken("")
+            saveUserId(0)
             startActivity(activity?.intent)
 
         })
@@ -139,12 +158,20 @@ class SettingsFragment : Fragment() {
         val resources: Resources = context.resources
     }
 
+
     private fun addToSharedPreference(context: Context?, key: String?, value: Int) {
         val sharedPreference: SharedPreferences =
             context?.getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)!!
         val editor = sharedPreference.edit()
         editor.putInt(key, value)
         editor.apply()
+    }
+    private fun saveUserId(token: Int) {
+        val sharedPreference =
+            activity?.getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreference?.edit()
+        editor?.putInt("id", token)
+        editor?.apply()
     }
 
     private fun saveUserToken(token: String) {
@@ -157,22 +184,6 @@ class SettingsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
-        if (token.isNotEmpty()) {
-            settingsBinding.isLoggedIn = true
-            viewModel.getUserInfo(token).observe(viewLifecycleOwner, Observer { response ->
-                if (response != null) {
-                    user = response.result!![0]
-                    settingsBinding.user = user
-                } else {
-                    Toast.makeText(activity, "failed to get User", Toast.LENGTH_SHORT).show()
-                }
-
-
-            })
-        } else {
-            settingsBinding.isLoggedIn = false
-        }
 
 
     }

@@ -43,7 +43,8 @@ class SubmitOrderFragment : Fragment() {
         submitBinding.submitOrderButton.setOnClickListener(View.OnClickListener { v ->
             viewModel.createOrder(order!!,token).observe(viewLifecycleOwner, Observer { response ->
                 if (response != null){
-                    Navigation.findNavController(v).popBackStack()
+
+                    Navigation.findNavController(v).navigate(R.id.action_submitOrderFragment_to_navigation_home)
                 }else {
                     Toast.makeText(activity,"Failed to create order Try Again",Toast.LENGTH_SHORT).show()
                 }

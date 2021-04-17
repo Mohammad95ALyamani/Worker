@@ -17,10 +17,16 @@
             name="view"
             type="android.view.View" />
     </data>
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingBottom="@dimen/_30sdp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.details.DetailsFragment">
 
         <com.google.android.gms.maps.MapView
@@ -117,17 +123,29 @@
             app:layout_constraintStart_toEndOf="@+id/textView13"
             app:layout_constraintTop_toTopOf="@+id/textView13" />
 
+        <TextView
+            android:id="@+id/publisherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+             android:clickable="@{isAllowed? true: false, default = true}"
+            android:text="@{order.publisher.firstName + ` `+order.publisher.lastName}"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
         <Button
             android:id="@+id/takeOrderButton"
             android:layout_width="@dimen/_175sdp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_50sdp"
             android:background="@drawable/button_background"
             android:text="I'm In"
             android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_25sdp"
             android:visibility="@{isAllowed? view.VISIBLE: view.GONE, default = gone}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publisherName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

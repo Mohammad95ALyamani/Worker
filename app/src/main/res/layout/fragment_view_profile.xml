@@ -29,7 +29,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true">
+                    android:layout_alignParentEnd="true"
+                    tools:ignore="RelativeOverlap">
 
                     <CheckBox
                         android:id="@+id/favouriteToggle"
@@ -78,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_toRightOf="@+id/card"
+                    android:layout_toEndOf="@+id/card"
                     android:fontFamily="casual"
                     android:text="@{user.firstName + user.lastName}"
                     android:textSize="@dimen/_17ssp"
@@ -90,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/viewProfileProfileNameTextView"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_toRightOf="@+id/card"
+                    android:layout_toEndOf="@+id/card"
                     android:fontFamily="casual"
                     android:text="@{user.job.name}"
                     android:textColor="#757575"
@@ -132,7 +133,7 @@
                             android:layout_below="@+id/orderIcon"
                             android:layout_centerHorizontal="true"
                             android:fontFamily="serif-monospace"
-                            android:text="178"
+
                             android:textSize="@dimen/_15ssp"
                             android:textStyle="bold" />
 
@@ -178,7 +179,7 @@
                             android:layout_below="@+id/orderIcon2"
                             android:layout_centerHorizontal="true"
                             android:fontFamily="serif-monospace"
-                            android:text="25"
+
                             android:textSize="@dimen/_15ssp"
                             android:textStyle="bold" />
 
@@ -221,10 +222,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:editable="false"
-                            android:hint="@string/full_name"
 
-                            android:text="@{user.firstName + user.lastName}" />
+                            android:hint="@string/first_name"
+
+                            android:text="@{user.firstName }" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -233,7 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        app:startIconDrawable="@drawable/ic_email"
+                        app:startIconDrawable="@drawable/ic_person_full_colo"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/profileFNLayout">
@@ -243,10 +244,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:editable="false"
-                            android:hint="@string/email"
 
-                            android:text="@{user.firstName}" />
+                            android:hint="@string/last_name"
+
+                            android:text="@{user.lastName}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -266,7 +267,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:editable="false"
+
                             android:hint="@string/phone_number"
 
                             android:text="@{user.phoneNumber}" />

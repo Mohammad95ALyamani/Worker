@@ -66,6 +66,9 @@
         <argument
             android:name="order"
             app:argType="com.worker.worker.model.Order" />
+        <action
+            android:id="@+id/action_editOrderFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/orderDetailsFragment"
@@ -81,6 +84,9 @@
         <action
             android:id="@+id/action_orderDetailsFragment_to_viewProfileFragment"
             app:destination="@id/viewProfileFragment" />
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -119,6 +125,9 @@
         <argument
             android:name="order"
             app:argType="com.worker.worker.model.Order" />
+        <action
+            android:id="@+id/action_detailsFragment_to_viewProfileFragment"
+            app:destination="@id/viewProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"

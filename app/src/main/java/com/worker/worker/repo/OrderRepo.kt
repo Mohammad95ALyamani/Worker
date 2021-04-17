@@ -179,5 +179,28 @@ class OrderRepo {
         return historyMutable
     }
 
+    lateinit var completedMutable:MutableLiveData<OrderResponse>
+
+    fun getCompleted(token: String,id:Int):MutableLiveData<OrderResponse>{
+        completedMutable = MutableLiveData()
+        val call = Builder.service.getCompletedOrder(token, id)
+        call.enqueue(object : Callback<OrderResponse> {
+            override fun onResponse(call: Call<OrderResponse>, response: Response<OrderResponse>) {
+                    if (response.body()!!.status == 200){
+                        completedMutable.value = response.body()
+                    }else {
+                        completedMutable.value = null
+                    }
+            }
+
+            override fun onFailure(call: Call<OrderResponse>, t: Throwable) {
+                completedMutable.value = null
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+        return  completedMutable
+    }
+
 
 }

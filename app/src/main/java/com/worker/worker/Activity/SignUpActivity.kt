@@ -33,6 +33,9 @@ class SignUpActivity : AppCompatActivity() {
         jobsArrayList = ArrayList()
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
 
+
+
+
     }
 
     override fun onResume() {
@@ -44,7 +47,8 @@ class SignUpActivity : AppCompatActivity() {
             if (response != null) {
                 Log.d(TAG, "onResume: ${response.jobs!![0].name}")
                 val adapter =
-                    ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, jobsArrayList)
+                    ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, response.jobs!!)
+                jobsArrayList = response.jobs!!
                 binding.userJobMenu.setAdapter(adapter)
             } else {
                 Toast.makeText(this, "failed to get user jobs", Toast.LENGTH_LONG)
@@ -69,7 +73,7 @@ class SignUpActivity : AppCompatActivity() {
             binding.lastNameTietSginUp.error = "This Field is Require"
             return
         }
-        if (binding.phoneTietSignUp.length() != 10) {
+        if (binding.phoneTietSignUp.length() != 9) {
             binding.phoneTietSignUp.error = "Incorrect Phone number"
             return
         }
@@ -93,11 +97,13 @@ class SignUpActivity : AppCompatActivity() {
 
         user.firstName = binding.firstNameTietSginUp.text.toString()
         user.lastName = binding.lastNameTietSginUp.text.toString()
-        user.phoneNumber = "+962" + binding.phoneTietSignUp.text.toString()
+        val num = "+962" + binding.phoneTietSignUp.text.toString()
+        user.phoneNumber = binding.phoneTietSignUp.text.toString()
         user.password = binding.passwordTietSginUp.text.toString()
         user.job = job
         val i = Intent(this@SignUpActivity, OTPActivity::class.java)
         i.putExtra("user", user)
+        i.putExtra("num",num)
         startActivity(i)
 
 

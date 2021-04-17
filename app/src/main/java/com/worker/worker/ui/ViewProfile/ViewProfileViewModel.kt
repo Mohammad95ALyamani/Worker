@@ -13,6 +13,10 @@ class ViewProfileViewModel : ViewModel() {
     }
 
     fun unFollowUser(token:String,user:User):MutableLiveData<CustomResponse>{
-        return repo.followUser(token, user)
+        return repo.unFollowUser(token, user)
+    }
+
+    fun isFollowing(token: String, userId:Int):MutableLiveData<CustomResponse>{
+        return repo.isFollowing(token, userId)
     }
 }

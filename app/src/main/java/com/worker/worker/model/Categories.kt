@@ -2,8 +2,9 @@ package com.worker.worker.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-class Categories(id: Int, name: String, image: String, arName: String) {
+class Categories(id: Int, name: String, image: String, arName: String) : Serializable{
     @Expose
     @SerializedName("Id")
     var id: Int? = 0
