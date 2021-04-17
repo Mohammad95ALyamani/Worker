@@ -17,7 +17,7 @@ class CheckUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
-            this, R.layout.activity_login
+            this, R.layout.activity_check_user
         )
         viewModel = ViewModelProvider(this).get(CheckUserViewModel::class.java)
 

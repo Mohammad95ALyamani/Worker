@@ -69,7 +69,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun forgetPasswordActivity(v: View) {
-
+        val intent = Intent(this,CheckUserActivity::class.java)
+        startActivity(intent)
     }
 
      private fun saveUserId(id: Int) {
