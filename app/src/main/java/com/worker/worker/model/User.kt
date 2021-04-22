@@ -32,7 +32,7 @@ class User : Serializable {
     var token: String = ""
 
     @Expose
-    @SerializedName("ImageUrl")
+    @SerializedName("Image")
     var image: String = ""
 
     @Expose

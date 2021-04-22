@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import com.worker.worker.databinding.ChangePasswordFragmentBinding
 import com.worker.worker.model.ChangePassword
 import com.worker.worker.model.CustomResponse
 import com.worker.worker.network.Builder
+import com.worker.worker.ui.Profile.ProfileFragmentArgs
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,10 +30,15 @@ class ChangePasswordFragment : Fragment() {
     lateinit var binding: ChangePasswordFragmentBinding
     lateinit var change: ChangePassword
     private val TAG = "ChangePasswordFragment"
+    lateinit var token:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+          val sharedPreference =
+            requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
+        token = sharedPreference.getString("token", "")!!
+
         binding =
             DataBindingUtil.inflate(inflater, R.layout.change_password_fragment, container, false)
         change = arguments?.let { ChangePasswordFragmentArgs.fromBundle(it).change }!!
@@ -43,7 +50,7 @@ class ChangePasswordFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
 
         binding.doneChange.setOnClickListener(View.OnClickListener {
-
+            doneChanging()
         })
     }
 
@@ -67,7 +74,7 @@ class ChangePasswordFragment : Fragment() {
         change.newPassword = binding.newET.text.toString()
         change.oldPassword = binding.oldET.text.toString()
 
-        val call = Builder.service.changeUserPassword(change)
+        val call = Builder.service.changeUserPassword(token,change)
         call.enqueue(object : Callback<CustomResponse> {
             override fun onResponse(
                 call: Call<CustomResponse>,

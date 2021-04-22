@@ -22,8 +22,8 @@ class ProfileViewModel : ViewModel() {
         return repo.updateImage(token,userImage)
     }
 
-    fun getFollowers(token: String):MutableLiveData<FollowersResponse>{
-        return repo.getFollower(token)
+    fun getFollowers(token: String,id: Int):MutableLiveData<FollowersResponse>{
+        return repo.getFollower(token,id)
     }
 
     fun getDoneOrder(token: String):MutableLiveData<OrderResponse>{

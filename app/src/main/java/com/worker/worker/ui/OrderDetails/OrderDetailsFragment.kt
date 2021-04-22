@@ -37,9 +37,9 @@ class OrderDetailsFragment : Fragment() {
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
-        if (order.orderStatus != null && order.orderStatus!!.value == "Active") {
+        if (order.completedBy != null ) {
 
-            orderDetailsBinding.isCompleted = false
+            orderDetailsBinding.isCompleted = true
 
         }
 

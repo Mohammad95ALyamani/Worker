@@ -71,6 +71,23 @@ class ViewProfileFragment : Fragment() {
             }
 
         })
+        viewModel.getFollower(token,user!!.id).observe(viewLifecycleOwner,  { response ->
+            if (response != null){
+                viewProfileBinding.viewProfileFavorite.text = response.followers?.size.toString()
+            }else {
+                 Toast.makeText(activity, "failed", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+         viewModel.getCompleted(token , user.id).observe(viewLifecycleOwner,  { res ->
+            if (res != null){
+                 viewProfileBinding.viewProfileOrderCount.text = res.orders!!.size.toString()
+            }else{
+                  Toast.makeText(activity, "failed to get orders", Toast.LENGTH_SHORT).show()
+            }
+
+        })
         viewProfileBinding.user = user
     }
 

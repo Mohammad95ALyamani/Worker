@@ -13,8 +13,8 @@ interface AppApi {
         @Query("title") orderTitle: String
     ): Call<OrderResponse>
 
-    @POST()
-    fun checkUser(@Query("phone") phone: String): Call<CustomResponse>
+    @GET(Constants.CHECK_USER)
+    fun checkUser(@Query("phoneNum") phone: String): Call<CustomResponse>
 
     @POST(Constants.Login)
     fun loginUser(@Body user: User): Call<UserResponse>
@@ -37,14 +37,16 @@ interface AppApi {
     @PUT(Constants.USER)
     fun updateUserInfo(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>
 
-    @PUT(Constants.USER)
-    fun changeUserPassword(
-        @Header("AccessToken") token: String,
-        @Body change: ChangePassword
+
+
+    @PUT(Constants.FORGET_PASSWORD)
+    fun forgetPassword(
+        @Body change: User
     ): Call<CustomResponse>
 
-    @PUT(Constants.USER)
+    @PUT(Constants.CHANGE_PASSWORD)
     fun changeUserPassword(
+        @Header("AccessToken") token: String,
         @Body change: ChangePassword
     ): Call<CustomResponse>
 
@@ -57,8 +59,8 @@ interface AppApi {
     @GET(Constants.FOLLOWING)
     fun getFollowing(@Header("AccessToken") token: String): Call<FollowersResponse>
 
-    @GET(Constants.FOLLOWING)
-    fun getFollowers(@Header("AccessToken") token: String): Call<FollowersResponse>
+    @GET(Constants.FOLLOWER)
+    fun getFollowers(@Header("AccessToken") token: String,@Query("id")id: Int): Call<FollowersResponse>
 
     @GET(Constants.HISTORY)
     fun getHistory(@Header("AccessToken") token: String): Call<OrderResponse>
@@ -85,7 +87,7 @@ interface AppApi {
         @Query("id") orderId: Int
     ): Call<CustomResponse>
 
-    @POST(Constants.ORDER)
+    @PUT(Constants.RESERVE_ORDER)
     fun takeOrder(@Header("AccessToken") token: String, @Body order: Order): Call<CustomResponse>
 
     @GET(Constants.JOB_CATEGORY)

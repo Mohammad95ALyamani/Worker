@@ -27,14 +27,22 @@ class CheckUserActivity : AppCompatActivity() {
 
 
     fun checkUserIfExist(view: View) {
-        var phone = "00962"
 
-        viewModel.checkUser(phone).observe(this, Observer { response->
+
+        viewModel.checkUser(binding.phoneEditText.text.toString()).observe(this, Observer { response->
             if (response != null){
-                phone += binding.phoneEditText.text.toString()
+                if (response.result!![0]){
+                     var phone = "+962"
+                     phone += binding.phoneEditText.text.toString()
+                    var phone2 = binding.phoneEditText.text.toString()
                 val i = Intent(this,ResetPasswordOTPActivity::class.java)
                 i.putExtra("phone",phone)
+                    i.putExtra("phone2",phone2)
                 startActivity(i)
+                }else{
+                    binding.textInputLayout.error = "Phone Num is Incorrect"
+                }
+
             }else {
                 Toast.makeText(this,getString(R.string.phone_Incorrect),Toast.LENGTH_SHORT).show()
             }

@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.worker.worker.R
 import com.worker.worker.databinding.ActivityChangePasswordBinding
-import com.worker.worker.model.ChangePassword
 import com.worker.worker.model.CustomResponse
+import com.worker.worker.model.User
 import com.worker.worker.network.Builder
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,10 +42,10 @@ class ChangePasswordActivity : AppCompatActivity() {
             binding.textInputLayout5.error = "Password Too Short"
             return
         }
-        val change = ChangePassword()
+        val change = User()
         change.phoneNumber = phone
-        change.newPassword = binding.password.text.toString()
-        val call = Builder.service.changeUserPassword(change)
+        change.password = binding.password.text.toString()
+        val call = Builder.service.forgetPassword(change)
         call.enqueue(object : Callback<CustomResponse> {
             override fun onResponse(
                 call: Call<CustomResponse>,

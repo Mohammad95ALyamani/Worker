@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="user"
             type="com.worker.worker.model.User" />
+
         <variable
             name="isLoggedIn"
             type="Boolean" />
+
         <variable
             name="view"
             type="android.view.View" />
@@ -27,11 +30,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@color/purple_500"
-                android:padding="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@color/purple_500"
+                android:orientation="vertical"
+                android:padding="@dimen/_15sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -59,41 +62,42 @@
 
                         <ImageView
                             android:id="@+id/imageView4"
+                            profileUrl="@{user.image != null? user.image:``}"
                             android:layout_width="@dimen/_75sdp"
+                            android:scaleType="centerCrop"
                             android:layout_height="@dimen/_75sdp"
-                            android:visibility="@{isLoggedIn? view.VISIBLE : view.GONE, default = gone}"
-                            profileUrl="@{user.image != null ? user.image: ``}"
-                            android:src="@drawable/profile" />
+                            android:src="@drawable/profile"
+                            android:visibility="@{isLoggedIn? view.VISIBLE : view.GONE, default = gone}" />
                     </androidx.cardview.widget.CardView>
 
                 </RelativeLayout>
             </LinearLayout>
 
             <androidx.gridlayout.widget.GridLayout
-                app:columnCount="2"
-                app:rowCount="3"
-                app:alignmentMode="alignMargins"
-                app:columnOrderPreserved="false"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:alignmentMode="alignMargins"
+                app:columnCount="2"
+                app:columnOrderPreserved="false"
+                app:rowCount="3">
 
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/profileCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
-                    app:elevation="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_8sdp"
                     app:cardCornerRadius="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_8sdp">
+                    app:elevation="@dimen/_8sdp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/imageView5"
@@ -105,11 +109,11 @@
                         <TextView
                             android:id="@+id/textView6"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:textSize="@dimen/_13ssp"
-                            android:gravity="center"
                             android:layout_height="wrap_content"
-                            android:text="@string/my_account" />
+                            android:fontFamily="casual"
+                            android:gravity="center"
+                            android:text="@string/my_account"
+                            android:textSize="@dimen/_13ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -118,35 +122,35 @@
                     android:id="@+id/securityCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
+                    android:layout_margin="@dimen/_8sdp"
+                    app:cardCornerRadius="@dimen/_8sdp"
 
                     app:elevation="@dimen/_8sdp"
-                    app:cardCornerRadius="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_8sdp">
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/imageView11"
                             android:layout_width="@dimen/_50sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_height="@dimen/_50sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:src="@drawable/ic_lock" />
 
                         <TextView
                             android:id="@+id/textView11"
-                            android:gravity="center"
-                            android:textSize="@dimen/_13ssp"
-                            android:fontFamily="casual"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/security" />
+                            android:fontFamily="casual"
+                            android:gravity="center"
+                            android:text="@string/security"
+                            android:textSize="@dimen/_13ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -155,34 +159,34 @@
                     android:id="@+id/languageCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
-                    app:elevation="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_8sdp"
                     app:cardCornerRadius="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_8sdp">
+                    app:elevation="@dimen/_8sdp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/imageView1"
                             android:layout_width="@dimen/_50sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_height="@dimen/_50sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:src="@drawable/ic_change_language" />
 
                         <TextView
                             android:id="@+id/textView1"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
-                            android:textSize="@dimen/_13ssp"
-                            android:text="@string/language" />
+                            android:gravity="center"
+                            android:text="@string/language"
+                            android:textSize="@dimen/_13ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -190,34 +194,34 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
-                    app:elevation="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_8sdp"
                     app:cardCornerRadius="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_8sdp">
+                    app:elevation="@dimen/_8sdp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/imageView2"
                             android:layout_width="@dimen/_50sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_height="@dimen/_50sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:src="@drawable/ic_question" />
 
                         <TextView
                             android:id="@+id/textView2"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
-                            android:textSize="@dimen/_13ssp"
-                            android:text="Question" />
+                            android:gravity="center"
+                            android:text="Question"
+                            android:textSize="@dimen/_13ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -225,34 +229,34 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
-                    app:elevation="@dimen/_8sdp"
+                    android:layout_margin="@dimen/_8sdp"
                     app:cardCornerRadius="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_8sdp">
+                    app:elevation="@dimen/_8sdp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/imageView6"
                             android:layout_width="@dimen/_50sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_height="@dimen/_50sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:src="@drawable/ic_about_us" />
 
                         <TextView
                             android:id="@+id/textView7"
-                            android:gravity="center"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:textSize="@dimen/_13ssp"
                             android:layout_height="wrap_content"
-                            android:text="@string/about_us" />
+                            android:fontFamily="casual"
+                            android:gravity="center"
+                            android:text="@string/about_us"
+                            android:textSize="@dimen/_13ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -261,35 +265,35 @@
                     android:id="@+id/logoutCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
+                    android:layout_margin="@dimen/_8sdp"
                     android:visibility="@{isLoggedIn? view.VISIBLE : view.GONE, default = gone}"
-                    app:elevation="@dimen/_8sdp"
                     app:cardCornerRadius="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_8sdp">
+                    app:elevation="@dimen/_8sdp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/imageView3"
                             android:layout_width="@dimen/_50sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_height="@dimen/_50sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:src="@drawable/ic_logout" />
 
                         <TextView
                             android:id="@+id/textView3"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
-                            android:textSize="@dimen/_13ssp"
-                            android:text="@string/logout" />
+                            android:gravity="center"
+                            android:text="@string/logout"
+                            android:textSize="@dimen/_13ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

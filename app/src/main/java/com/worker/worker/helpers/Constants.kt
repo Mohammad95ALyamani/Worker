@@ -20,7 +20,7 @@ class Constants {
         const val UN_FOLLOW = "Unfollow"
         const val ORDER = "Order"
         const val HISTORY = "OrderHistory"
-        const val COMPLETED = "getCompleted"
+        const val COMPLETED = "CompletedOrder"
         const val JOB_CATEGORY = "JobCategory"
         const val USER = "User"
         const val FOLLOWING = "Following"
@@ -28,5 +28,9 @@ class Constants {
         const val REPORT = "Report"
         const val IS_FOLLOW = "IsFollow"
         const val UPLOAD_IMG = "UploadImage"
+        const val RESERVE_ORDER = "ReserveOrder"
+        const val CHECK_USER = "CheckUser"
+        const val FORGET_PASSWORD = "ForgetPassword"
+        const val CHANGE_PASSWORD = "ChangePassword"
     }
 }

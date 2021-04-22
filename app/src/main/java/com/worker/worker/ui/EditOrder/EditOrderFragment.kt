@@ -66,7 +66,7 @@ class EditOrderFragment : Fragment(), View.OnClickListener,AdapterViewBindingAda
 
 
 
-        viewModel.getCategories().observe(viewLifecycleOwner, Observer { response ->
+        viewModel.getCategories().observe(viewLifecycleOwner,  { response ->
             if (response != null) {
                 categories = response.categories!!
                 val adapter = activity?.let {
@@ -81,7 +81,7 @@ class EditOrderFragment : Fragment(), View.OnClickListener,AdapterViewBindingAda
             }
         })
 
-        editOrderBinding.editOrderCategoriesSpinner.setOnItemSelectedListener(this)
+        editOrderBinding.editOrderCategoriesSpinner.onItemSelectedListener = this
 
         editOrderBinding.editOrderButton.setOnClickListener(this)
         editOrderBinding.editDateLayout.setOnClickListener(View.OnClickListener {

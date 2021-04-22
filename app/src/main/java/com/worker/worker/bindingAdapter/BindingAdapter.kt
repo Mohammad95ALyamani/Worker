@@ -9,7 +9,7 @@ import com.worker.worker.R
 
 @BindingAdapter("imageUrl")
 fun loadImage(view: ImageView, url: String) {
-    Glide.with(view.context)
+    Glide.with(view.context).asBitmap()
 
         .load(url)
         .into(view)
@@ -17,12 +17,7 @@ fun loadImage(view: ImageView, url: String) {
 
 @BindingAdapter("profileUrl")
 fun loadImageProfile(view: ImageView, url: String) {
-    Glide.with(view.context)
-        .applyDefaultRequestOptions(
-            RequestOptions()
-                .placeholder(R.drawable.person)
-                .error(R.drawable.person)
-        )
+    Glide.with(view.context).asBitmap()
         .load(url)
         .into(view)
 }

@@ -21,6 +21,7 @@ class ResetPasswordOTPActivity : AppCompatActivity() {
     private var storedVerificationId: String = ""
      private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
      var phone = ""
+    var phone2 = ""
     private  val TAG = "ResetPasswordOTPActivit"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,8 @@ class ResetPasswordOTPActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         auth.useAppLanguage()
         setUpCallBacks()
-        val phone = intent.getStringExtra("phone")
+         phone = intent.getStringExtra("phone")!!
+         phone2 = intent.getStringExtra("phone2")!!
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phone)       // Phone number to verify
             .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
@@ -83,8 +85,8 @@ class ResetPasswordOTPActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
-                    val intent = Intent(this,ResetPasswordOTPActivity::class.java)
-                    intent.putExtra("phone",phone)
+                    val intent = Intent(this,ChangePasswordActivity::class.java)
+                    intent.putExtra("phone",phone2)
                     startActivity(intent)
 
                 } else {

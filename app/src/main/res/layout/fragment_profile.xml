@@ -57,9 +57,9 @@
 
                     <ImageView
                         android:id="@+id/profileImageView"
-
+                        android:scaleType="centerCrop"
                         android:layout_width="@dimen/_100sdp"
-
+                        profileUrl="@{user.image != null? user.image:``}"
                         android:layout_height="@dimen/_100sdp" />
 
                 </androidx.cardview.widget.CardView>

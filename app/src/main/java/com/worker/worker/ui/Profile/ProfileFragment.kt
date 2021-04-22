@@ -73,7 +73,7 @@ class ProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        viewModel.getFollowers(token).observe(viewLifecycleOwner, { response ->
+        viewModel.getFollowers(token,0).observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 profileBinding.orderCount2.text = response.followers!!.size.toString()
             } else {
@@ -82,14 +82,14 @@ class ProfileFragment : Fragment() {
 
         })
 
-//        viewModel.getCompleted(token , 0).observe(viewLifecycleOwner, Observer { res ->
-//            if (res != null){
-//                 profileBinding.orderCount.text = res.orders!!.size.toString()
-//            }else{
-//                  Toast.makeText(activity, "failed to get orders", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
+        viewModel.getCompleted(token , 0).observe(viewLifecycleOwner,  { res ->
+            if (res != null){
+                 profileBinding.orderCount.text = res.orders!!.size.toString()
+            }else{
+                  Toast.makeText(activity, "failed to get orders", Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
     }
@@ -112,7 +112,7 @@ class ProfileFragment : Fragment() {
 
     private fun bitMapToString(bitmap: Bitmap): String? {
         val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos)
         val b = baos.toByteArray()
         return Base64.encodeToString(b, Base64.DEFAULT)
     }
@@ -173,23 +173,27 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 102) {
             if (resultCode == RESULT_OK && data != null) {
-                profileBinding.profileImageView.setImageURI(data.data!!)
+               Thread {
+                   val returnUri: Uri = data.data!!
+                   var bitmapImage: Bitmap? = null
+                   try {
+                       bitmapImage =
+                           MediaStore.Images.Media.getBitmap(
+                               activity?.contentResolver,
+                               returnUri,
+                           )
+                       profileBinding.profileImageView.setImageBitmap(bitmapImage)
 
-                val returnUri: Uri = data.data!!
-                var bitmapImage: Bitmap? = null
-                try {
-                    bitmapImage =
-                        MediaStore.Images.Media.getBitmap(activity?.contentResolver, returnUri)
-                    profileBinding.profileImageView.setImageBitmap(bitmapImage)
+                       val uimg = UserImage()
+                       uimg.imagebase64 = bitMapToString(bitmapImage)!!
 
-                    val uimg = UserImage()
-                    uimg.imagebase64 = bitMapToString(bitmapImage)!!
+                       updateUserImage(token, uimg)
 
-                    updateUserImage(token, uimg)
+                   } catch (e: IOException) {
+                       e.printStackTrace()
+                   }
+               }.run()
 
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
 
 
             }

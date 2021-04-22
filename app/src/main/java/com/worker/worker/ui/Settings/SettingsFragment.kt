@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.worker.worker.Activity.LoginActivity
 import com.worker.worker.R
 import com.worker.worker.SplashActivity
@@ -53,6 +54,10 @@ class SettingsFragment : Fragment() {
             viewModel.getUserInfo(token).observe(viewLifecycleOwner, Observer { response ->
                 if (response != null) {
                     user = response.result!![0]
+                    activity?.let {
+                        Glide.with(it).asBitmap().load(response.result!![0].image)
+                            .into(settingsBinding.imageView4)
+                    }
                     settingsBinding.user = user
                 } else {
                     Toast.makeText(activity, "failed to get User", Toast.LENGTH_SHORT).show()
