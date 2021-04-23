@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.worker.worker.R
 import com.worker.worker.databinding.DetailsFragmentBinding
 import com.worker.worker.model.Order
+import com.worker.worker.model.User
 
 class DetailsFragment : Fragment(), OnMapReadyCallback {
 
@@ -90,6 +91,8 @@ class DetailsFragment : Fragment(), OnMapReadyCallback {
 
         })
     }
+
+
 
     override fun onResume() {
         super.onResume()

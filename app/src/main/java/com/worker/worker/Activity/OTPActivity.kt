@@ -115,7 +115,7 @@ class OTPActivity : AppCompatActivity() {
 
 
     private fun signUpUserData() {
-        signUpViewModel.signUpUser(user).observe(this, Observer { userResponse ->
+        signUpViewModel.signUpUser(user).observe(this, { userResponse ->
             if (userResponse != null) {
                 saveUserToken(userResponse.result!![0].token)
                 saveUserId(userResponse.result!![0].id)

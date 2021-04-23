@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -34,22 +35,26 @@ class SubmitOrderFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val order = arguments?.let { SubmitOrderFragmentArgs.fromBundle(it).order }
+
         submitBinding.order = order
+
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
        val token = sharedPreference.getString("token", "")!!
         viewModel = ViewModelProvider(this).get(AddOrderViewModel::class.java)
 
-        submitBinding.submitOrderButton.setOnClickListener(View.OnClickListener { v ->
-            viewModel.createOrder(order!!,token).observe(viewLifecycleOwner, Observer { response ->
-                if (response != null){
+        submitBinding.submitOrderButton.setOnClickListener { v ->
+            viewModel.createOrder(order!!, token).observe(viewLifecycleOwner, { response ->
+                if (response != null) {
 
-                    Navigation.findNavController(v).navigate(R.id.action_submitOrderFragment_to_navigation_home)
-                }else {
-                    Toast.makeText(activity,"Failed to create order Try Again",Toast.LENGTH_SHORT).show()
+                    Navigation.findNavController(v)
+                        .navigate(R.id.action_submitOrderFragment_to_navigation_home)
+                } else {
+                    Toast.makeText(activity, "Failed to create order Try Again", Toast.LENGTH_SHORT)
+                        .show()
                 }
             })
-        })
+        }
 
     }
 

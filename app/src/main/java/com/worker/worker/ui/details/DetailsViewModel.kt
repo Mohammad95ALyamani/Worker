@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.worker.worker.model.CustomResponse
 import com.worker.worker.model.Order
 import com.worker.worker.repo.OrderRepo
+import com.worker.worker.responses.UserResponse
 
 class DetailsViewModel : ViewModel() {
     val repo = OrderRepo()
@@ -12,4 +13,5 @@ class DetailsViewModel : ViewModel() {
     fun takeOrder(token: String , order: Order):MutableLiveData<CustomResponse>{
         return repo.takeOrder(token, order)
     }
+
 }

@@ -32,5 +32,9 @@ class Constants {
         const val CHECK_USER = "CheckUser"
         const val FORGET_PASSWORD = "ForgetPassword"
         const val CHANGE_PASSWORD = "ChangePassword"
+        const val GET_ON_HOLD = "GetOnHold"
+        const val ACCEPT = "Accept"
+        const val DECLINE = "Decline"
+
     }
 }

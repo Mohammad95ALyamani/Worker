@@ -40,7 +40,7 @@ class AddOrderFragment : Fragment(), AdapterViewBindingAdapter.OnItemSelected,
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         addOrderBinding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_add_order, container, false)
         categories = ArrayList()
 

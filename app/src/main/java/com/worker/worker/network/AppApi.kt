@@ -38,6 +38,14 @@ interface AppApi {
     fun updateUserInfo(@Header("AccessToken") token: String, @Body user: User): Call<CustomResponse>
 
 
+    @GET(Constants.GET_ON_HOLD)
+    fun getOnHoldUsers(@Header("AccessToken") token: String,@Query("orderId")id:Int):Call<UserResponse>
+
+    @PUT(Constants.ACCEPT)
+    fun acceptUser(@Header("AccessToken") token: String,@Body holder: HolderRequest):Call<CustomResponse>
+
+    @DELETE(Constants.DECLINE)
+    fun declineUser(@Header("AccessToken") token: String,@Query("userId") id: Int,@Query("orderId") orderId: Int):Call<CustomResponse>
 
     @PUT(Constants.FORGET_PASSWORD)
     fun forgetPassword(
@@ -87,7 +95,7 @@ interface AppApi {
         @Query("id") orderId: Int
     ): Call<CustomResponse>
 
-    @PUT(Constants.RESERVE_ORDER)
+    @POST(Constants.RESERVE_ORDER)
     fun takeOrder(@Header("AccessToken") token: String, @Body order: Order): Call<CustomResponse>
 
     @GET(Constants.JOB_CATEGORY)

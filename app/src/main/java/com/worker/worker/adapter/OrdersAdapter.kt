@@ -32,7 +32,7 @@ class OrdersAdapter(
 
     override fun onBindViewHolder(holder: OrdersViewHolder, position: Int) {
         holder.bindViews(orders[position])
-        holder.itemView.setOnClickListener(View.OnClickListener { v ->
+        holder.itemView.setOnClickListener { v ->
             if (fragment == 0) {
                 val des =
                     HomeFragmentDirections.actionNavigationHomeToDetailsFragment(orders[position])
@@ -42,7 +42,7 @@ class OrdersAdapter(
                     HistoryFragmentDirections.actionNavigationHistoryToOrderDetailsFragment(orders[position])
                 Navigation.findNavController(v).navigate(des)
             }
-        })
+        }
     }
 
     override fun getItemCount(): Int {

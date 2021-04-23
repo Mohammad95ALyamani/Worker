@@ -18,7 +18,7 @@ class Categories(id: Int, name: String, image: String, arName: String) : Seriali
     var shortcut: String? = null
 
     @Expose
-    @SerializedName("ArName")
+    @SerializedName("ArabicName")
     var arName: String? = null
 
     @Expose

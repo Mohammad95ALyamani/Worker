@@ -1,6 +1,7 @@
 package com.worker.worker.ui.OrderDetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,16 +13,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.worker.worker.R
+import com.worker.worker.adapter.OnHoldAdapter
 import com.worker.worker.databinding.FragmentOrderDetailsBinding
+import com.worker.worker.lis.DeleteItem
+import com.worker.worker.lis.OnClickRecyclerItem
+import com.worker.worker.model.HolderRequest
 import com.worker.worker.model.Order
+import com.worker.worker.model.User
 
-class OrderDetailsFragment : Fragment() {
+class OrderDetailsFragment : Fragment() , OnClickRecyclerItem,DeleteItem{
 
     companion object {
         fun newInstance() = OrderDetailsFragment()
     }
-
+    var isCompleted = false
     private lateinit var viewModel: OrderDetailsViewModel
     lateinit var orderDetailsBinding: FragmentOrderDetailsBinding
     lateinit var order: Order
@@ -37,9 +45,9 @@ class OrderDetailsFragment : Fragment() {
         val sharedPreference =
             requireContext().getSharedPreferences("general", AppCompatActivity.MODE_PRIVATE)
         token = sharedPreference.getString("token", "")!!
-        if (order.completedBy != null ) {
-
-            orderDetailsBinding.isCompleted = true
+        if (order.orderStatus!!.value != "Active" ) {
+            isCompleted = true
+            orderDetailsBinding.isCompleted = isCompleted
 
         }
 
@@ -87,7 +95,7 @@ class OrderDetailsFragment : Fragment() {
 
         orderDetailsBinding.order = order
 
-        orderDetailsBinding.completeLayout.setOnClickListener(View.OnClickListener { v ->
+        orderDetailsBinding.completeLayout.setOnClickListener { v ->
             if (order.completedBy != null) {
                 val des =
                     OrderDetailsFragmentDirections.actionOrderDetailsFragmentToViewProfileFragment(
@@ -97,11 +105,27 @@ class OrderDetailsFragment : Fragment() {
             }
 
 
-        })
+        }
+        if (!isCompleted){
+             viewModel.getOnHoldOrder(token,order.id).observe(viewLifecycleOwner, { res ->
+                 if (res != null) {
+                     setUpRecyclerView(res.result!!)
+
+                 } else {
+                     Toast.makeText(activity, "failed get users", Toast.LENGTH_SHORT).show()
+                 }
+
+             })
+        }
+
+
 
     }
+    private fun setUpRecyclerView(users:ArrayList<User>){
+        orderDetailsBinding.requestedUsers.adapter = OnHoldAdapter(users,this,this)
+    }
 
-    fun deleteOrder() {
+    private fun deleteOrder() {
         viewModel.deleteOrder(token, order).observe(viewLifecycleOwner, Observer { response ->
             if (response != null) {
                 view?.let { Navigation.findNavController(it).navigate(R.id.action_orderDetailsFragment_to_navigation_home) }
@@ -110,6 +134,36 @@ class OrderDetailsFragment : Fragment() {
                 Toast.makeText(activity, "Failed to delete Order Try Again", Toast.LENGTH_SHORT)
                     .show()
             }
+        })
+    }
+
+    override fun oncDelete(o: Any) {
+      val user =   o as User
+        viewModel.declineUser(token,user.id,order.id).observe(viewLifecycleOwner, { res ->
+            if (res != null){
+                Toast.makeText(activity, "user declined successfully", Toast.LENGTH_SHORT)
+                    .show()
+            }else {
+                Toast.makeText(activity, "user declined failed", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
+    }
+
+    override fun onclick(o: Any) {
+        val user  = o as User
+        val holderRequest = HolderRequest()
+        holderRequest.id = user.id
+        holderRequest.order = order.id
+        viewModel.acceptUser(token,holderRequest).observe(viewLifecycleOwner, { res ->
+            if (res != null){
+                view?.let { Navigation.findNavController(it).popBackStack() }
+                 Toast.makeText(activity, "Success to Accept User", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(activity, "fail to Accept User", Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
 

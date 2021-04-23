@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="user"
             type="com.worker.worker.model.User" />
@@ -10,7 +11,6 @@
 
     <ScrollView
         android:layout_width="match_parent"
-
         android:layout_height="match_parent">
 
         <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,8 +24,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
                 android:background="@color/purple_500"
-                android:padding="@dimen/_14sdp">
-
+                android:padding="@dimen/_10sdp">
+                <com.google.android.material.button.MaterialButton
+                   android:id="@+id/reportUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Report User"/>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,8 +42,8 @@
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="wrap_content"
                         android:button="@drawable/favorite_checkbox"
-                        android:text=""
                         android:drawableTint="#ff0000"
+                        android:text=""
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -66,8 +71,10 @@
 
                     <ImageView
                         android:id="@+id/viewProfileProfileImageView"
+                        imageUrl="@{user.image != null? user.image:``}"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="@dimen/_100sdp"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/profile" />
 
                 </androidx.cardview.widget.CardView>
@@ -212,10 +219,10 @@
                         android:id="@+id/profileFNLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:startIconDrawable="@drawable/ic_person_full_colo"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:startIconDrawable="@drawable/ic_person_full_colo">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/viewProfileFullName"
@@ -234,10 +241,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        app:startIconDrawable="@drawable/ic_person_full_colo"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profileFNLayout">
+                        app:layout_constraintTop_toBottomOf="@+id/profileFNLayout"
+                        app:startIconDrawable="@drawable/ic_person_full_colo">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/viewProfileEmail"
@@ -255,12 +262,12 @@
                         android:id="@+id/textInputLayout4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:startIconDrawable="@drawable/ic_phone"
-
                         android:layout_marginTop="@dimen/_10sdp"
+
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                        app:startIconDrawable="@drawable/ic_phone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/viewProfilePhoneNumber"

@@ -27,7 +27,7 @@ class CategoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (LocalHelper.getLanguage(context!!).equals("en") || categoriesArrayList?.get(position)!!.arName == null){
+        if (LocalHelper.getLanguage(context!!).equals("en") || categoriesArrayList?.get(position)!!.arName == null || categoriesArrayList?.get(position)!!.arName == ""){
             holder.categoryName!!.text = categoriesArrayList!![position].name
         }else{
             holder.categoryName!!.text = categoriesArrayList!![position].arName

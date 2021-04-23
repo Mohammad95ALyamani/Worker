@@ -4,10 +4,12 @@ import android.os.Build
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.worker.worker.model.CustomResponse
+import com.worker.worker.model.HolderRequest
 import com.worker.worker.model.Order
 import com.worker.worker.network.Builder
 import com.worker.worker.responses.CategoriesResponse
 import com.worker.worker.responses.OrderResponse
+import com.worker.worker.responses.UserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -200,6 +202,83 @@ class OrderRepo {
 
         })
         return  completedMutable
+    }
+    lateinit var onHold:MutableLiveData<UserResponse>
+
+    fun getOnHoldUsers(token: String,id: Int):MutableLiveData<UserResponse>{
+        onHold = MutableLiveData()
+        val call = Builder.service.getOnHoldUsers(token,id)
+        call.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.isSuccessful && response.body()!!.status == 200) {
+                    onHold.value = response.body()
+                } else {
+                    onHold.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                onHold.value = null
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+
+        return onHold
+    }
+
+    lateinit var acceptMutable:MutableLiveData<CustomResponse>
+
+    fun acceptUser(token: String, holderRequest: HolderRequest):MutableLiveData<CustomResponse>{
+        acceptMutable = MutableLiveData()
+        val call = Builder.service.acceptUser(token,holderRequest)
+        call.enqueue(object : Callback<CustomResponse> {
+            override fun onResponse(
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
+            ) {
+                if (response.isSuccessful && response.body()!!.status == 200) {
+                    acceptMutable.value = response.body()
+                } else {
+                    acceptMutable.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+                acceptMutable.value = null
+            }
+
+        })
+
+        return acceptMutable
+    }
+
+    lateinit var declineMutable: MutableLiveData<CustomResponse>
+
+
+    fun declineUser(token: String,userId:Int, orderId:Int):MutableLiveData<CustomResponse>{
+        declineMutable = MutableLiveData()
+        val call = Builder.service.declineUser(token,userId,orderId)
+        call.enqueue(object : Callback<CustomResponse> {
+            override fun onFailure(call: Call<CustomResponse>, t: Throwable) {
+                declineMutable.value = null
+                Log.d(TAG, "onFailure: ")
+            }
+
+            override fun onResponse(
+                call: Call<CustomResponse>,
+                response: Response<CustomResponse>
+            ) {
+                if (response.isSuccessful && response.body()!!.status == 200){
+                     declineMutable.value = response.body()
+                }else{
+                     declineMutable.value = null
+                }
+            }
+
+        })
+        return  declineMutable
     }
 
 

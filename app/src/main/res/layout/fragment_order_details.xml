@@ -4,318 +4,338 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="order"
             type="com.worker.worker.model.Order" />
+
         <variable
             name="isCompleted"
             type="Boolean" />
+
         <variable
             name="view"
             type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.OrderDetails.OrderDetailsFragment">
+        android:layout_height="match_parent">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            tools:context=".ui.OrderDetails.OrderDetailsFragment">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/deleteImageView"
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
-                    android:src="@drawable/ic_delete"
-                    android:visibility="@{isCompleted? view.GONE: view.VISIBLE, default = gone}"
-                    android:layout_margin="@dimen/_4sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                     />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/editImageView"
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
-                    android:layout_margin="@dimen/_4sdp"
-                    android:src="@drawable/ic_edit"
-                    android:visibility="@{isCompleted? view.GONE: view.VISIBLE, default = gone}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/deleteImageView"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:src="@drawable/ic_delete"
+                        android:visibility="@{isCompleted? view.GONE: view.VISIBLE, default = gone}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.Toolbar>
+                    <ImageView
+                        android:id="@+id/editImageView"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:src="@drawable/ic_edit"
+                        android:visibility="@{isCompleted? view.GONE: view.VISIBLE, default = gone}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/orderDetailsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:fontFamily="casual"
-            android:text="@string/order_details"
-            android:textColor="@color/purple_500"
-            android:textSize="@dimen/_24ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-        <LinearLayout
-            android:id="@+id/titleLayoutOrderDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/orderDetailsTitle">
+            </androidx.appcompat.widget.Toolbar>
 
             <TextView
-                android:id="@+id/titleOrderDetails"
-                android:layout_width="@dimen/_100sdp"
+                android:id="@+id/orderDetailsTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_20sdp"
                 android:fontFamily="casual"
-                android:textSize="@dimen/_13ssp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="@string/title"
-                android:textColor="#0E0D0D" />
+                android:text="@string/order_details"
+                android:textColor="@color/purple_500"
+                android:textSize="@dimen/_24ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
-            <TextView
-                android:id="@+id/orderTitleTextViewOrderDetails"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/titleLayoutOrderDetails"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="@dimen/_13ssp"
-                android:fontFamily="casual"
-                android:layout_weight="1"
-                android:text="@{order.title}" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/orderDetailsTitle">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/titleOrderDetails"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@string/title"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
 
-        <LinearLayout
-            android:id="@+id/descriptionLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleLayoutOrderDetails">
+                <TextView
+                    android:id="@+id/orderTitleTextViewOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@{order.title}"
+                    android:textSize="@dimen/_13ssp" />
 
-            <TextView
-                android:id="@+id/descriptionOrderDetails"
-                android:layout_width="@dimen/_100sdp"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/descriptionLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:fontFamily="casual"
-                android:textSize="@dimen/_13ssp"
-                android:text="@string/description"
-                android:textColor="#0E0D0D" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleLayoutOrderDetails">
 
-            <TextView
-                android:id="@+id/orderDescriptionTextViewOrderDetails"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/descriptionOrderDetails"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@string/description"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:id="@+id/orderDescriptionTextViewOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@{order.description}"
+                    android:textSize="@dimen/_13ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/categoryLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="@dimen/_13ssp"
-                android:layout_weight="1"
-                android:fontFamily="casual"
-                android:text="@{order.description}" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/categoryOrderDetails"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@string/category"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
 
-        <LinearLayout
-            android:id="@+id/categoryLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                <TextView
+                    android:id="@+id/orderCategoryTextViewOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@{order.categories.name}"
+                    android:textSize="@dimen/_13ssp" />
 
-            <TextView
-                android:id="@+id/categoryOrderDetails"
-                android:layout_width="@dimen/_100sdp"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:fontFamily="casual"
-                android:text="@string/category"
-                android:textColor="#0E0D0D"
-                android:textSize="@dimen/_13ssp" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
 
-            <TextView
-                android:id="@+id/orderCategoryTextViewOrderDetails"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/dateOrderDetails"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@string/date"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:id="@+id/orderDateTextViewOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@{order.date}"
+                    android:textSize="@dimen/_13ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/statusLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="casual"
-                android:text="@{order.categories.name}"
-                android:textSize="@dimen/_13ssp" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateLayout">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/statusOrderDetails"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@string/status"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
 
-        <LinearLayout
-            android:id="@+id/dateLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
+                <TextView
+                    android:id="@+id/orderStatusTextViewOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@{order.orderStatus.name}"
+                    android:textSize="@dimen/_13ssp" />
 
-            <TextView
-                android:id="@+id/dateOrderDetails"
-                android:layout_width="@dimen/_100sdp"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="@string/date"
-                android:textSize="@dimen/_13ssp"
-                android:fontFamily="casual"
-                android:textColor="#0E0D0D" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
 
-            <TextView
-                android:id="@+id/orderDateTextViewOrderDetails"
-                android:layout_width="0dp"
+
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/categoryLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descriptionLayout">
+
+                <TextView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+
+                    android:text="@string/offered_price"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@{String.valueOf(order.price) }"
+
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/completeLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="@dimen/_13ssp"
-                android:fontFamily="casual"
-                android:layout_weight="1"
-                android:text="@{order.date}" />
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusLayout">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/completeOrderDetails"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="casual"
+                    android:text="@string/complete_by"
+                    android:textColor="#0E0D0D"
+                    android:textSize="@dimen/_13ssp" />
 
-        <LinearLayout
-            android:id="@+id/statusLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateLayout">
+                <TextView
+                    android:id="@+id/ordercompleteTextViewOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@{order.completedBy.firstName + ` `+order.completedBy.lastName}"
+                    android:textSize="@dimen/_13ssp" />
 
-            <TextView
-                android:id="@+id/statusOrderDetails"
-                android:layout_width="@dimen/_100sdp"
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/requestedUsers"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="@string/status"
-                android:textSize="@dimen/_13ssp"
-                android:fontFamily="casual"
-                android:textColor="#0E0D0D" />
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:visibility="@{isCompleted? view.GONE:view.VISIBLE , default = visible}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/completeLayout" />
 
-            <TextView
-                android:id="@+id/orderStatusTextViewOrderDetails"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="@dimen/_13ssp"
-                android:fontFamily="casual"
-                android:layout_weight="1"
-                android:text="@{order.orderStatus.name}" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-
-
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/categoryLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descriptionLayout">
-
-            <TextView
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:fontFamily="casual"
-
-                android:text="@string/offered_price"
-                android:textColor="#0E0D0D"
-                android:textSize="@dimen/_13ssp" />
-
-            <TextView
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:fontFamily="casual"
-                android:text="@{String.valueOf(order.price) }"
-
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/completeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginVertical="@dimen/_20sdp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/statusLayout">
-
-            <TextView
-                android:id="@+id/completeOrderDetails"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:fontFamily="casual"
-                android:text="@string/complete_by"
-                android:textColor="#0E0D0D"
-                android:textSize="@dimen/_13ssp" />
-
-            <TextView
-                android:id="@+id/ordercompleteTextViewOrderDetails"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="casual"
-                android:text="@{order.completedBy.firstName + ` `+order.completedBy.lastName}"
-                android:textSize="@dimen/_13ssp" />
-
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
