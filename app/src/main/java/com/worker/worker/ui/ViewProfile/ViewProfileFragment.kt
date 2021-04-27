@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.worker.worker.R
 import com.worker.worker.databinding.FragmentViewProfileBinding
 import com.worker.worker.model.User
@@ -88,6 +89,10 @@ class ViewProfileFragment : Fragment() {
             }
 
         })
+        viewProfileBinding.reportUser.setOnClickListener { v->
+            val des = ViewProfileFragmentDirections.actionViewProfileFragmentToReportFragment(user)
+            Navigation.findNavController(v).navigate(des)
+        }
         viewProfileBinding.user = user
     }
 
@@ -96,8 +101,6 @@ class ViewProfileFragment : Fragment() {
             if (response != null) {
                 isChecked = true
                 Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
-            } else {
-                //viewProfileBinding.favouriteToggle.isChecked = false
             }
         })
     }
@@ -107,8 +110,6 @@ class ViewProfileFragment : Fragment() {
             if (response != null) {
                 isChecked =false
                 Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
-            } else {
-                // viewProfileBinding.favouriteToggle.isChecked = true
             }
         })
     }

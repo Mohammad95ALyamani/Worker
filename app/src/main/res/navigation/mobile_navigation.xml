@@ -145,5 +145,9 @@
         android:id="@+id/reportFragment"
         android:name="com.worker.worker.ui.report.ReportFragment"
         android:label="report_fragment"
-        tools:layout="@layout/report_fragment" />
+        tools:layout="@layout/report_fragment" >
+        <argument
+            android:name="user"
+            app:argType="com.worker.worker.model.User" />
+    </fragment>
 </navigation>

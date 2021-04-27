@@ -73,8 +73,6 @@ t
 Dapp/src/main/java/com/worker/worker/bindingAdapter/BindingAdapter.kt,1\c\1c8a6140539abcfe81b2fb6a9f7cb89d1602fda5
 k
 ;app/src/main/java/com/worker/worker/model/ChangePassword.kt,0\e\0ef09e578b97ebde0671546487c3af8f71b8a310
-e
-5app/src/main/java/com/worker/worker/repo/UsersRepo.kt,f\5\f563eac9e1ac1368655c54c359aadbd442e4aa3e
 w
 Gapp/src/main/java/com/worker/worker/ui/change/ChangePasswordFragment.kt,2\0\20b0281f1008a11ad98085cde82e4612e65d3669
 u
@@ -83,13 +81,9 @@ q
 Aapp/src/main/java/com/worker/worker/ui/Profile/ProfileFragment.kt,7\0\709926f94c3da2b37b69c86b1d0591bf9c37b38e
 r
 Bapp/src/main/java/com/worker/worker/ui/Profile/ProfileViewModel.kt,f\c\fcbe1a9d139be2deaedd9e4318697a2b6320bf3e
-s
-Capp/src/main/java/com/worker/worker/ui/Settings/SettingsFragment.kt,f\f\fffd303a1692825924a87e1aa0f426c0d6d56062
 z
 Japp/src/main/java/com/worker/worker/ui/ViewProfile/ViewProfileViewModel.kt,a\b\abd1e9bce799a49eb87b77ee916279eaee3fc42d
 n
 >app/src/main/java/com/worker/worker/lis/OnClickRecyclerItem.kt,c\b\cb715a0cf7912198e836987b61df8d84874ccff3
-y
-Iapp/src/main/java/com/worker/worker/ui/ViewProfile/ViewProfileFragment.kt,b\e\be3c8137e32ef0028d2944ae4418beee0d89adfd
 o
 ?app/src/main/java/com/worker/worker/adapter/FavouriteAdapter.kt,f\3\f3e48e4fe05e4eda99af82499e8bb8e7e09370b5
