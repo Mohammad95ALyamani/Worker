@@ -1,6 +1,5 @@
 package com.worker.worker.helpers
 
-import retrofit2.http.DELETE
 
 class Constants {
 
