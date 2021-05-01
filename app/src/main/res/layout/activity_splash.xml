@@ -32,7 +32,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your Place to find your prefect job "
+        android:text="@string/your_place_to_find_your_prefect_job"
         android:letterSpacing="0.05"
         android:lineSpacingExtra="@dimen/_3ssp"
         android:textSize="@dimen/_14ssp"
