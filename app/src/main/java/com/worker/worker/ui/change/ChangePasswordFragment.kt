@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.worker.worker.R
 import com.worker.worker.databinding.ChangePasswordFragmentBinding
 import com.worker.worker.model.ChangePassword
@@ -81,7 +82,7 @@ class ChangePasswordFragment : Fragment() {
                 response: Response<CustomResponse>
             ) {
                 if (response.isSuccessful) {
-                    activity!!.onBackPressed()
+                    view?.let { Navigation.findNavController(it).popBackStack() }
                     Toast.makeText(activity, "Password changed successfully", Toast.LENGTH_SHORT)
                         .show()
                 } else {

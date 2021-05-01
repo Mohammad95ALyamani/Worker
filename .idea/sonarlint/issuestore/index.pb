@@ -25,8 +25,6 @@ v
 Fapp/src/main/java/com/worker/worker/ui/Favourite/FavouriteViewModel.kt,8\c\8c8a41f6d156a5cab5d1cc8e927c7c2bb9d17439
 r
 Bapp/src/main/java/com/worker/worker/ui/History/HistoryViewModel.kt,3\4\34def6e09ad936f652911f022c9888f397ae6317
-l
-<app/src/main/java/com/worker/worker/Activity/MapsActivity.kt,a\6\a61c754583dcf1ec3c3991397ccf40e16685f82c
 j
 :app/src/main/java/com/worker/worker/helpers/LocalHelper.kt,e\b\eb4c9819c1a92c182105e0a29c2cc38766e6436e
 o
@@ -55,8 +53,6 @@ Y
 .app/src/main/res/layout/fragment_favourite.xml,d\b\db855df3a44cf3814ac80984d675417a61291182
 Y
 )app/src/main/res/layout/fragment_home.xml,3\1\31c5880846ef63ff1963efbe141ddfd56680bb19
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 m
 =app/src/main/java/com/worker/worker/responses/UserResponse.kt,b\6\b63a9d6bf56e504b7f4fdac625c30f1289c7414f
 n
@@ -73,8 +69,6 @@ t
 Dapp/src/main/java/com/worker/worker/bindingAdapter/BindingAdapter.kt,1\c\1c8a6140539abcfe81b2fb6a9f7cb89d1602fda5
 k
 ;app/src/main/java/com/worker/worker/model/ChangePassword.kt,0\e\0ef09e578b97ebde0671546487c3af8f71b8a310
-w
-Gapp/src/main/java/com/worker/worker/ui/change/ChangePasswordFragment.kt,2\0\20b0281f1008a11ad98085cde82e4612e65d3669
 u
 Eapp/src/main/java/com/worker/worker/ui/EditOrder/EditOrderFragment.kt,b\a\bae156ead3b50a08af05942db076323efd7b7958
 q
