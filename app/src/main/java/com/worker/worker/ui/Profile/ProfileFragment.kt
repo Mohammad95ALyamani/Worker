@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.worker.worker.R
 import com.worker.worker.databinding.FragmentProfileBinding
@@ -90,6 +91,9 @@ class ProfileFragment : Fragment() {
             }
 
         })
+        profileBinding.orderCount.setOnClickListener{ v->
+            Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_doneOrdersFragment)
+        }
 
 
     }
