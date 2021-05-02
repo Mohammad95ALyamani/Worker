@@ -3,8 +3,6 @@
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 u
 Eapp/src/main/java/com/worker/worker/ui/Favourite/FavouriteFragment.kt,3\4\34879da984a3e73bd643a3a632aae17d83e4c467
-q
-Aapp/src/main/java/com/worker/worker/ui/History/HistoryFragment.kt,3\3\33926574ae8fb001de1b3d59c7cec4a0725f6447
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 f
@@ -75,8 +73,6 @@ q
 Aapp/src/main/java/com/worker/worker/ui/Profile/ProfileFragment.kt,7\0\709926f94c3da2b37b69c86b1d0591bf9c37b38e
 r
 Bapp/src/main/java/com/worker/worker/ui/Profile/ProfileViewModel.kt,f\c\fcbe1a9d139be2deaedd9e4318697a2b6320bf3e
-z
-Japp/src/main/java/com/worker/worker/ui/ViewProfile/ViewProfileViewModel.kt,a\b\abd1e9bce799a49eb87b77ee916279eaee3fc42d
 n
 >app/src/main/java/com/worker/worker/lis/OnClickRecyclerItem.kt,c\b\cb715a0cf7912198e836987b61df8d84874ccff3
 o

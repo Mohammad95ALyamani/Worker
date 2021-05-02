@@ -19,7 +19,6 @@ import com.worker.worker.adapter.OrdersAdapter
 import com.worker.worker.lis.OnClickRecyclerItem
 import com.worker.worker.model.Categories
 import com.worker.worker.model.Order
-import com.worker.worker.model.User
 
 class HomeFragment : Fragment(), OnClickRecyclerItem, View.OnClickListener {
 

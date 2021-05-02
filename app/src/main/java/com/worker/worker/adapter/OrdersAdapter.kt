@@ -1,10 +1,10 @@
 package com.worker.worker.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.worker.worker.R
@@ -14,7 +14,7 @@ import com.worker.worker.ui.History.HistoryFragmentDirections
 import com.worker.worker.ui.Home.HomeFragmentDirections
 
 class OrdersAdapter(
-    private var orders: ArrayList<Order>, private var context: Context, private var fragment: Int
+    private var orders: ArrayList<Order>, private var context: FragmentActivity?, private var fragment: Int
 ) : RecyclerView.Adapter<OrdersAdapter.OrdersViewHolder>() {
 
 
@@ -37,12 +37,13 @@ class OrdersAdapter(
                 val des =
                     HomeFragmentDirections.actionNavigationHomeToDetailsFragment(orders[position])
                 Navigation.findNavController(v).navigate(des)
-            } else {
+            } else if (fragment == 1) {
                 val des =
                     HistoryFragmentDirections.actionNavigationHistoryToOrderDetailsFragment(orders[position])
                 Navigation.findNavController(v).navigate(des)
             }
         }
+
     }
 
     override fun getItemCount(): Int {

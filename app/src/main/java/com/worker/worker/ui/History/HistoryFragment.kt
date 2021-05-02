@@ -15,10 +15,7 @@ import com.worker.worker.Activity.LoginActivity
 import com.worker.worker.R
 import com.worker.worker.adapter.OrdersAdapter
 import com.worker.worker.databinding.FragmentHistoryBinding
-import com.worker.worker.model.Categories
 import com.worker.worker.model.Order
-import com.worker.worker.model.OrderStatus
-import com.worker.worker.model.User
 
 class HistoryFragment : Fragment() {
 

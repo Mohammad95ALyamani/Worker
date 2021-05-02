@@ -96,6 +96,9 @@
         <argument
             android:name="user"
             app:argType="com.worker.worker.model.User" />
+        <action
+            android:id="@+id/action_profileFragment_to_doneOrdersFragment"
+            app:destination="@id/doneOrdersFragment" />
     </fragment>
     <fragment
         android:id="@+id/submitOrderFragment"
@@ -150,4 +153,8 @@
             android:name="user"
             app:argType="com.worker.worker.model.User" />
     </fragment>
+    <fragment
+        android:id="@+id/doneOrdersFragment"
+        android:name="com.worker.worker.ui.done.DoneOrdersFragment"
+        android:label="DoneOrdersFragment" />
 </navigation>
