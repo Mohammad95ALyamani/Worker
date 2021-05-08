@@ -27,7 +27,7 @@ class ReportAdapter(var reports: ArrayList<Report>, var lis: OnClickRecyclerItem
         layoutInflater = LayoutInflater.from(parent.context)
 
         listItemBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.custom_order, parent, false)
+            DataBindingUtil.inflate(layoutInflater, R.layout.custom_report_item, parent, false)
 
         return ReportViewHolder(listItemBinding)
     }

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 class ReportRequest {
     @Expose
 
-    @SerializedName("ReportedId")
+    @SerializedName("Id")
     var userId: Int = 0
 
     @Expose

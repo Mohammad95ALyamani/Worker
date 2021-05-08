@@ -29,8 +29,6 @@ r
 Bapp/src/main/java/com/worker/worker/responses/FollowersResponse.kt,2\3\2310e9c909e259cf1b10659ac1339b77ef7600dd
 t
 Dapp/src/main/java/com/worker/worker/responses/CreateOrderResponse.kt,e\e\ee40581463f399eb8657c6d4ff1d4fa70403d8e8
-j
-:app/src/main/java/com/worker/worker/model/ReportRequest.kt,a\4\a42601f38bdefa1ca7b058819c18d4cd9b67ab01
 c
 3app/src/main/java/com/worker/worker/model/Report.kt,9\5\95a9cb8ae540cd2940d79e88bee0a74226737dcc
 h
@@ -105,20 +103,10 @@ a
 1app/src/main/java/com/worker/worker/model/User.kt,a\1\a1e19cecf66918bdae873d6c10ed8bf9f04da227
 s
 Capp/src/main/java/com/worker/worker/ui/AddOrder/AddOrderFragment.kt,c\9\c964453ae86ca179e97fa4538f7c93dfc02bdffd
-e
-5app/src/main/java/com/worker/worker/repo/UsersRepo.kt,f\5\f563eac9e1ac1368655c54c359aadbd442e4aa3e
-l
-<app/src/main/java/com/worker/worker/adapter/ReportAdapter.kt,0\d\0d0ea38970f11fb5277be7ab9ce5495e330861fa
-o
-?app/src/main/java/com/worker/worker/ui/report/ReportFragment.kt,9\b\9b41cec94fa5303157b6625af669650c4e5b2a50
-p
-@app/src/main/java/com/worker/worker/ui/report/ReportViewModel.kt,3\8\38d6dba49ab836d3e3bdc7570dd0a934b1547052
 q
 Aapp/src/main/java/com/worker/worker/ui/details/DetailsFragment.kt,4\c\4c4293132b71c2ea0d3c5e62cadfff0c5a0c8cf3
 r
 Bapp/src/main/java/com/worker/worker/ui/details/DetailsViewModel.kt,9\4\94597001f822299eface703196fb46abf6a34607
-h
-8app/src/main/java/com/worker/worker/helpers/Constants.kt,f\7\f7b1db5bb9e7177c5fff47c37b5f157a4f75dd2e
 s
 Capp/src/main/java/com/worker/worker/ui/Settings/SettingsFragment.kt,f\f\fffd303a1692825924a87e1aa0f426c0d6d56062
 w
@@ -129,5 +117,3 @@ l
 <app/src/main/java/com/worker/worker/Activity/MapsActivity.kt,a\6\a61c754583dcf1ec3c3991397ccf40e16685f82c
 q
 Aapp/src/main/java/com/worker/worker/ui/History/HistoryFragment.kt,3\3\33926574ae8fb001de1b3d59c7cec4a0725f6447
-e
-5app/src/main/java/com/worker/worker/network/AppApi.kt,0\a\0a177c5c3dc44a029cf35ef910762d48c6f79fd8

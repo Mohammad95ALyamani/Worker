@@ -25,6 +25,7 @@ class Constants {
         const val FOLLOWING = "Following"
         const val FOLLOWER = "Follower"
         const val REPORT = "Report"
+        const val REPORT_TEMPLETE = "ReportTemplate"
         const val IS_FOLLOW = "IsFollow"
         const val UPLOAD_IMG = "UploadImage"
         const val RESERVE_ORDER = "ReserveOrder"

@@ -64,10 +64,10 @@ class ReportFragment : Fragment(), OnClickRecyclerItem {
 
     override fun onclick(o: Any) {
         val report = o as Report
-        var reportRequest = ReportRequest()
+        val reportRequest = ReportRequest()
         reportRequest.reportId = report.id
         reportRequest.userId = user.id
-            viewModel.reportUser(token,reportRequest).observe(viewLifecycleOwner, Observer { res ->
+            viewModel.reportUser(token,reportRequest).observe(viewLifecycleOwner, { res ->
                 if (res != null){
                     view?.let { Navigation.findNavController(it).popBackStack() }
                 }else {

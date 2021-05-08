@@ -77,7 +77,7 @@ interface AppApi {
     fun updateOrderInfo(@Header("AccessToken") token: String, @Body order: Order): Call<CustomResponse>
 
 
-    @GET(Constants.REPORT)
+    @GET(Constants.REPORT_TEMPLETE)
     fun getReports(@Header("AccessToken") token: String): Call<ReportResponse>
 
     @GET(Constants.COMPLETED)
@@ -85,7 +85,7 @@ interface AppApi {
 
     @POST(Constants.REPORT)
     fun reportUser(
-        @Header("AccessToken") token: String,
+        @Header("AccessToken") token: String,@Body
         reportRequest: ReportRequest
     ): Call<CustomResponse>
 
