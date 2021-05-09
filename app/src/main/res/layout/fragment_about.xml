@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.about.AboutFragment">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:src="@mipmap/ic_app_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:letterSpacing="@dimen/_3sdp"
+        android:textSize="@dimen/_14ssp"
+        android:text="General Services came to solve some of these problems to provide unemployment youth the right opportunity to work from home, work in part-time jobs, or hour-to-hour jobs.
+
+General Services is an Android mobile app built with Kotlin and supported with Google services working on devices with android 6 or higher.
+
+General services provide a user-friendly app where users can view jobs and apply to them through their mobile phone, and keep everything in place general also provide a fully functional admin dashboard and admin panel to manage users, Jobs posted, and user behavior.
+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+</androidx.constraintlayout.widget.ConstraintLayout>

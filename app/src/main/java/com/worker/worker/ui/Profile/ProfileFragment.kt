@@ -91,7 +91,7 @@ class ProfileFragment : Fragment() {
             }
 
         })
-        profileBinding.orderCount.setOnClickListener{ v->
+        profileBinding.userOrdersDone.setOnClickListener{ v->
             Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_doneOrdersFragment)
         }
 
