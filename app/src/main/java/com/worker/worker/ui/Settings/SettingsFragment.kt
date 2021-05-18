@@ -27,6 +27,7 @@ import com.worker.worker.model.ChangePassword
 import com.worker.worker.model.User
 
 
+@Suppress("UNUSED_ANONYMOUS_PARAMETER")
 class SettingsFragment : Fragment() {
 
 
@@ -81,6 +82,12 @@ class SettingsFragment : Fragment() {
                 Navigation.findNavController(v).navigate(des)
             }
 
+        }
+        settingsBinding.qa.setOnClickListener{ v->
+            Navigation.findNavController(v).navigate(R.id.action_navigation_settings_to_QAFragment)
+        }
+         settingsBinding.about.setOnClickListener{ v->
+            Navigation.findNavController(v).navigate(R.id.action_navigation_settings_to_aboutFragment)
         }
 
 
@@ -156,10 +163,12 @@ class SettingsFragment : Fragment() {
 
 
     private fun updateViews(languageCode: String) {
-        val context: Context = LocalHelper.setLocale(
-            activity?.applicationContext!!,
-            languageCode
-        )
+        val context: Context = activity?.let {
+            LocalHelper.setLocale(
+                it,
+                languageCode
+            )
+        }!!
         val resources: Resources = context.resources
     }
 

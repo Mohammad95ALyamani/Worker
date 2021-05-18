@@ -1,9 +1,6 @@
 package com.worker.worker.helpers
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.content.res.Configuration
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -25,9 +22,8 @@ object LocalHelper {
 
     fun setLocale(context: Context, language: String?): Context {
         persist(context, language)
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            updateResources(context, language)
-        } else updateResourcesLegacy(context, language)
+        return updateResources(context, language)
+
     }
 
     private fun getPersistedData(context: Context, defaultLanguage: String): String? {
@@ -42,7 +38,7 @@ object LocalHelper {
         editor.apply()
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
+
     private fun updateResources(context: Context, language: String?): Context {
         val locale = Locale(language)
         Locale.setDefault(locale)
@@ -58,10 +54,7 @@ object LocalHelper {
         val resources = context.resources
         val configuration = resources.configuration
         configuration.setLocale(locale)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            configuration.setLayoutDirection(locale)
-        }
-        //val co = context.createConfigurationContext(configuration)
+        configuration.setLayoutDirection(locale)
         resources.updateConfiguration(configuration, resources.displayMetrics)
         return context
     }

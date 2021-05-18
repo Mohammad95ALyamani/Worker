@@ -13,14 +13,10 @@ v
 Fapp/src/main/java/com/worker/worker/ui/EditOrder/EditOrderViewModel.kt,2\c\2ca52f955da3476a8caeddbc39e614574ded2834
 t
 Dapp/src/main/java/com/worker/worker/ui/Settings/SettingsViewModel.kt,2\3\237770ac5de6da6a93a311c43c4f8d394865cf9c
-o
-?app/src/main/java/com/worker/worker/Activity/SignUpViewModel.kt,3\1\3188bec524f3eb65eb1b7362a804db134c9fb4ce
 v
 Fapp/src/main/java/com/worker/worker/ui/Favourite/FavouriteViewModel.kt,8\c\8c8a41f6d156a5cab5d1cc8e927c7c2bb9d17439
 r
 Bapp/src/main/java/com/worker/worker/ui/History/HistoryViewModel.kt,3\4\34def6e09ad936f652911f022c9888f397ae6317
-j
-:app/src/main/java/com/worker/worker/helpers/LocalHelper.kt,e\b\eb4c9819c1a92c182105e0a29c2cc38766e6436e
 o
 ?app/src/main/java/com/worker/worker/responses/ReportResponse.kt,1\e\1e67e7868303f395c4934ea3f0d21aac3c9644e8
 p
@@ -39,8 +35,6 @@ l
 <app/src/main/java/com/worker/worker/ui/Home/HomeViewModel.kt,f\0\f0b9d3050724e5dea6d905cd7f3cfaef9203597c
 Y
 )app/src/main/res/layout/activity_maps.xml,7\7\773a0511f0fbef0bddfce437cffca83a066ef58c
-\
-,app/src/main/res/layout/activity_sign_up.xml,b\3\b32acfa5b25626d9cecbf5439a9ef6b8a5e6aa51
 ^
 .app/src/main/res/layout/fragment_favourite.xml,d\b\db855df3a44cf3814ac80984d675417a61291182
 Y
@@ -49,8 +43,6 @@ m
 =app/src/main/java/com/worker/worker/responses/UserResponse.kt,b\6\b63a9d6bf56e504b7f4fdac625c30f1289c7414f
 n
 >app/src/main/java/com/worker/worker/responses/ImageResponse.kt,3\6\362793d435db267fdf6c0a6704421bad8998dd73
-r
-Bapp/src/main/java/com/worker/worker/Activity/CheckUserViewModel.kt,e\4\e462d917486844ea7f8795fa8f6e6a33ef437fbc
 v
 Fapp/src/main/java/com/worker/worker/Activity/ChangePasswordActivity.kt,5\5\550815c8ce0632ce8dd85fbb1c1e8f80291e9840
 q
@@ -75,14 +67,10 @@ d
 4app/src/main/java/com/worker/worker/model/UserJob.kt,a\0\a000f56b0df2012f54084356852c54511143b7df
 c
 3app/src/main/java/com/worker/worker/MainActivity.kt,4\b\4bc856b33cd3084053766bc5d4883b4899da4947
-n
->app/src/main/java/com/worker/worker/Activity/SignUpActivity.kt,3\0\303372bb9f3178621e276ee9cd5ccb30a9b29cb7
 m
 =app/src/main/java/com/worker/worker/Activity/LoginActivity.kt,d\d\dd04ae0c81b0dbc31cf7ca8140b55e37b73c8da2
 t
 Dapp/src/main/java/com/worker/worker/ui/AddOrder/AddOrderViewModel.kt,9\3\93d5ca474aaf425b21bae4b96a9124ede7652904
-k
-;app/src/main/java/com/worker/worker/Activity/OTPActivity.kt,6\1\617b002ef96e34e9449dab987e7f7075b0c27a8d
 p
 @app/src/main/java/com/worker/worker/adapter/CategoriesAdapter.kt,1\7\17ceb8a0e181520aedb9cbe78a5f80b730e9a2a8
 l
@@ -107,14 +95,10 @@ q
 Aapp/src/main/java/com/worker/worker/ui/details/DetailsFragment.kt,4\c\4c4293132b71c2ea0d3c5e62cadfff0c5a0c8cf3
 r
 Bapp/src/main/java/com/worker/worker/ui/details/DetailsViewModel.kt,9\4\94597001f822299eface703196fb46abf6a34607
-s
-Capp/src/main/java/com/worker/worker/ui/Settings/SettingsFragment.kt,f\f\fffd303a1692825924a87e1aa0f426c0d6d56062
 w
 Gapp/src/main/java/com/worker/worker/ui/change/ChangePasswordFragment.kt,2\0\20b0281f1008a11ad98085cde82e4612e65d3669
 e
 5app/src/main/java/com/worker/worker/SplashActivity.kt,b\7\b7d24f3f169c17585e7b8e9826d7c0d017c25dec
-l
-<app/src/main/java/com/worker/worker/Activity/MapsActivity.kt,a\6\a61c754583dcf1ec3c3991397ccf40e16685f82c
 q
 Aapp/src/main/java/com/worker/worker/ui/History/HistoryFragment.kt,3\3\33926574ae8fb001de1b3d59c7cec4a0725f6447
 y
@@ -133,3 +117,21 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+e
+5app/src/main/java/com/worker/worker/network/AppApi.kt,0\a\0a177c5c3dc44a029cf35ef910762d48c6f79fd8
+e
+5app/src/main/java/com/worker/worker/repo/UsersRepo.kt,f\5\f563eac9e1ac1368655c54c359aadbd442e4aa3e
+l
+<app/src/main/java/com/worker/worker/adapter/ReportAdapter.kt,0\d\0d0ea38970f11fb5277be7ab9ce5495e330861fa
+p
+@app/src/main/java/com/worker/worker/ui/report/ReportViewModel.kt,3\8\38d6dba49ab836d3e3bdc7570dd0a934b1547052
+L
+.idea/codeStyles/Project.xml,6\e\6ecd6000a7b6f4a2884412ff19f74193ed089648
+o
+?app/src/main/java/com/worker/worker/ui/report/ReportFragment.kt,9\b\9b41cec94fa5303157b6625af669650c4e5b2a50
+j
+:app/src/main/java/com/worker/worker/model/ReportRequest.kt,a\4\a42601f38bdefa1ca7b058819c18d4cd9b67ab01

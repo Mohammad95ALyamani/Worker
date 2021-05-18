@@ -139,7 +139,7 @@
                             android:fontFamily="casual"
                             android:hint="@string/password"
                             android:inputType="textPassword"
-                            android:paddingStart="@dimen/_35sdp" />
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -164,8 +164,7 @@
 
                             android:fontFamily="casual"
                             android:hint="@string/re_enter_password"
-                            android:inputType="textPassword"
-                            android:paddingStart="@dimen/_35sdp" />
+                            android:inputType="textPassword" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout

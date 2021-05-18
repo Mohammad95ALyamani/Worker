@@ -105,10 +105,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     if ((ContextCompat.checkSelfPermission(
                             this,
                             Manifest.permission.ACCESS_FINE_LOCATION
-                        ) ===
+                        ) ==
                                 PackageManager.PERMISSION_GRANTED)
                     ) {
-                        // locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
+                        locationManager?.requestLocationUpdates(
+                            LocationManager.NETWORK_PROVIDER,
+                            0L,
+                            0f,
+                            locationListener
+                        )
                         val location =
                             locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                         if (location != null) {
@@ -133,7 +138,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     }
                 } else {
-                    Toast.makeText(this, "Permission Denied, please enable location permission", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Permission Denied, please enable location permission",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 return
             }
@@ -155,6 +164,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 MarkerOptions().position(LatLng(location.latitude, location.longitude))
                     .title("your location")
             )
+            lat = location.latitude
+            lng = location.longitude
+
             mMap.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(

@@ -48,6 +48,12 @@
         <action
             android:id="@+id/action_navigation_settings_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_QAFragment"
+            app:destination="@id/QAFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrderFragment"
@@ -157,4 +163,14 @@
         android:id="@+id/doneOrdersFragment"
         android:name="com.worker.worker.ui.done.DoneOrdersFragment"
         android:label="DoneOrdersFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.worker.worker.ui.about.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/QAFragment"
+        android:name="com.worker.worker.ui.quastions.QAFragment"
+        android:label="fragment_q_a"
+        tools:layout="@layout/fragment_q_a" />
 </navigation>

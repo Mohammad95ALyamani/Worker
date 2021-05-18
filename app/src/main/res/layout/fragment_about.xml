@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/_10sdp"
         android:gravity="center"
-        android:lineSpacingExtra="@dimen/_3sdp"
-        android:letterSpacing="@dimen/_3sdp"
+
+
         android:textSize="@dimen/_14ssp"
         android:text="General Services came to solve some of these problems to provide unemployment youth the right opportunity to work from home, work in part-time jobs, or hour-to-hour jobs.
 

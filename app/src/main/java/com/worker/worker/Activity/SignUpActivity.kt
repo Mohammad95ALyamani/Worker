@@ -33,21 +33,20 @@ class SignUpActivity : AppCompatActivity() {
         jobsArrayList = ArrayList()
         signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
 
-
-
-
     }
 
     override fun onResume() {
         super.onResume()
 
-
-
-        signUpViewModel.getUserJobs().observe(this, Observer { response ->
+        signUpViewModel.getUserJobs().observe(this, { response ->
             if (response != null) {
                 Log.d(TAG, "onResume: ${response.jobs!![0].name}")
                 val adapter =
-                    ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, response.jobs!!)
+                    ArrayAdapter(
+                        this,
+                        R.layout.support_simple_spinner_dropdown_item,
+                        response.jobs!!
+                    )
                 jobsArrayList = response.jobs!!
                 binding.userJobMenu.setAdapter(adapter)
             } else {
@@ -78,7 +77,7 @@ class SignUpActivity : AppCompatActivity() {
             return
         }
         if (binding.passwordTietSginUp.text!!.length < 8) {
-            binding.passwordTietSginUp.error = "Password is too short"
+            binding.passwordTextInputLayoutSignUp.error = "Password is too short"
 
             return
         }
@@ -87,27 +86,35 @@ class SignUpActivity : AppCompatActivity() {
             return
         }
         if (binding.passwordTietSginUp.text.toString() != binding.confirmPasswordTietSginUp.text.toString()) {
-            binding.passwordTietSginUp.error = "Password Doesn't Match"
-            binding.confirmPasswordTietSginUp.error = "Password Doesn't Match"
+            //binding.passwordTietSginUp.error = "Password Doesn't Match"
+            binding.confirmPasswordTextInputLayoutSignUp.error = "Password Doesn't Match"
             return
         }
         if (job == null) {
             binding.userJobTextLayout.error = "Job is Require! "
         }
+        signUpViewModel.checkUser(binding.phoneTietSignUp.text.toString()).observe(this, {
+            it
+            if (it != null) {
+                if (it.result?.get(0)!!) {
+                    binding.phoneTietSignUp.error = "this phone is used with other user"
+                } else {
+                    user.firstName = binding.firstNameTietSginUp.text.toString()
+                    user.lastName = binding.lastNameTietSginUp.text.toString()
+                    val num = "+962" + binding.phoneTietSignUp.text.toString()
+                    user.phoneNumber = binding.phoneTietSignUp.text.toString()
+                    user.password = binding.passwordTietSginUp.text.toString()
+                    user.job = job
+                    val i = Intent(this@SignUpActivity, OTPActivity::class.java)
+                    i.putExtra("user", user)
+                    i.putExtra("num", num)
+                    startActivity(i)
+                }
+            } else {
+                Toast.makeText(this,"Try Again Later",Toast.LENGTH_SHORT).show()
+            }
+        })
 
-        user.firstName = binding.firstNameTietSginUp.text.toString()
-        user.lastName = binding.lastNameTietSginUp.text.toString()
-        val num = "+962" + binding.phoneTietSignUp.text.toString()
-        user.phoneNumber = binding.phoneTietSignUp.text.toString()
-        user.password = binding.passwordTietSginUp.text.toString()
-        user.job = job
-        val i = Intent(this@SignUpActivity, OTPActivity::class.java)
-        i.putExtra("user", user)
-        i.putExtra("num",num)
-        startActivity(i)
-
-
-        //Todo
     }
 
     override fun attachBaseContext(newBase: Context?) {
