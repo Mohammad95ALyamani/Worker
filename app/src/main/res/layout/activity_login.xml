@@ -40,6 +40,7 @@
         android:layout_marginTop="@dimen/_26sdp"
         android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginEnd="@dimen/_16sdp"
+        app:prefixText="+962"
         app:startIconDrawable="@drawable/ic_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -143,6 +143,7 @@ class EditOrderFragment : Fragment(), View.OnClickListener,AdapterViewBindingAda
         order.title = editOrderBinding.editOrderTitleTextInputEditText.text.toString()
         order.description = editOrderBinding.editOrderDescriptionTextInputEditText.text.toString()
         order.price = editOrderBinding.editOfferedPrice.text.toString().toDouble()
+        order.categories = category
         updateOrder()
 
 
